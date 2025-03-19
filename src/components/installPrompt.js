@@ -61,7 +61,7 @@ const InstallPrompt = () => {
             </button>
 
             <div className="flex flex-col items-center text-center">
-              <IoInformationCircleOutline className="text-blue-500 text-4xl mb-2" />
+              <IoInformationCircleOutline className="text-black text-4xl mb-2" />
               <h2 className="text-xl font-semibold text-gray-800 mb-1">
                 Install RahulMart
               </h2>
@@ -72,7 +72,7 @@ const InstallPrompt = () => {
               <div className="flex gap-3 w-full justify-center mt-2">
                 <button
                   onClick={handleInstallClick}
-                  className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">
+                  className="flex items-center gap-2 bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-black transition">
                   <IoDownload className="text-lg" />
                   Install
                 </button>
@@ -90,9 +90,8 @@ const InstallPrompt = () => {
       {showButton && (
         <button
           onClick={() => setShowModal(true)}
-          className="fixed bottom-4 right-4 bg-blue-500 text-white px-4 py-3 rounded-full shadow-xl hover:bg-blue-600 transition z-50 flex items-center gap-2">
+          className="fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-3 rounded-full shadow-xl hover:bg-black transition z-50 flex items-center gap-2">
           <IoDownload className="text-lg" />
-          Install
         </button>
       )}
     </>
