@@ -1,4 +1,9 @@
 import React, { useEffect, useState } from "react";
+import {
+  IoDownload,
+  IoClose,
+  IoInformationCircleOutline,
+} from "react-icons/io5";
 
 const InstallPrompt = () => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
@@ -44,26 +49,39 @@ const InstallPrompt = () => {
     <>
       {showModal && (
         <div
-          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
           onClick={() => setShowModal(false)}>
           <div
-            className="bg-white p-6 rounded-lg shadow-lg w-80 text-center"
+            className="bg-white rounded-2xl shadow-2xl w-[90%] max-w-sm p-6 relative animate-fadeIn"
             onClick={(e) => e.stopPropagation()}>
-            <h2 className="text-lg font-semibold">Install This App</h2>
-            <p className="text-gray-600 mt-2">
-              Get quick access by installing this app on your device.
-            </p>
-            <div className="mt-4 flex justify-center gap-4">
-              <button
-                onClick={handleInstallClick}
-                className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
-                Install
-              </button>
-              <button
-                onClick={() => setShowModal(false)}
-                className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400">
-                Cancel
-              </button>
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition">
+              <IoClose className="text-xl" />
+            </button>
+
+            <div className="flex flex-col items-center text-center">
+              <IoInformationCircleOutline className="text-blue-500 text-4xl mb-2" />
+              <h2 className="text-xl font-semibold text-gray-800 mb-1">
+                Install RahulMart
+              </h2>
+              <p className="text-sm text-gray-600 mb-4">
+                Quickly access this app from your home screen.
+              </p>
+
+              <div className="flex gap-3 w-full justify-center mt-2">
+                <button
+                  onClick={handleInstallClick}
+                  className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">
+                  <IoDownload className="text-lg" />
+                  Install
+                </button>
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 transition">
+                  Cancel
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -72,8 +90,9 @@ const InstallPrompt = () => {
       {showButton && (
         <button
           onClick={() => setShowModal(true)}
-          className="fixed bottom-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-600">
-          Install App
+          className="fixed bottom-4 right-4 bg-blue-500 text-white px-4 py-3 rounded-full shadow-xl hover:bg-blue-600 transition z-50 flex items-center gap-2">
+          <IoDownload className="text-lg" />
+          Install
         </button>
       )}
     </>
