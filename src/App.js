@@ -1,13 +1,19 @@
 import React from "react";
 import InstallPrompt from "./components/installPrompt";
 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Homepage from "./pages/homepage";
+
 const App = () => {
   return (
-    <div className="border border-black">
-      <h1>Welcome to My React PWA</h1>
-      <p>This app supports install prompt and offline access.</p>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+        </Routes>
+      </Router>
       <InstallPrompt />
-    </div>
+    </>
   );
 };
 
