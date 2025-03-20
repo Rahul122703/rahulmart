@@ -10,21 +10,25 @@ const Navbar = () => {
       <div className="text-xl font-semibold text-gray-800">RahulMart</div>
 
       <nav className="hidden md:flex items-center gap-6 text-gray-700 text-sm">
-        <Link to="/" className="hover:text-black transition">
-          Home
-        </Link>
-        <Link to="/products" className="hover:text-black transition">
-          Products
-        </Link>
-        <Link to="/about" className="hover:text-black transition">
-          About Us
-        </Link>
+        {["Home", "Products", "About Us"].map((item, index) => {
+          const path =
+            item === "Home" ? "/" : `/${item.toLowerCase().replace(/\s/g, "")}`;
+          return (
+            <Link
+              key={index}
+              to={path}
+              className="group relative text-lg transition text-gray-700 hover:text-black">
+              {item}
+              <span className="absolute bottom-[-4px] left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 bg-black rounded transition-transform origin-left duration-300"></span>
+            </Link>
+          );
+        })}
 
         <div className="relative">
           <input
             type="text"
             placeholder="Search..."
-            className="px-3 py-1 border rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+            className="px-3 py-1 border rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-gray-400 w-[18rem]"
           />
           <FiSearch className="absolute right-2 top-1.5 h-4 w-4 text-gray-500" />
         </div>
