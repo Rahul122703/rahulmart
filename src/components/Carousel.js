@@ -35,10 +35,12 @@ const Carousel = ({
       </style>
 
       <div
-        className={`flex transition-transform ease-out duration-[4s] rounded-3xl`}
+        className={`flex transition-transform ease-out duration-[4s] rounded-full`}
         style={{ transform: `translateX(-${curr * 100}%)` }}>
         {slides.map((slide, index) => (
-          <div key={index} className="w-full h-full flex-shrink-0 rounded-3xl">
+          <div
+            key={index}
+            className="w-full h-full flex-shrink-0 rounded-3xl md:border md:border border-none">
             {slide}
           </div>
         ))}
