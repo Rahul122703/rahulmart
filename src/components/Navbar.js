@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="w-full px-6 py-3 mt-2 flex items-center justify-between m-auto max-w-[1280px] sticky top-0 z-[1000] bg-white shadow rounded-lg">
+    <header className="w-full px-6 py-3 flex items-center justify-between mb-4 mx-auto sticky top-0 z-[1000] bg-white shadow rounded-lg  p-6">
       <div className="text-xl font-semibold text-gray-800">RahulMart</div>
 
       <nav className="hidden md:flex items-center gap-6 text-gray-700 text-sm">

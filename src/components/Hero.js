@@ -9,7 +9,7 @@ const imageData = [
 
 const Hero = () => {
   return (
-    <div className="border border-none flex flex-col md:flex md:flex-row mt-1 md:mt-unset p-4 md:p-unset z-1 relative">
+    <div className="border border-none flex flex-col md:mt-unset lex-col md:flex md:flex-row mt-1 md:mt-unset p-4 md:p-unset z-1 relative max-w-[1290px] m-auto">
       <style>
         {`@media (max-width: 768px) {
         .phone-height-carousel {
@@ -22,8 +22,7 @@ const Hero = () => {
         background-image: url("../../assets/hero-left.jpg");
         filter: blur(2px);
         /* z-index: -1; */
-        }
-       `}
+        `}
       </style>
       <div className="min-w-[60%] p-8 rounded-3xl shadow-2xl flex flex-col justify-center items-center bg-white overflow-hidden">
         <div className="rounded-3xl filter  opacity-30 w-full h-full absolute"></div>
