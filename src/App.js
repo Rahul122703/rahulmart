@@ -9,7 +9,7 @@ import Navbar from "./components/Navbar";
 
 import Loader from "./components/Loader";
 
-import Homepage from "./pages/HomePage";
+import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
 import AboutPage from "./pages/AboutPage";
 import LoginPage from "./pages/LoginPage";
@@ -35,7 +35,7 @@ const App = () => {
       <Router>
         <Navbar />
         <Routes>
-          <Route exact path="/" element={<Homepage />} />
+          <Route exact path="/" element={<HomePage />} />
           <Route exact path="/products" element={<ProductPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/login" element={<LoginPage />} />
