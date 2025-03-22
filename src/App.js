@@ -1,10 +1,12 @@
 import React from "react";
 
 import InstallPrompt from "./components/installPrompt";
+import "./index.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/homepage";
 import Loader from "./components/Loader";
+
 const App = () => {
   const [loading, setLoading] = React.useState(true);
 

@@ -36,7 +36,7 @@ const BannerCarousel = () => {
   }, [index, imageWidth]);
 
   const leftScroll = () => {
-    setIndex((prev) => (prev - 1) % imageData.length);
+    setIndex((prev) => (prev - 1 + imageData.length) % imageData.length);
   };
 
   const rightScroll = () => {
@@ -44,32 +44,46 @@ const BannerCarousel = () => {
   };
 
   return (
-    <div className="w-full relative border border-none mb-4 overflow-hidden ">
-      <button
-        className="absolute left-2 top-1/2 -translate-y-1/2 text-white p-2 rounded-full"
-        onClick={leftScroll}>
-        <FaAnglesLeft />
-      </button>
+    <>
+      <style>
+        {`
+        .carousel-no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .carousel-no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+       `}
+      </style>
 
-      <div
-        className="flex overflow-x-auto scrollbar-hide w-full"
-        ref={scrollDiv}>
-        {imageData.map((image, idx) => (
-          <img
-            key={idx}
-            src={image}
-            alt={`banner-${idx}`}
-            className="w-full object-fill flex-shrink-0"
-          />
-        ))}
+      <div className="relative w-full overflow-hidden mb-6">
+        <button
+          onClick={leftScroll}
+          className="absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition duration-300">
+          <FaAnglesLeft />
+        </button>
+
+        <div
+          className="flex w-full overflow-x-auto carousel-no-scrollbar"
+          ref={scrollDiv}>
+          {imageData.map((image, idx) => (
+            <img
+              key={idx}
+              src={image}
+              alt={`banner-${idx}`}
+              className="w-full flex-shrink-0 object-cover"
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={rightScroll}
+          className="absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition duration-300">
+          <FaAnglesRight />
+        </button>
       </div>
-
-      <button
-        className="absolute right-2 top-1/2 -translate-y-1/2 text-white p-2 rounded-full"
-        onClick={rightScroll}>
-        <FaAnglesRight />
-      </button>
-    </div>
+    </>
   );
 };
 
