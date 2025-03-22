@@ -35,10 +35,7 @@ const Navbar = () => {
 
         <div className="flex items-center gap-4 text-lg">
           <FiShoppingCart className="w-5 h-5 cursor-pointer hover:text-black" />
-          <Link to="/login">
-            {/* <FiLogIn className="w-5 h-5 cursor-pointer hover:text-black" /> */}
-            Login
-          </Link>
+          <Link to="/login">Login</Link>
         </div>
       </nav>
 
@@ -75,7 +72,7 @@ const Navbar = () => {
 
         <div className="flex gap-4 mt-2">
           <FiShoppingCart className="w-5 h-5 cursor-pointer hover:text-black" />
-          <FiLogIn className="w-5 h-5 cursor-pointer hover:text-black" />
+          <Link to="/login">Login</Link>
         </div>
       </div>
     </header>
