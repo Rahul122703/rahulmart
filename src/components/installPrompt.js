@@ -90,7 +90,7 @@ const InstallPrompt = () => {
       {showButton && (
         <button
           onClick={() => setShowModal(true)}
-          className="fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-3 rounded-full shadow-xl hover:bg-black transition z-50 flex items-center gap-2">
+          className="fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-3 rounded-full shadow-xl hover:bg-black transition z-[1000] flex items-center gap-2">
           <IoDownload className="text-lg" />
         </button>
       )}
