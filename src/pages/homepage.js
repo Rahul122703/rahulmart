@@ -6,7 +6,7 @@ import InstallPrompt from "../components/installPrompt";
 import BannerCarousel from "../components/BannerCarousel";
 import MidSection from "../components/MidSection";
 
-const Homepage = () => {
+const HomePage = () => {
   return (
     <>
       <div className="shadow flex flex-col">
@@ -21,4 +21,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default HomePage;
