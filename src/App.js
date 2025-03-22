@@ -4,8 +4,16 @@ import InstallPrompt from "./components/installPrompt";
 import "./index.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Homepage from "./pages/homepage";
+
+import Navbar from "./components/Navbar";
+
 import Loader from "./components/Loader";
+
+import Homepage from "./pages/HomePage";
+import ProductPage from "./pages/ProductPage";
+import AboutPage from "./pages/AboutPage";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
 
 const App = () => {
   const [loading, setLoading] = React.useState(true);
@@ -25,11 +33,16 @@ const App = () => {
   return (
     <>
       <Router>
+        <Navbar />
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route exact path="/" element={<Homepage />} />
+          <Route exact path="/products" element={<ProductPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
         </Routes>
+        <InstallPrompt />
       </Router>
-      <InstallPrompt />
     </>
   );
 };

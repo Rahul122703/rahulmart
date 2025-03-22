@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import FeaturedProuducts from "../components/FeaturedProuducts";
 import Footer from "../components/Footer";
@@ -11,7 +10,6 @@ const Homepage = () => {
   return (
     <>
       <div className="shadow flex flex-col">
-        <Navbar />
         <BannerCarousel />
         <Hero />
         <FeaturedProuducts />

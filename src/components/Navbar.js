@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="text-xl font-semibold text-gray-800">RahulMart</div>
 
       <nav className="hidden md:flex items-center gap-6 text-gray-700 text-sm">
-        {["Home", "Products", "About Us"].map((item, index) => {
+        {["Home", "Products", "About"].map((item, index) => {
           const path =
             item === "Home" ? "/" : `/${item.toLowerCase().replace(/\s/g, "")}`;
           return (
@@ -33,9 +33,12 @@ const Navbar = () => {
           <FiSearch className="absolute right-2 top-1.5 h-4 w-4 text-gray-500" />
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 text-lg">
           <FiShoppingCart className="w-5 h-5 cursor-pointer hover:text-black" />
-          <FiLogIn className="w-5 h-5 cursor-pointer hover:text-black" />
+          <Link to="/login">
+            {/* <FiLogIn className="w-5 h-5 cursor-pointer hover:text-black" /> */}
+            Login
+          </Link>
         </div>
       </nav>
 
