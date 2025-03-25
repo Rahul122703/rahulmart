@@ -48,7 +48,7 @@ const BannerCarousel = () => {
       <style>
         {`
         .carousel-no-scrollbar::-webkit-scrollbar {
-          display: none;
+          display: hidden;
         }
         .carousel-no-scrollbar {
           -ms-overflow-style: none;
@@ -57,7 +57,7 @@ const BannerCarousel = () => {
        `}
       </style>
 
-      <div className="relative w-full overflow-hidden mb-6">
+      <div className="relative w-full overflow-hidden mb-6 rounded-xl">
         <button
           onClick={leftScroll}
           className="absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition duration-300">

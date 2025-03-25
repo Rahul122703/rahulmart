@@ -64,7 +64,7 @@ const MidSection = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition duration-300 text-center cursor-pointer hover:scale-[1.02]">
+              className="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition duration-300 text-center cursor-pointer hover:scale-[1.02]">
               <div className="flex justify-center">{feature.icon}</div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">
                 {feature.title}

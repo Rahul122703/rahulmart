@@ -40,7 +40,7 @@ const Carousel = ({
         {slides.map((slide, index) => (
           <div
             key={index}
-            className="w-full h-full flex-shrink-0 rounded-3xl md:border md:border border-none">
+            className="w-full h-full flex-shrink-0 rounded-3xl md:border border-none">
             {slide}
           </div>
         ))}

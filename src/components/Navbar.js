@@ -6,10 +6,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="w-full px-6 py-3 flex items-center justify-between mb-4 mx-auto sticky top-0 z-[1000] bg-white shadow rounded-lg  p-6">
+    <header className="border w-full px-6 py-3 flex flex-row justify-between my-4 sticky top-0 z-[1000] bg-white shadow rounded-lg  p-6 max-w-[80rem] mx-auto shadow-lg">
       <div className="text-xl font-semibold text-gray-800">RahulMart</div>
 
-      <nav className="hidden md:flex items-center gap-6 text-gray-700 text-sm">
+      <nav className="hidden md:flex items-center gap-6 text-gray-700 text-sm  border border-none">
         {["Home", "Products", "About"].map((item, index) => {
           const path =
             item === "Home" ? "/" : `/${item.toLowerCase().replace(/\s/g, "")}`;
@@ -33,8 +33,14 @@ const Navbar = () => {
           <FiSearch className="absolute right-2 top-1.5 h-4 w-4 text-gray-500" />
         </div>
 
-        <div className="flex items-center gap-4 text-lg">
-          <FiShoppingCart className="w-5 h-5 cursor-pointer hover:text-black" />
+        <div className="flex items-center gap-4 text-xl">
+          <div className="border border-none flex flex-row justify-center items-center relative">
+            Cart
+            <FiShoppingCart className="w-full h-full ml-4 cursor-pointer hover:text-black" />
+            <div className="border border-gray bg-black text-white rounded-full absolute top-[-5px] right-[-15px] text-sm p-[2px]">
+              12
+            </div>
+          </div>
           <Link to="/login">Login</Link>
         </div>
       </nav>
@@ -70,8 +76,13 @@ const Navbar = () => {
           <FiSearch className="absolute right-3 top-2 h-4 w-4 text-gray-500" />
         </div>
 
-        <div className="flex gap-4 mt-2">
-          <FiShoppingCart className="w-5 h-5 cursor-pointer hover:text-black" />
+        <div className="flex items-center gap-4 text-xl border border-none w-full justify-between">
+          <div className="border border-none flex flex-row justify-center items-center relative">
+            <FiShoppingCart className="w-full h-full ml-4 cursor-pointer hover:text-black" />
+            <div className="border border-gray bg-black text-white rounded-full absolute top-[-5px] right-[-15px] text-sm p-[2px]">
+              12
+            </div>
+          </div>
           <Link to="/login">Login</Link>
         </div>
       </div>
