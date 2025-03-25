@@ -19,7 +19,7 @@ import AboutPage from "./pages/AboutPage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 
-import { useNavbarContext } from "./context/navbar_context";
+import { useProductContext } from "./context/product_context";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -54,10 +54,10 @@ const App = () => {
 };
 
 const CloseNavbar = () => {
-  const { setIsSidebarOpen } = useNavbarContext();
+  const { closeNavbar } = useProductContext();
   const location = useLocation();
   useEffect(() => {
-    setIsSidebarOpen((value) => !value);
+    closeNavbar();
   }, [location.pathname]);
   return null;
 };

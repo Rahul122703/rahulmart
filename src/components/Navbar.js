@@ -2,10 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FiMenu, FiX, FiShoppingCart, FiSearch } from "react-icons/fi";
 
-import { useNavbarContext } from "../context/navbar_context";
+import { useProductContext } from "../context/product_context";
 
 const Navbar = () => {
-  const { isSidebarOpen, setIsSidebarOpen } = useNavbarContext();
+  const { openNavbar, closeNavbar, isNavbarOpen } = useProductContext();
+
   return (
     <header className="border w-full px-6 py-3 flex flex-row justify-between my-4 sticky top-0 z-[1000] bg-white rounded-lg  p-6 max-w-[80rem] mx-auto shadow-lg">
       <div className="text-xl font-semibold text-gray-800">RahulMart</div>
@@ -34,11 +35,11 @@ const Navbar = () => {
           <FiSearch className="absolute right-2 top-1.5 h-4 w-4 text-gray-500" />
         </div>
 
-        <div className="flex items-center gap-4 text-xl">
+        <div className="flex items-center gap-4 text-xl border border-none w-[10rem] justify-between">
           <div className="border border-none flex flex-row justify-center items-center relative">
             Cart
-            <FiShoppingCart className="w-full h-full ml-4 cursor-pointer hover:text-black" />
-            <div className="border border-gray bg-black text-white rounded-full absolute top-[-5px] right-[-15px] text-sm p-[2px]">
+            <FiShoppingCart className="w-full h-full ml-[10px] cursor-pointer hover:text-black" />
+            <div className="border border-gray bg-black text-white rounded-full absolute top-[-5px] right-[-22px] text-sm p-[2px]">
               12
             </div>
           </div>
@@ -48,8 +49,14 @@ const Navbar = () => {
 
       <button
         className="md:hidden text-gray-800 z-50"
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
-        {isSidebarOpen ? (
+        onClick={() => {
+          if (isNavbarOpen) {
+            closeNavbar();
+          } else {
+            openNavbar();
+          }
+        }}>
+        {isNavbarOpen ? (
           <FiX className="w-6 h-6" />
         ) : (
           <FiMenu className="w-6 h-6" />
@@ -58,7 +65,7 @@ const Navbar = () => {
 
       <div
         className={`absolute top-[64px] left-0 w-full bg-white shadow-md flex flex-col items-start px-6 py-4 gap-4 md:hidden z-40 transform transition-all duration-500 ease-in-out ${
-          isSidebarOpen
+          isNavbarOpen
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-4 pointer-events-none"
         }`}>
@@ -81,7 +88,7 @@ const Navbar = () => {
           <FiSearch className="absolute right-3 top-2 h-4 w-4 text-gray-500" />
         </div>
 
-        <div className="flex items-center gap-4  border border-none w-full justify-between text-2xl">
+        <div className="flex items-center gap-4  border border-none w-full justify-between text-xl">
           <div className="border border-none flex flex-row justify-center items-center relative">
             <FiShoppingCart className="w-full h-full ml-4 cursor-pointer hover:text-black" />
             <div className="border border-gray bg-black text-white rounded-full absolute top-[-5px] right-[-22px] text-sm p-[2px]">
