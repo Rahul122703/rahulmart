@@ -18,7 +18,7 @@ import ProductPage from "./pages/ProductPage";
 import AboutPage from "./pages/AboutPage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
-
+import ErrorPage from "./pages/ErrorPage";
 import { useProductContext } from "./context/product_context";
 
 const App = () => {
@@ -46,6 +46,7 @@ const App = () => {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
         <InstallPrompt />
       </Router>
