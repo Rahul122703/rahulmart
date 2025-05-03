@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import InstallPrompt from "../components/installPrompt";
 import BannerCarousel from "../components/BannerCarousel";
 import MidSection from "../components/MidSection";
-
+import ContactUs from "../components/ContactUs";
 const HomePage = () => {
   return (
     <>
@@ -14,6 +14,7 @@ const HomePage = () => {
         <Hero />
         <FeaturedProuducts />
         <MidSection />
+        <ContactUs />
         <Footer />
       </div>
       <InstallPrompt />
