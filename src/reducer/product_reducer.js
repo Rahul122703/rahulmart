@@ -1,4 +1,4 @@
-import { CLOSE_NAVBAR, OPEN_NAVBAR } from "../action";
+import { CLOSE_NAVBAR, OPEN_NAVBAR } from "../action.js";
 
 export const product_reducer = (state, action) => {
   if (action.type === CLOSE_NAVBAR) {

@@ -1,4 +1,4 @@
-import Carousel from "./Carousel";
+import Carousel from "./Carousel.js";
 import React from "react";
 // import bgimage from "../../assets/hero-left.jpg";
 const imageData = [

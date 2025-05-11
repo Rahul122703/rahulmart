@@ -1,5 +1,5 @@
 import React from "react";
-import SmallCard from "./smallCard";
+import SmallCard from "./smallCard.js";
 
 const FeaturedProducts = () => {
   const products = [

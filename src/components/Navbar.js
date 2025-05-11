@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FiMenu, FiX, FiShoppingCart, FiSearch } from "react-icons/fi";
 
-import { useProductContext } from "../context/product_context";
+import { useProductContext } from "../context/product_context.js";
 
 const Navbar = () => {
   const { openNavbar, closeNavbar, isNavbarOpen } = useProductContext();

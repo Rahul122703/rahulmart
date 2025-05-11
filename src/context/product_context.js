@@ -1,7 +1,7 @@
 import React, { useContext, createContext, useReducer } from "react";
 
 import { OPEN_NAVBAR, CLOSE_NAVBAR } from "../action.js";
-import { product_reducer } from "../reducer/product_reducer";
+import { product_reducer } from "../reducer/product_reducer.js";
 
 const product_initialState = {
   isNavbarOpen: false,

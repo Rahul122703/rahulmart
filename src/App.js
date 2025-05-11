@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import InstallPrompt from "./components/installPrompt";
+import InstallPrompt from "./components/installPrompt.js";
 import "./index.css";
 
 import {
@@ -10,17 +10,17 @@ import {
   useLocation,
 } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
-import Loader from "./components/Loader";
+import Navbar from "./components/Navbar.js";
+import Loader from "./components/Loader.js";
 
-import HomePage from "./pages/HomePage";
-import ProductPage from "./pages/ProductPage";
-import AboutPage from "./pages/AboutPage";
-import LoginPage from "./pages/LoginPage";
-import SignupPage from "./pages/SignupPage";
-import ErrorPage from "./pages/ErrorPage";
-import RandomPage from "./pages/randompage";
-import { useProductContext } from "./context/product_context";
+import HomePage from "./pages/HomePage.js";
+import ProductPage from "./pages/ProductPage.js";
+import AboutPage from "./pages/AboutPage.js";
+import LoginPage from "./pages/LoginPage.js";
+import SignupPage from "./pages/SignupPage.js";
+import ErrorPage from "./pages/ErrorPage.js";
+import RandomPage from "./pages/randompage.js";
+import { useProductContext } from "./context/product_context.js";
 
 const App = () => {
   const [loading, setLoading] = useState(true);

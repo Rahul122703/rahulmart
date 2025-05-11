@@ -7,7 +7,7 @@ import {
   FaUsers,
 } from "react-icons/fa";
 
-import Footer from "../components/Footer";
+import Footer from "../components/Footer.js";
 
 const AboutPage = () => {
   const [scrollY, setScrollY] = useState(0);
