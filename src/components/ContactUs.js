@@ -15,11 +15,15 @@ const ContactUs = () => {
           products with exceptional customer service.
         </p>
 
-        <form className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+        <form
+          className="flex flex-col sm:flex-row gap-4 w-full md:w-auto"
+          action="https://formspree.io/f/xqaqpded"
+          method="POST">
           <input
             type="email"
             placeholder="Your email address"
             className="flex-1 min-w-[300px] px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+            name="_replyto"
           />
           <button
             type="submit"
