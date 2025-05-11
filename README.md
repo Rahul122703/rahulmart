@@ -39,9 +39,12 @@ To use this template, follow these steps:
 4. Start the development server:
 
    ```bash
-   npm start
+   npm start (for frontend)
    ```
-
+or 
+   ```bash
+   npm run netlify  (for frontend and with backend api)
+   ```
 Your PWA will be running at `http://localhost:3000`. Open your browser and navigate to this URL to view the project in action.
 
 ## Building and Deployment
