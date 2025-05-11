@@ -20,6 +20,14 @@ class LoadAirtable {
       throw new Error("Failed to fetch records: " + error.message);
     }
   }
+
+  async getProduct(id) {
+    try {
+      return await this.base.retrieve(id);
+    } catch (error) {
+      throw new Error(`Failed to fetch the product with id as ${id}`);
+    }
+  }
 }
 
 export default LoadAirtable;

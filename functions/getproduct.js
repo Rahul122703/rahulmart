@@ -1,53 +1,55 @@
+import dotenv from "dotenv";
 import LoadAirtable from "./airtable-credential.js";
 
-export async function handler(event, context) {
-  try {
-    const airtable = new LoadAirtable("products");
-    const { records } = await airtable.allRows();
+dotenv.config();
 
-    const products = records.map((currentItem) => {
-      const {
-        id,
-        fields: {
-          product,
-          category,
-          image: [{ url }],
-          colors,
-          company,
-          description,
-          price,
-        },
-      } = currentItem;
-      return {
-        id: id,
-        image: url,
-        price: price,
-        name: product,
-        colors: colors,
-        company: company,
-        desc: description,
-        category: category,
-      };
-    });
-    console.log("all products", products);
+const loadAirtable = new LoadAirtable("products");
 
+export const handler = async (event, context) => {
+  const { id } = event.queryStringParameters;
+
+  if (!id) {
     return {
-      statusCode: 200,
-      body: JSON.stringify(products),
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-      },
-    };
-  } catch (error) {
-    console.error("Error fetching Airtable data:", error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: error.message }),
+      statusCode: 400,
+      body: JSON.stringify({ error: "Product ID is required" }),
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
       },
     };
   }
-}
+
+  try {
+    const product = await loadAirtable.getProduct(id);
+
+    if (!product || !product.id) {
+      return {
+        statusCode: 404,
+        body: JSON.stringify({ error: "Product not found" }),
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
+      };
+    }
+    console.log("product information", product);
+    return {
+      statusCode: 200,
+      body: JSON.stringify(product),
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching product:", error.message);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: "Server Error" }),
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+      },
+    };
+  }
+};
