@@ -1,11 +1,19 @@
-import LoadAirtable from "./airtable-credential.js";
+// airtable-products-api.js
 
-export async function handler(event, context) {
+import dotenv from "dotenv";
+import Airtable from "airtable-node";
+
+dotenv.config();
+
+const apiKey = process.env.AIRTABLE_API_TOKEN;
+const baseID = process.env.AIRTABLE_BASE_ID;
+const tableName = "products";
+
+const airtable = new Airtable({ apiKey }).base(baseID).table(tableName);
+
+async function getAllProducts() {
   try {
-    const airtable = new LoadAirtable("products");
-    const { records } = await airtable.allRows();
-
-    console.log("all records : ", records);
+    const { records } = await airtable.list({ maxRecords: 100 });
 
     const products = records.map((currentItem) => {
       const {
@@ -25,22 +33,34 @@ export async function handler(event, context) {
           image: [{ url }],
         },
       } = currentItem;
+
       return {
-        id: id,
+        id,
         image: url,
-        price: price,
+        price,
         name: product,
-        review: review,
-        rating: rating,
-        colors: colors,
-        company: company,
-        records: records,
+        review,
+        rating,
+        colors,
+        company,
+        records,
         desc: description,
-        category: category,
-        featured: featured,
-        shipping: shipping,
+        category,
+        featured,
+        shipping,
       };
     });
+
+    return products;
+  } catch (error) {
+    throw new Error("Failed to fetch products: " + error.message);
+  }
+}
+
+export async function handler(event, context) {
+  try {
+    const products = await getAllProducts();
+
     return {
       statusCode: 200,
       body: JSON.stringify(products),
