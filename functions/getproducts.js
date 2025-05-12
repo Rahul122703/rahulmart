@@ -5,18 +5,24 @@ export async function handler(event, context) {
     const airtable = new LoadAirtable("products");
     const { records } = await airtable.allRows();
 
+    console.log("all records : ", records);
+
     const products = records.map((currentItem) => {
       const {
         id,
         fields: {
-          product,
-          category,
-          image: [{ url }],
-          colors,
-          company,
-          description,
           price,
+          review,
+          colors,
+          rating,
+          product,
+          records,
+          company,
+          category,
           shipping,
+          featured,
+          description,
+          image: [{ url }],
         },
       } = currentItem;
       return {
@@ -24,11 +30,15 @@ export async function handler(event, context) {
         image: url,
         price: price,
         name: product,
+        review: review,
+        rating: rating,
         colors: colors,
         company: company,
+        records: records,
         desc: description,
-        shipping: shipping,
         category: category,
+        featured: featured,
+        shipping: shipping,
       };
     });
     return {

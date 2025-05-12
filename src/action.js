@@ -1,2 +1,6 @@
 export const OPEN_NAVBAR = "OPEN_NAVBAR";
 export const CLOSE_NAVBAR = "CLOSE_NAVBAR";
+
+export const PRODUCT_ERROR = "PRODUCT_ERROR";
+export const PRODUCT_LOADING = "PRODUCT_LOADING";
+export const PRODUCT_SUCCESS = "PRODUCT_SUCCESS";

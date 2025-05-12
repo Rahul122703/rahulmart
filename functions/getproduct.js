@@ -1,7 +1,4 @@
-import dotenv from "dotenv";
 import LoadAirtable from "./airtable-credential.js";
-
-dotenv.config();
 
 const loadAirtable = new LoadAirtable("products");
 
@@ -25,7 +22,7 @@ export const handler = async (event, context) => {
     if (!product || !product.id) {
       return {
         statusCode: 404,
-        body: JSON.stringify({ error: "Product not found" }),
+        body: JSON.stringify({ error: `Product not found with the id ${id}` }),
         headers: {
           "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",

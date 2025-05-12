@@ -53,7 +53,7 @@ const App = () => {
         <InstallPrompt />
       </Router>
     </>
-  );
+  );                                         
 };
 
 const CloseNavbar = () => {

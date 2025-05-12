@@ -1,7 +1,7 @@
 import React from "react";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
-import { footerSections, companyInfo } from "../utils/footer_data.js";
+import { footerSections, companyInfo } from "../utils/componentData.js";
 
 const Footer = () => {
   return (
