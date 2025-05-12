@@ -26,7 +26,7 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   setTimeout(() => {
     setLoading(false);
-  }, 500);
+  }, 250);
 
   if (loading) {
     return (
@@ -53,7 +53,7 @@ const App = () => {
         <InstallPrompt />
       </Router>
     </>
-  );                                         
+  );
 };
 
 const CloseNavbar = () => {
