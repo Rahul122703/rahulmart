@@ -2,7 +2,7 @@ import LoadAirtable from "./airtable-credential.js";
 
 export async function handler(event, context) {
   try {
-    const airtable = new LoadAirtable("products");
+    const airtable = new LoadAirtable("products"); // Here the new key word is not suppored as LoadAirtable as read as a non class by netlify deployment server so i had to somehow change this to function or anything non class so u created this branch so safeguard this OOP apprach for airtable API
     const { records } = await airtable.allRows();
 
     console.log("all records : ", records);
