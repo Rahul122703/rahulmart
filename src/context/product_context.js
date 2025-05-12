@@ -37,7 +37,9 @@ export const ProductProvider = ({ children }) => {
   const fetchProductData = async () => {
     try {
       const { data } = await axios.get(ALL_PRODUCTS);
-      dispatch({ type: PRODUCT_SUCCESS, payload: data });
+      setTimeout(() => {
+        dispatch({ type: PRODUCT_SUCCESS, payload: data });
+      }, 2000);
     } catch (error) {
       dispatch({ type: PRODUCT_ERROR });
     }

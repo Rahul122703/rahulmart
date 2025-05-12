@@ -1,4 +1,3 @@
-import React from "react";
 import { useProductContext } from "../context/product_context.js";
 import SkeletonLoader from "./FeaturedProductSkeletonLoader.js";
 import SmallCard from "./smallCard.js";
