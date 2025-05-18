@@ -1,5 +1,5 @@
 import Hero from "../components/Hero.js";
-import FeaturedProuducts from "../components/FeaturedProuducts.js";
+import FeaturedProducts from "../components/FeaturedProducts.js";
 import Footer from "../components/Footer.js";
 
 import InstallPrompt from "../components/installPrompt.js";
@@ -13,7 +13,7 @@ const HomePage = () => {
       <div className="shadow flex flex-col">
         <BannerCarousel />
         <Hero />
-        <FeaturedProuducts />
+        <FeaturedProducts />
         <MidSection />
         <ContactUs />
         <Footer />

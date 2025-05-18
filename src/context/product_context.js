@@ -6,12 +6,15 @@ import {
   PRODUCT_LOADING,
   PRODUCT_ERROR,
   PRODUCT_SUCCESS,
+  SINGLE_PRODUCT_LOADING,
+  SINGLE_PRODUCT_ERROR,
+  SINGLE_PRODUCT_SUCCESS,
 } from "../action.js";
 
 import { product_reducer } from "../reducer/product_reducer.js";
 import axios from "axios";
 
-import { ALL_PRODUCTS } from "../utils/urls.js";
+import { ALL_PRODUCTS, SINGLE_PRODUCT } from "../utils/urls.js";
 
 const product_initialState = {
   isNavbarOpen: false,
@@ -19,6 +22,9 @@ const product_initialState = {
   productError: false,
   products: [],
   featuredProducts: [],
+  singleproductLoading: false,
+  singleproductError: false,
+  singleproduct: null,
 };
 
 const ProductContext = createContext();
@@ -45,13 +51,31 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
+  const fetchSingleProduct = async (id) => {
+    try {
+      dispatch({ type: SINGLE_PRODUCT_LOADING });
+      const { data } = await axios.get(`${SINGLE_PRODUCT}${id}wd`);
+      setTimeout(() => {
+        dispatch({ type: SINGLE_PRODUCT_SUCCESS, payload: data });
+      }, 2000);
+    } catch (error) {
+      dispatch({ type: SINGLE_PRODUCT_ERROR });
+    }
+  };
+
+  // useEffect(() => {
+  //   dispatch({ type: SINGLE_PRODUCT_LOADING });
+  //   fetchSingleProduct();
+  // }, []);
+
   useEffect(() => {
     dispatch({ type: PRODUCT_LOADING });
     fetchProductData();
   }, []);
 
   return (
-    <ProductContext.Provider value={{ closeNavbar, openNavbar, ...state }}>
+    <ProductContext.Provider
+      value={{ closeNavbar, openNavbar, fetchSingleProduct, ...state }}>
       {children}
     </ProductContext.Provider>
   );

@@ -4,7 +4,7 @@ export default function ProductPageSkeleton() {
   return (
     <>
       <div className="bg-gray-50 min-h-screen p-6 w-full border border-none animate-pulse">
-        <div className="max-w-[100rem] mx-auto bg-white rounded-3xl shadow-2xl p-6 border border-gray-700">
+        <div className="max-w-[100rem] mx-auto bg-white rounded-3xl shadow-2xl p-6 border border-gray-none">
           <div className="mb-6 px-4 py-2 bg-gray-300 text-white rounded-lg shadow w-32 h-10"></div>
 
           <div className="flex flex-col-reverse lg:flex-row gap-10">
