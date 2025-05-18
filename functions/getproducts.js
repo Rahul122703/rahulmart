@@ -19,6 +19,7 @@ async function getAllProducts() {
       const {
         id,
         fields: {
+          stock,
           price,
           review,
           colors,
@@ -39,6 +40,7 @@ async function getAllProducts() {
         image: url,
         price,
         name: product,
+        stock,
         review,
         rating,
         colors,
