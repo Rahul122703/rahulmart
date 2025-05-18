@@ -20,7 +20,7 @@ const product_initialState = {
   isNavbarOpen: false,
   productLoading: false,
   productError: false,
-  products: [],
+  products: null,
   featuredProducts: [],
   singleproductLoading: false,
   singleproductError: false,

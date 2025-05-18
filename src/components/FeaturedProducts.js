@@ -1,6 +1,6 @@
 import { useProductContext } from "../context/product_context.js";
 import SkeletonLoader from "./loader/FeaturedProductSkeletonLoader.js";
-import SmallCard from "./smallCard.js";
+import SmallCard from "./SmallCard.js";
 
 const FeaturedProducts = () => {
   const { productLoading, productError, featuredProducts } =

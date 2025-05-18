@@ -15,6 +15,7 @@ import Loader from "./components/Loader.js";
 
 import HomePage from "./pages/HomePage.js";
 import ProductPage from "./pages/ProductPage.js";
+import ProductsPage from "./pages/ProductsPage.js";
 import AboutPage from "./pages/AboutPage.js";
 import LoginPage from "./pages/LoginPage.js";
 import SignupPage from "./pages/SignupPage.js";
@@ -43,7 +44,7 @@ const App = () => {
         <CloseNavbar />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <Route exact path="/products" element={<ProductPage />} />
+          <Route exact path="/products" element={<ProductsPage />} />
           <Route exact path="/product/:productid" element={<ProductPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/login" element={<LoginPage />} />
