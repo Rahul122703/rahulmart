@@ -54,7 +54,7 @@ export const ProductProvider = ({ children }) => {
   const fetchSingleProduct = async (id) => {
     try {
       dispatch({ type: SINGLE_PRODUCT_LOADING });
-      const { data } = await axios.get(`${SINGLE_PRODUCT}${id}wd`);
+      const { data } = await axios.get(`${SINGLE_PRODUCT}${id}`);
       setTimeout(() => {
         dispatch({ type: SINGLE_PRODUCT_SUCCESS, payload: data });
       }, 2000);
