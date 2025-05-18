@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useProductContext } from "../context/product_context.js";
-import SmallCard from "../components/SmallCard.js";
+import SmallCard from "../components/ProductCard.js";
 import Filters from "../components/FilterSideBar.js";
 
 export default function ProductsContainer() {
