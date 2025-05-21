@@ -9,6 +9,7 @@ import {
   SINGLE_PRODUCT_LOADING,
   SINGLE_PRODUCT_ERROR,
   SINGLE_PRODUCT_SUCCESS,
+  PRODUCT_CARD_DESC,
 } from "../action.js";
 
 import { product_reducer } from "../reducer/product_reducer.js";
@@ -25,6 +26,7 @@ const product_initialState = {
   singleproductLoading: false,
   singleproductError: false,
   singleproduct: null,
+  productCardChange: false,
 };
 
 const ProductContext = createContext();
@@ -63,10 +65,9 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
-  // useEffect(() => {
-  //   dispatch({ type: SINGLE_PRODUCT_LOADING });
-  //   fetchSingleProduct();
-  // }, []);
+  const changeProductCardView = (desc) => {
+    dispatch({ type: PRODUCT_CARD_DESC, payload: desc });
+  };
 
   useEffect(() => {
     dispatch({ type: PRODUCT_LOADING });
@@ -75,7 +76,13 @@ export const ProductProvider = ({ children }) => {
 
   return (
     <ProductContext.Provider
-      value={{ closeNavbar, openNavbar, fetchSingleProduct, ...state }}>
+      value={{
+        closeNavbar,
+        openNavbar,
+        fetchSingleProduct,
+        changeProductCardView,
+        ...state,
+      }}>
       {children}
     </ProductContext.Provider>
   );

@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useProductContext } from "../context/product_context.js";
 import SmallCard from "../components/ProductCard2.js";
+import ProductCardDesc from "../components/ProductCardDesc.js";
 import ProductHeader from "../components/ProductHeader.js";
 import Filters from "../components/FilterSideBar.js";
 
 import { Link } from "react-router-dom";
 
 export default function ProductsContainer() {
-  const { productLoading, productError, products } = useProductContext();
+  const { productLoading, productError, products, productCardChange } =
+    useProductContext();
 
   if (productLoading) return <p className="text-center mt-10">Loading...</p>;
   if (productError)
@@ -24,20 +26,31 @@ export default function ProductsContainer() {
           <span>Products</span>
         </div>
       </div>
-      <div className="m-auto max-w-[1600px] px-4 relative flex flex-col">
-        <div className="flex gap-6">
-          <div className="w-full max-w-[250px] sticky top-[6.25rem] h-fit">
+      <div className="m-auto max-w-[1700px] px-4 relative flex flex-col border border-none">
+        <div className=" gap-6 flex flex-row flex-wrap">
+          <div className="w-full max-w-[250px] filterMoile:sticky top-[5rem] h-fit border border-none">
             <Filters />
           </div>
 
-          <div className="flex-1 border rounded-lg">
-            <ProductHeader />
-            <div className="flex flex-row flex-wrap justify-between rounded-lg">
-              {products.map((product) => (
-                <div key={product.id}>
-                  <SmallCard {...product} />
-                </div>
-              ))}
+          <div className="flex-1 rounded-lg  border border-none">
+            <ProductHeader totalProducts={products.length} />
+
+            <div
+              className={
+                productCardChange
+                  ? `grid grid-cols-1 place-items-center`
+                  : `flex flex-wrap justify-center items-center` +
+                    `rounded-lg border border-none filterMoile:p-4`
+              }>
+              {products.map((product) => {
+                return productCardChange ? (
+                  <ProductCardDesc {...product} key={product.id} />
+                ) : (
+                  <SmallCard {...product} key={product.id} />
+                );
+
+                //
+              })}
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@ import { FaCheck } from "react-icons/fa";
 
 const FilterSidebar = () => {
   return (
-    <div className="p-4">
+    <div className="p-4 border-l border-t border-b">
       <div className="mb-6">
         <h2 className="font-bold mb-2">Category</h2>
         <ul className="flex flex-col space-y-1 text-gray-700">

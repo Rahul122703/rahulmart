@@ -11,7 +11,7 @@ const Navbar = () => {
     <header className="border w-full px-6 py-3 flex flex-row justify-between my-4 sticky top-0 z-[1000] bg-white rounded-lg  p-6 max-w-[80rem] mx-auto shadow-lg">
       <div className="text-xl font-semibold text-gray-800">RahulMart</div>
 
-      <nav className="hidden md:flex items-center gap-6 text-gray-700 text-sm  border border-none">
+      <nav className="hidden xl:flex items-center gap-6 text-gray-700 text-sm  border border-none">
         {["Home", "Products", "About"].map((item, index) => {
           const path =
             item === "Home" ? "/" : `/${item.toLowerCase().replace(/\s/g, "")}`;
@@ -48,7 +48,7 @@ const Navbar = () => {
       </nav>
 
       <button
-        className="md:hidden text-gray-800 z-50"
+        className="xl:hidden text-gray-800 z-50"
         onClick={() => {
           if (isNavbarOpen) {
             closeNavbar();
@@ -64,7 +64,7 @@ const Navbar = () => {
       </button>
 
       <div
-        className={`absolute top-[64px] left-0 w-full bg-white shadow-md flex flex-col items-start px-6 py-4 gap-4 md:hidden z-40 transform transition-all duration-500 ease-in-out ${
+        className={`absolute top-[64px] left-0 w-full bg-white shadow-md flex flex-col items-start px-6 py-4 gap-4 xl:hidden z-40 transform transition-all duration-500 ease-in-out ${
           isNavbarOpen
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-4 pointer-events-none"

@@ -11,6 +11,8 @@ module.exports = {
       },
       screens: {
         cardView: "1000px",
+        navBarMobile: "885px",
+        filterMoile: "689px",
       },
       animation: {
         expandWidth: "expandWidth 0.5s ease-out forwards",
