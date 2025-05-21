@@ -21,7 +21,7 @@ const product_initialState = {
   isNavbarOpen: false,
   productLoading: false,
   productError: false,
-  products: null,
+  products: [],
   featuredProducts: [],
   singleproductLoading: false,
   singleproductError: false,
