@@ -7,6 +7,8 @@ import {
   FaUsers,
 } from "react-icons/fa";
 
+import { Link } from "react-router-dom";
+
 import Footer from "../components/Footer.js";
 
 const AboutPage = () => {
@@ -21,6 +23,14 @@ const AboutPage = () => {
   return (
     <>
       <div className="relative bg-[#121212] text-gray-200 flex flex-col items-center bottom-0">
+        <div className="min-w-full bg-gray-800 text-white py-6 px-4 mb-8 justify-center">
+          <div className="text-3xl font-semibold text-center">
+            <Link to="/">Home</Link>
+            <span className="mx-4">/</span>
+            <span>About</span>
+          </div>
+        </div>
+
         <div
           className="absolute inset-0 bg-cover bg-center transition-all duration-500 opacity-20"
           style={{

@@ -12,7 +12,7 @@ const SmallCard = ({ id, image, price, name }) => {
   return (
     <div
       onClick={handleClick}
-      className="cursor-pointer border flex flex-col h-[15rem] w-[18rem] justify-between bg-[#f7f5ef] rounded-lg shadow-md overflow-hidden hover:scale-[1.080] transition-all duration-[0.5s]">
+      className="cursor-pointer border flex flex-col h-[15rem] w-[18rem] justify-between bg-[#f7f5ef] rounded-lg shadow-md overflow-hidden hover:scale-[1.080] transition-all duration-[0.5s] m-4">
       <div className="border border-none flex-1 relative overflow-hidden">
         <div
           className="w-full h-full border border-black absolute bg-black opacity-0 hover:opacity-50 flex

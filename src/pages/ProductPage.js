@@ -110,7 +110,7 @@ export default function ProductPage() {
               ))}
             </div>
 
-            <ProductAmount stock = {stock}/>
+            <ProductAmount stock={stock} />
 
             <button className="mt-4 px-8 py-3 bg-gray-700 hover:bg-black text-white text-lg font-semibold rounded-xl shadow-md transition">
               ADD TO CART

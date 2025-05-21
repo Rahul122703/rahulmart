@@ -3,7 +3,7 @@ import { FaCheck } from "react-icons/fa";
 
 const FilterSidebar = () => {
   return (
-    <aside className="w-full lg:w-[300px] px-4  border border-black">
+    <div className="p-4">
       <div className="mb-6">
         <h2 className="font-bold mb-2">Category</h2>
         <ul className="flex flex-col space-y-1 text-gray-700">
@@ -62,7 +62,7 @@ const FilterSidebar = () => {
           Clear Filters
         </button>
       </div>
-    </aside>
+    </div>
   );
 };
 

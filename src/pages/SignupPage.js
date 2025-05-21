@@ -4,17 +4,15 @@ import { FaGoogle } from "react-icons/fa6";
 
 const SignupPage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-      <div className="font-medium text-xl">
-        <Link to="/">
-          Home
-          <span className="w-[50px] h-1 "> </span>
-        </Link>
-        <span className="w-[50px] h-1 "> </span>/
-        <span className="w-[50px] h-1 "> </span>
-        Signup
+    <div className="min-h-screen flex flex-col items-center  bg-gray-100 border border-black">
+      <div className="min-w-full bg-gray-800 text-white py-6 px-4 mb-8 justify-center">
+        <div className="text-3xl font-semibold text-center">
+          <Link to="/">Home</Link>
+          <span className="mx-4">/</span>
+          <span>Register</span>
+        </div>
       </div>
-      <div className="w-full max-w-md p-8 bg-white shadow-md rounded-lg">
+      <div className="w-full max-w-[35rem] p-8 bg-white shadow-md rounded-lg mt-[10rem]">
         <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">
           Register
         </h2>
