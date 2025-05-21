@@ -3,17 +3,7 @@ import { FaCheck } from "react-icons/fa";
 
 const FilterSidebar = () => {
   return (
-    <aside className="w-full lg:w-[300px] px-4 overflow-scroll">
-      {/* Search */}
-      <div className="mb-6">
-        <input
-          type="text"
-          placeholder="Search"
-          className="w-full px-3 py-2 border rounded-md shadow-sm"
-        />
-      </div>
-
-      {/* Category */}
+    <aside className="w-full lg:w-[300px] px-4  border border-black">
       <div className="mb-6">
         <h2 className="font-bold mb-2">Category</h2>
         <ul className="flex flex-col space-y-1 text-gray-700">
@@ -27,7 +17,6 @@ const FilterSidebar = () => {
         </ul>
       </div>
 
-      {/* Company */}
       <div className="mb-6">
         <h2 className="font-bold mb-2">Company</h2>
         <select className="w-full px-2 py-2 border rounded-md shadow-sm">
@@ -38,7 +27,6 @@ const FilterSidebar = () => {
         </select>
       </div>
 
-      {/* Colors */}
       <div className="mb-6">
         <h2 className="font-bold mb-2">Colors</h2>
         <div className="flex items-center flex-wrap gap-2">
@@ -56,14 +44,12 @@ const FilterSidebar = () => {
         </div>
       </div>
 
-      {/* Price */}
       <div className="mb-6">
         <h2 className="font-bold mb-2">Price</h2>
         <p className="text-sm text-gray-700 mb-1">$3,077.85</p>
         <input type="range" min="0" max="5000" step="1" className="w-full" />
       </div>
 
-      {/* Free Shipping */}
       <div className="mb-6">
         <label className="flex items-center space-x-2 text-gray-700">
           <input type="checkbox" />
@@ -71,7 +57,6 @@ const FilterSidebar = () => {
         </label>
       </div>
 
-      {/* Clear Filters */}
       <div className="mt-4">
         <button className="px-4 py-2 bg-red-600 text-white rounded shadow hover:bg-red-700">
           Clear Filters

@@ -9,6 +9,9 @@ module.exports = {
           "100%": { width: "100%" },
         },
       },
+      screens: {
+        cardView: "1000px",
+      },
       animation: {
         expandWidth: "expandWidth 0.5s ease-out forwards",
       },
