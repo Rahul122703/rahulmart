@@ -41,13 +41,9 @@ export default function ProductsContainer() {
                   : `flex flex-wrap justify-center items-center rounded-lg border border-none filterMoile:p-4`
               }>
               {productLoading ? (
-                [...Array(8)].map((_, index) =>
-                  productCardChange ? (
-                    <SkeletonProductCardDesc key={index} />
-                  ) : (
-                    <ProductCard2Skeleton key={index} />
-                  )
-                )
+                [...Array(8)].map((_, index) => (
+                  <ProductCard2Skeleton key={index} /> //Add  SkeletonProductCardDesc here
+                ))
               ) : productError ? (
                 <p className="text-center mt-10 text-red-500">
                   Error loading products.
