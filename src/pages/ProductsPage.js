@@ -8,12 +8,13 @@ import SkeletonProductCardDesc from "../components/loader/SkeletonProductCardDes
 import { Link } from "react-router-dom";
 
 export default function ProductsContainer() {
-  // const { productLoading, productError, products, productCardChange } =
-  const { productCardChange } = useProductContext();
-  const productLoading = true;
-  const productError = false;
-  const products = [];
-  // const productCardChange = true;
+  const { productLoading, productError, products, productCardChange } =
+    useProductContext();
+  // const { productCardChange } = useProductContext();
+  // const productLoading = true;
+  // const productError = false;
+  // const products = [];
+
   return (
     <div className="flex flex-col">
       <div className="w-full bg-gray-800 text-white py-6 px-4 mb-8 justify-center">
