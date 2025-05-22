@@ -100,12 +100,12 @@ export default function ProductPage() {
               </p>
             </div>
 
-            <div>
+            <div className="border border-none flex flex-row flex-wrap items-center  max-w-[10rem]">
               <span className="font-semibold mr-2">Colors:</span>
               {colors.map((color, index) => (
                 <span
                   key={index}
-                  className="inline-block w-5 h-5 rounded-full ring-2 ring-white shadow mr-2"
+                  className="inline-block w-5 h-5 rounded-md ring-white mr-2 items-center justify-center justify-self-center"
                   style={{ backgroundColor: color }}></span>
               ))}
             </div>

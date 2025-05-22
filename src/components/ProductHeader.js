@@ -19,9 +19,11 @@ function ProductHeader({ totalProducts }) {
         </button>
       </div>
 
+      <div className="bg-gray-700 w-full flex-1 rounded-2xl mx-4 h-[0.5px]"></div>
       <div className="text-lg text-gray-700">
         {totalProducts} Products Found
       </div>
+      <div className="bg-gray-700 w-full flex-1 rounded-2xl mx-4 h-[0.5px]"></div>
 
       <div className="flex items-center space-x-2 ">
         <span className="text-lg text-gray-600">Sort By</span>
