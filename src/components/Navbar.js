@@ -13,7 +13,6 @@ const Navbar = () => {
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
-    
   }, [theme]);
 
   const toggleTheme = () => {
