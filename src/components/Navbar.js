@@ -8,12 +8,12 @@ const Navbar = () => {
   const { openNavbar, closeNavbar, isNavbarOpen } = useProductContext();
 
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "light";
+    "light";
   });
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
+    
   }, [theme]);
 
   const toggleTheme = () => {
