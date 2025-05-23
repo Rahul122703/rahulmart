@@ -9,7 +9,7 @@ const imageData = [
 
 const Hero = () => {
   return (
-    <div className="border border-none flex flex-col md:mt-unset lex-col md:flex md:flex-row mt-1 md:mt-unset p-4 md:p-unset z-1 relative max-w-[1290px] m-auto">
+    <div className="border dark:border-white rounded-2xl flex flex-col md:mt-unset lex-col md:flex md:flex-row mt-1 md:mt-unset p-4 md:p-unset z-1 relative max-w-[1290px] m-auto mb-4">
       <style>
         {`@media (max-width: 768px) {
         .phone-height-carousel {
@@ -24,18 +24,18 @@ const Hero = () => {
         /* z-index: -1; */
         `}
       </style>
-      <div className="min-w-[60%] p-8 rounded-3xl shadow-2xl flex flex-col justify-center items-center bg-white overflow-hidden">
-        <div className="rounded-3xl filter  opacity-30 w-full h-full absolute"></div>
+      <div className="min-w-[60%] p-8 rounded-3xl shadow-2xl flex flex-col justify-center items-center bg-base-100 overflow-hidden relative">
+        <div className="rounded-3xl filter opacity-30 w-full h-full absolute"></div>
 
         <div className="text-center">
-          <h1 className="text-5xl font-extrabold text-gray-900 tracking-tight mb-4 uppercase">
+          <h1 className="text-5xl font-extrabold text-base-content tracking-tight mb-4 uppercase">
             rahul mart
           </h1>
-          <p className="text-lg lg:text-xl font-medium text-gray-700 mb-6">
+          <p className="text-lg lg:text-xl font-medium text-base-content/70 mb-6">
             Your one-stop shop for all your urban lifestyle needs. Explore our
             wide range of products tailored just for you.
           </p>
-          <button className="cursor-pointer bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 transition duration-300">
+          <button className="cursor-pointer bg-primary text-primary-content px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-primary-focus focus:ring-4 focus:ring-primary-content/40 transition duration-300">
             Shop Now
           </button>
         </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import InstallPrompt from "./components/installPrompt.js";
 import "./index.css";
@@ -20,7 +20,7 @@ import AboutPage from "./pages/AboutPage.js";
 import LoginPage from "./pages/LoginPage.js";
 import SignupPage from "./pages/SignupPage.js";
 import ErrorPage from "./pages/ErrorPage.js";
-import RandomPage from "./pages/randompage.js";
+
 import { useProductContext } from "./context/product_context.js";
 
 const App = () => {
@@ -31,7 +31,7 @@ const App = () => {
 
   if (loading) {
     return (
-      <div className="flex flex-col justify-center items-center h-[100vh] w-[100vw] border border-none">
+      <div className="flex flex-col justify-center items-center bg-base-100 min-h-screen border border-base-300  text-base-content">
         <Loader />
       </div>
     );
@@ -49,7 +49,6 @@ const App = () => {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
-          <Route path="/randompage" element={<RandomPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <InstallPrompt />
