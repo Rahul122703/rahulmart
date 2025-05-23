@@ -37,8 +37,8 @@ export default function ProductsContainer() {
             <div
               className={
                 productCardChange
-                  ? `grid grid-cols-1 place-items-center border`
-                  : `flex flex-wrap justify-center items-center rounded-lg filterMoile:p-4 border`
+                  ? `grid grid-cols-1 place-items-center `
+                  : `flex flex-wrap justify-center items-center rounded-lg filterMoile:p-4 `
               }>
               {productLoading ? (
                 [...Array(8)].map((_, index) => (
