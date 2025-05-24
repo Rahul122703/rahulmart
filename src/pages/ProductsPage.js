@@ -14,7 +14,7 @@ export default function ProductsContainer() {
   const [filter, showFilter] = useState(false);
 
   return (
-    <div className="flex flex-col border border-black ">
+    <div className="flex flex-col m-0 p-0">
       <div className="w-[100vw] bg-gray-800 text-white py-6 px-4 mb-8 justify-center ">
         <div className="text-3xl font-semibold text-center">
           <Link to="/">Home</Link>
@@ -44,9 +44,12 @@ export default function ProductsContainer() {
   `}>
             <Filters />
           </div>
-
+          <div
+            className={`w-full max-w-[250px] md:sticky md:top-[5rem] h-fit border border-none fixed z-[50] overflow-auto md:transform-none hidden md:block`}>
+            <Filters />
+          </div>
           <div className="flex-1 rounded-lg border border-none  top-[10rem] md:static ">
-            <div className="sticky md:static top-[4rem] z-10  border-b p-2">
+            <div className="sticky top-[4rem] z-10 p-2 bg-base-100 border-b border-base-300 md:static">
               <ProductHeader totalProducts={products.length} />
             </div>
 

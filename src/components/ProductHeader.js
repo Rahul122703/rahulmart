@@ -6,7 +6,7 @@ function ProductHeader({ totalProducts }) {
 
   const Line = () => {
     return (
-      <div className="bg-base-300  flex-1 rounded-2xl mx-4  h-[1.5px] w-full"></div>
+      <div className="bg-base-300   flex-1 rounded-2xl mx-4  h-[1.5px] w-full"></div>
     );
   };
 
