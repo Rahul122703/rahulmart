@@ -34,13 +34,9 @@ export default function ProductsContainer() {
         <div className="gap-6 flex flex-col md:flex-row relative">
           <div
             onClick={(e) => e.stopPropagation()}
-            className={`
-    bg-base-100 border border-white z-50
-    w-64 h-screen fixed top-[4rem] transform duration-300 md:hidden
+            className={`z-50
+    w-64 fixed top-[5rem] transform duration-300 md:hidden
     ${filter ? "-translate-x-4" : "-translate-x-full"}
-
-    md:sticky md:top-[5rem] md:h-auto md:w-[250px] md:transform-none md:translate-x-0
-    md:rounded-tl-md md:rounded-bl-md
   `}>
             <Filters />
           </div>
