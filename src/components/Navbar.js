@@ -26,7 +26,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="border w-full px-6 py-3 flex flex-row justify-between items-center my-4 sticky top-0 z-[1000] bg-base-100 text-base-content rounded-lg p-6 max-w-[80rem] mx-auto shadow-md">
+    <header className="border w-full px-6 py-3 flex flex-row justify-between items-center my-4 sticky top-0 z-[400] bg-base-100 text-base-content rounded-lg p-6 max-w-[80rem] mx-auto shadow-md">
       <div className="border border-none flex flex-row w-[20rem] justify-between items-center">
         <button onClick={toggleTheme} className="btn btn-ghost btn-circle mr-4">
           {theme === "black" ? (
