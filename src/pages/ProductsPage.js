@@ -6,6 +6,7 @@ import Filters from "../components/FilterSideBar.js";
 import ProductCard2Skeleton from "../components/loader/ProductCard2Skeleton.js";
 // import SkeletonProductCardDesc from "../components/loader/SkeletonProductCardDesc .js";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function ProductsContainer() {
   const { productLoading, productError, products, productCardChange } =
@@ -14,7 +15,7 @@ export default function ProductsContainer() {
   // const productLoading = true;
   // const productError = false;
   // const products = [];
-
+  const [filter, showFilter] = useState(true);
   return (
     <div className="flex flex-col">
       <div className="w-full bg-gray-800 text-white py-6 px-4 mb-8 justify-center">
@@ -26,8 +27,11 @@ export default function ProductsContainer() {
       </div>
 
       <div className="m-auto max-w-[1700px] px-4 relative flex flex-col border border-none">
-        <div className="gap-6 flex flex-row flex-wrap">
-          <div className="w-full max-w-[250px] filterMoile:sticky top-[5rem] h-fit border border-none">
+        <div className="gap-6 flex flex-col md:flex-row">
+          <div
+            className={`w-full max-w-[250px] md:sticky md:top-[5rem]  h-fit border border-none fixed z-[50] overflow-auto md:transform-none ${
+              filter ? `-translate-x-[7%]` : `-translate-x-[100%]`
+            }`}>
             <Filters />
           </div>
 
@@ -42,7 +46,7 @@ export default function ProductsContainer() {
               }>
               {productLoading ? (
                 [...Array(8)].map((_, index) => (
-                  <ProductCard2Skeleton key={index} /> //Add  SkeletonProductCardDesc here
+                  <ProductCard2Skeleton key={index} />
                 ))
               ) : productError ? (
                 <p className="text-center mt-10 text-red-500">

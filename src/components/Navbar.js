@@ -3,23 +3,23 @@ import { Link } from "react-router-dom";
 import { FiMenu, FiX, FiShoppingCart, FiSearch } from "react-icons/fi";
 import { CiDark, CiCloudSun } from "react-icons/ci";
 import { useProductContext } from "../context/product_context.js";
-import { MdOutlineScreenSearchDesktop } from "react-icons/md";
+
 import SearchModal from "./SearchInput.js";
 const Navbar = () => {
   const { openNavbar, closeNavbar, isNavbarOpen } = useProductContext();
   const [modal, showModal] = useState(false);
-  const [theme, setTheme] = useState(() => {
-    "light";
-  });
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
+    console.log(`this is excecuted current theme ${theme}`);
     document.documentElement.classList.add("theme-transition");
-    setTheme((prev) => (prev === "black" ? "light" : "black"));
-
+    const newTheme = theme === "light" ? "black" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
     setTimeout(() => {
       document.documentElement.classList.remove("theme-transition");
     }, 300);
@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <header className="border w-full px-6 py-3 flex flex-row justify-between items-center my-4 sticky top-0 z-[1000] bg-base-100 text-base-content rounded-lg p-6 max-w-[80rem] mx-auto shadow-md">
       <div className="border border-none flex flex-row w-[20rem] justify-between items-center">
-        <button onClick={toggleTheme} className="btn btn-ghost btn-circle">
+        <button onClick={toggleTheme} className="btn btn-ghost btn-circle mr-4">
           {theme === "black" ? (
             <CiCloudSun className="w-5 h-5" />
           ) : (

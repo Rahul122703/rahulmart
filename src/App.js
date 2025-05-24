@@ -28,6 +28,10 @@ const App = () => {
   setTimeout(() => {
     setLoading(false);
   }, 250);
+  document.documentElement.setAttribute(
+    "data-theme",
+    localStorage.getItem("theme") || "light"
+  );
 
   if (loading) {
     return (
