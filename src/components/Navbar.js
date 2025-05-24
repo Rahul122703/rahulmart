@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { FiMenu, FiX, FiShoppingCart, FiSearch } from "react-icons/fi";
 import { CiDark, CiCloudSun } from "react-icons/ci";
 import { useProductContext } from "../context/product_context.js";
-
+import { MdOutlineScreenSearchDesktop } from "react-icons/md";
+import SearchModal from "./SearchInput.js";
 const Navbar = () => {
   const { openNavbar, closeNavbar, isNavbarOpen } = useProductContext();
-
+  const [modal, showModal] = useState(false);
   const [theme, setTheme] = useState(() => {
     "light";
   });
@@ -25,15 +26,26 @@ const Navbar = () => {
   };
 
   return (
-    <header className="border w-full px-6 py-3 flex flex-row justify-between my-4 sticky top-0 z-[1000] bg-base-100 text-base-content rounded-lg p-6 max-w-[80rem] mx-auto shadow-md">
-      <button onClick={toggleTheme} className="btn btn-ghost btn-circle">
-        {theme === "black" ? (
-          <CiCloudSun className="w-5 h-5" />
-        ) : (
-          <CiDark className="w-5 h-5" />
-        )}
-      </button>
-
+    <header className="border w-full px-6 py-3 flex flex-row justify-between items-center my-4 sticky top-0 z-[1000] bg-base-100 text-base-content rounded-lg p-6 max-w-[80rem] mx-auto shadow-md">
+      <div className="border border-none flex flex-row w-[20rem] justify-between items-center">
+        <button onClick={toggleTheme} className="btn btn-ghost btn-circle">
+          {theme === "black" ? (
+            <CiCloudSun className="w-5 h-5" />
+          ) : (
+            <CiDark className="w-5 h-5" />
+          )}
+        </button>
+        <button
+          onClick={() => showModal(true)}
+          className="relative border border-none  flex flex-row w-[95%]">
+          <input
+            type="text"
+            placeholder="  Search..."
+            className="w-[95%]  px-3 py-1 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-gray-400 bg-base-100 text-base-content border "
+          />
+        </button>
+      </div>
+      <SearchModal isOpen={modal} onClose={() => showModal(false)} />
       <nav className="hidden xl:flex items-center gap-6 text-base-content text-sm border border-none">
         {["Home", "Products", "About"].map((item, index) => {
           const path =
@@ -49,17 +61,6 @@ const Navbar = () => {
           );
         })}
 
-        {/* Search Input */}
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="px-3 py-1 border rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-gray-400 w-[18rem] bg-base-100 text-base-content"
-          />
-          <FiSearch className="absolute right-2 top-1.5 h-4 w-4 text-gray-500" />
-        </div>
-
-        {/* Cart & Login */}
         <div className="flex items-center gap-4 text-xl border border-none w-[10rem] justify-between">
           <div className="border border-none flex flex-row justify-center items-center relative">
             Cart
@@ -73,7 +74,7 @@ const Navbar = () => {
       </nav>
 
       <button
-        className="xl:hidden text-base-content z-50"
+        className="xl:hidden text-base-content "
         onClick={() => {
           if (isNavbarOpen) {
             closeNavbar();
@@ -89,7 +90,7 @@ const Navbar = () => {
       </button>
 
       <div
-        className={`absolute top-[64px] left-0 w-full bg-base-100 text-base-content shadow-md flex flex-col items-start px-6 py-4 gap-4 xl:hidden z-40 transform transition-all duration-500 ease-in-out ${
+        className={`rounded-b-lg border border-white absolute top-[64px]  bg-base-100 text-base-content shadow-md flex flex-col items-start px-6 py-4 gap-4 xl:hidden z-40 transform transition-all duration-500 ease-in-out w-full left-0 right-0 mt-4 ${
           isNavbarOpen
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-4 pointer-events-none"
@@ -107,15 +108,6 @@ const Navbar = () => {
           className="text-base-content hover:text-primary w-full">
           About Us
         </Link>
-
-        <div className="w-full relative">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="w-full px-3 py-1 border rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-gray-400 bg-base-100 text-base-content"
-          />
-          <FiSearch className="absolute right-3 top-2 h-4 w-4 text-gray-500" />
-        </div>
 
         <div className="flex items-center gap-4 border border-none w-full justify-between text-xl">
           <div className="border border-none flex flex-row justify-center items-center relative">

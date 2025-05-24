@@ -4,7 +4,7 @@ import ProductCardDesc from "../components/ProductCardDesc.js";
 import ProductHeader from "../components/ProductHeader.js";
 import Filters from "../components/FilterSideBar.js";
 import ProductCard2Skeleton from "../components/loader/ProductCard2Skeleton.js";
-import SkeletonProductCardDesc from "../components/loader/SkeletonProductCardDesc .js";
+// import SkeletonProductCardDesc from "../components/loader/SkeletonProductCardDesc .js";
 import { Link } from "react-router-dom";
 
 export default function ProductsContainer() {

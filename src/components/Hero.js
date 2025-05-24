@@ -1,6 +1,7 @@
 import Carousel from "./Carousel.js";
-import React from "react";
-// import bgimage from "../../assets/hero-left.jpg";
+
+import { Link } from "react-router-dom";
+
 const imageData = [
   "https://videos.pexels.com/video-files/5585939/5585939-sd_960_540_25fps.mp4",
   "https://videos.pexels.com/video-files/7821646/7821646-hd_1280_720_30fps.mp4",
@@ -25,8 +26,6 @@ const Hero = () => {
         `}
       </style>
       <div className="min-w-[60%] p-8 rounded-3xl shadow-2xl flex flex-col justify-center items-center bg-base-100 overflow-hidden relative">
-        <div className="rounded-3xl filter opacity-30 w-full h-full absolute"></div>
-
         <div className="text-center">
           <h1 className="text-5xl font-extrabold text-base-content tracking-tight mb-4 uppercase">
             rahul mart
@@ -35,9 +34,12 @@ const Hero = () => {
             Your one-stop shop for all your urban lifestyle needs. Explore our
             wide range of products tailored just for you.
           </p>
-          <button className="cursor-pointer bg-primary text-primary-content px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-primary-focus focus:ring-4 focus:ring-primary-content/40 transition duration-300">
+
+          <Link
+            to="/products"
+            className="cursor-pointer bg-primary text-primary-content px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-primary-focus focus:ring-4 focus:ring-primary-content/40 transition duration-300">
             Shop Now
-          </button>
+          </Link>
         </div>
       </div>
 
