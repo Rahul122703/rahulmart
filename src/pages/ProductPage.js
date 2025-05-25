@@ -29,11 +29,13 @@ export default function ProductPage() {
 
   if (singleproductError) {
     return (
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900">
         <div className="flex-grow flex items-center justify-center text-red-500 text-center p-6">
           <div>
             <MdSmsFailed className="text-[100px] mx-auto mb-4" />
-            <p className="text-xl font-semibold">Unable to fetch products</p>
+            <p className="text-xl font-semibold dark:text-red-400 text-red-500">
+              Unable to fetch products
+            </p>
           </div>
         </div>
 
@@ -67,65 +69,89 @@ export default function ProductPage() {
 
   return (
     <>
-      <div className="min-w-full bg-gray-800 text-white py-6 px-4 mb-8 justify-center">
+      <div className="min-w-full bg-gray-800 dark:bg-gray-900 text-white py-6 px-4 mb-8 justify-center">
         <div className="text-3xl font-semibold text-center">
-          <Link to="/">Home</Link>
-          <span className="mx-4">/</span>
+          <Link to="/" className="dark:text-white text-white">
+            Home
+          </Link>
+          <span className="mx-4 dark:text-white text-white">/</span>
           <span>
-            <Link to="/products">Products</Link>
+            <Link to="/products" className="dark:text-white text-white">
+              Products
+            </Link>
           </span>
-          <span className="mx-4">/</span>
-          <span>{product}</span>
+          <span className="mx-4 dark:text-white text-white">/</span>
+          <span className="dark:text-white text-white">{product}</span>
         </div>
       </div>
-      <div className="max-w-[100rem] mx-auto bg-white rounded-3xl shadow-2xl p-6 border border-gray-200 mb-4">
+      <div className="max-w-[100rem] mx-auto bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-6 border border-gray-200 dark:border-gray-700 mb-4">
         <button
-          className="mb-6 px-4 py-2 bg-gray-700 hover:bg-black text-white rounded-lg shadow flex items-center gap-2"
+          className="mb-6 px-4 py-2 bg-gray-700 dark:bg-gray-600 hover:bg-black dark:hover:bg-gray-900 text-white rounded-lg shadow flex items-center gap-2 transition"
           onClick={() => navigate(-1)}>
           <IoMdArrowRoundBack />
         </button>
 
         <div className="flex flex-col-reverse lg:flex-row gap-10">
-          <div className="w-fsull lg:w-1/2 px-2 lg:px-6 space-y-5 text-center lg:text-left">
-            <h2 className="text-4xl font-bold text-gray-800">{product}</h2>
+          <div className="w-full lg:w-1/2 px-2 lg:px-6 space-y-5 text-center lg:text-left">
+            <h2 className="text-4xl font-bold text-gray-800 dark:text-white">
+              {product}
+            </h2>
 
             <ProductStar rating={rating} />
 
-            <p className="text-3xl font-bold text-gray-700">{price}₹</p>
+            <p className="text-3xl font-bold text-gray-700 dark:text-gray-300">
+              {price}₹
+            </p>
 
-            <p className="text-gray-600">{description}</p>
+            <p className="text-gray-600 dark:text-gray-400">{description}</p>
 
-            <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 text-gray-700 text-sm sm:text-base">
+            <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 text-gray-700 dark:text-gray-300 text-sm sm:text-base">
               <p>
                 <span className="font-semibold">Available:</span>{" "}
-                {stock ? "In Stock" : "Not Available"}
+                {stock ? (
+                  <span className="dark:text-green-400 text-green-600">
+                    In Stock
+                  </span>
+                ) : (
+                  <span className="dark:text-red-400 text-red-600">
+                    Not Available
+                  </span>
+                )}
               </p>
               <p className="flex items-center gap-2">
                 <span className="font-semibold">Shipping:</span>
                 {shipping === "true" ? (
-                  <MdEventAvailable className="text-green-500" />
+                  <MdEventAvailable className="text-green-500 dark:text-green-400" />
                 ) : (
-                  <CgUnavailable className="text-red-500" />
+                  <CgUnavailable className="text-red-500 dark:text-red-400" />
                 )}
               </p>
               <p>
-                <span className="font-semibold">Company:</span> {company}
+                <span className="font-semibold">Company:</span>{" "}
+                <span className="dark:text-gray-300 text-gray-700">
+                  {company}
+                </span>
               </p>
             </div>
 
-            <div className="border border-none flex flex-row flex-wrap items-center  ">
-              <span className="font-semibold mr-2">Colors:</span>
-              {colors.map((color, index) => (
+            <div className="border border-none flex flex-row flex-wrap items-center">
+              <span className="font-semibold mr-2 dark:text-white text-gray-900">
+                Colors:
+              </span>
+              {colors?.map((color, index) => (
                 <span
                   key={index}
-                  className="inline-block w-5 h-5 rounded-md ring-white mr-2 items-center justify-center justify-self-center"
-                  style={{ backgroundColor: color }}></span>
+                  className="inline-block w-5 h-5 rounded-md ring-white mr-2"
+                  style={{ backgroundColor: color }}
+                />
               ))}
             </div>
 
             <ProductAmount stock={stock} />
 
-            <button className="mt-4 px-8 py-3 bg-gray-700 hover:bg-black text-white text-lg font-semibold rounded-xl shadow-md transition">
+            <button
+              aria-label="Add to cart"
+              className="mt-4 px-8 py-3 bg-gray-700 dark:bg-gray-600 hover:bg-black dark:hover:bg-gray-900 text-white dark:text-white text-lg font-semibold rounded-xl shadow-md transition">
               ADD TO CART
             </button>
           </div>

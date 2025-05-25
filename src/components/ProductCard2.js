@@ -12,9 +12,9 @@ const SmallCard = ({ id, image, price, name }) => {
   return (
     <div
       onClick={handleClick}
-      className="cursor-pointer border border-white -base-100 rounded-xl hover:shadow-lg w-full md:w-[18rem] overflow-hidden transition-all duration-300 mb-4 md:m-4">
+      className="cursor-pointer border border-gray-300 dark:border-white bg-gray-100 dark:bg-gray-900 rounded-xl hover:shadow-lg w-full md:w-[18rem] overflow-hidden transition-all duration-300 mb-4 md:m-4">
       <div className="h-48 w-full overflow-hidden flex-1 relative">
-        <div className="w-full h-full absolute bg-neutral opacity-0 hover:opacity-50 flex justify-center items-center text-neutral-content text-[1.5rem] transition-all duration-500">
+        <div className="w-full h-full absolute bg-neutral-900 dark:bg-neutral-700 opacity-0 hover:opacity-50 flex justify-center items-center text-white text-[1.5rem] transition-all duration-500">
           <FaSearchPlus />
         </div>
         <img
@@ -25,10 +25,12 @@ const SmallCard = ({ id, image, price, name }) => {
       </div>
 
       <div className="p-4">
-        <div className="font-semibold text-lg text-base-content truncate">
+        <div className="font-semibold text-lg text-gray-900 dark:text-white truncate">
           {name}
         </div>
-        <div className="text-sm text-base-content/70 mt-1">{price} ₹</div>
+        <div className="text-sm text-gray-700 dark:text-gray-300 mt-1">
+          {price} ₹
+        </div>
       </div>
     </div>
   );

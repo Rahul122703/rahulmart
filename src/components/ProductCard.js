@@ -12,16 +12,20 @@ const SmallCard = ({ id, image, price, name }) => {
   return (
     <div
       onClick={handleClick}
-      className="cursor-pointer border border-base-300 flex flex-col h-[15rem] w-[18rem] justify-between bg-base-200 rounded-lg shadow-md overflow-hidden hover:scale-[1.080] transition-transform duration-500 m-4">
-      <div className="border border-none flex-1 relative overflow-hidden">
+      className="cursor-pointer border border-gray-300 dark:border-white flex flex-col h-[15rem] w-[18rem] justify-between bg-gray-200 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:scale-[1.080] transition-transform duration-500 m-4">
+      <div className="relative flex-1 overflow-hidden border border-transparent">
         <div
-          className="w-full h-full border border-transparent absolute bg-black opacity-0 hover:opacity-50 flex
-          flex-row justify-center items-center text-white text-[1.5rem] transition-opacity duration-500">
+          className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-50 flex justify-center items-center text-white text-[1.5rem] transition-opacity duration-500"
+          aria-hidden="true">
           <FaSearchPlus />
         </div>
-        <img src={image} alt="product_image" className="h-full w-full" />
+        <img
+          src={image}
+          alt="product_image"
+          className="h-full w-full object-cover"
+        />
       </div>
-      <div className="flex flex-row justify-between border border-none p-4 text-base-content font-semibold">
+      <div className="flex justify-between p-4 font-semibold text-gray-900 dark:text-white">
         <div className="font-bold">{name}</div>
         <span>{price}₹</span>
       </div>

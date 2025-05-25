@@ -3,21 +3,21 @@ import { IoStarSharp, IoStarOutline } from "react-icons/io5";
 
 const ProductStar = ({ rating }) => {
   const items = [];
-  console.log("the rating is : ", rating);
   for (let i = 0; i < 5; i++) {
     if (i < rating) {
-      items.push(<IoStarSharp />);
+      items.push(
+        <IoStarSharp key={i} className="text-yellow-500 dark:text-yellow-400" />
+      );
     } else {
-      items.push(<IoStarOutline />);
+      items.push(
+        <IoStarOutline
+          key={i}
+          className="text-yellow-500 dark:text-yellow-400"
+        />
+      );
     }
   }
-  return (
-    <div className="flex flex-row ">
-      {items.map((currentItem) => {
-        return currentItem;
-      })}
-    </div>
-  );
+  return <div className="flex flex-row">{items}</div>;
 };
 
 export default ProductStar;

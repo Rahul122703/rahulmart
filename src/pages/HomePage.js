@@ -10,7 +10,7 @@ import ContactUs from "../components/ContactUs.js";
 const HomePage = () => {
   return (
     <>
-      <div className="shadow flex flex-col">
+      <div className="shadow flex flex-col dark:bg-gray-900">
         <BannerCarousel />
         <Hero />
         <FeaturedProducts />

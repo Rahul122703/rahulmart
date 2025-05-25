@@ -14,12 +14,14 @@ export default function ProductsContainer() {
   const [filter, showFilter] = useState(false);
 
   return (
-    <div className="flex flex-col m-0 p-0">
-      <div className="w-[100vw] bg-gray-800 text-white py-6 px-4 mb-8 justify-center ">
+    <div className="flex flex-col m-0 p-0 bg-white dark:bg-gray-900">
+      <div className="w-full bg-gray-800 dark:bg-gray-900 text-white dark:text-white py-6 px-4 mb-8 justify-center ">
         <div className="text-3xl font-semibold text-center">
-          <Link to="/">Home</Link>
-          <span className="mx-4">/</span>
-          <span>Products</span>
+          <Link to="/" className="dark:text-white text-white">
+            Home
+          </Link>
+          <span className="mx-4 dark:text-white text-white">/</span>
+          <span className="dark:text-white text-white">Products</span>
         </div>
       </div>
 
@@ -35,24 +37,27 @@ export default function ProductsContainer() {
           <div
             onClick={(e) => e.stopPropagation()}
             className={`z-50
-    w-64 fixed top-[5rem] transform duration-300 md:hidden
-    ${filter ? "-translate-x-4" : "-translate-x-full"}
+    w-64 fixed top-[5rem] transform duration-300 md:hidden max-h-[95vh]
+    ${filter ? "translate-x-[-05%]" : "-translate-x-[110%]"}
   `}>
             <Filters />
           </div>
           <div
-            className={`w-full max-w-[250px] md:sticky md:top-[5rem] h-fit border border-none fixed z-[50] overflow-auto md:transform-none hidden md:block`}>
+            className={`w-full max-w-[250px] md:sticky md:top-[5rem] h-fit fixed z-[50] overflow-auto md:transform-none hidden md:block`}>
             <Filters />
           </div>
-          <div className="flex-1 rounded-lg border border-none  top-[10rem] md:static ">
-            <div className="sticky top-[4rem] z-10 p-2 bg-base-100 border-b border-base-300 md:static">
-              <ProductHeader totalProducts={products.length} />
+          <div className="flex-1 rounded-lg border border-none top-[10rem] md:static bg-white dark:bg-gray-800">
+            <div className="sticky border top-[62px] z-10 p-2 dark:bg-gray-900 bg-white  border-base-300 dark:border-gray-700 md:static flex flex-row justify-center items-center  rounded-xl mb-4">
+              <ProductHeader
+                totalProducts={products.length}
+                className="dark:text-white text-gray-900 min-w-full"
+              />
             </div>
 
             {!filter && (
               <button
                 onClick={() => showFilter((prev) => !prev)}
-                className="border border-black fixed z-50 px-4 py-2 bg-gray-700 text-white text-xl font-bold flex justify-center items-center rounded-xl bottom-6 left-4 md:hidden">
+                className="border  dark:border-gray-200 fixed z-50 px-4 py-2 bg-gray-700 dark:bg-gray-600 text-white dark:text-white text-xl font-bold flex justify-center items-center rounded-xl bottom-6 left-4 md:hidden">
                 Filters
               </button>
             )}
@@ -60,15 +65,15 @@ export default function ProductsContainer() {
             <div
               className={
                 productCardChange
-                  ? `grid grid-cols-1 place-items-center`
-                  : `flex flex-wrap justify-center items-center rounded-lg p-4`
+                  ? `grid grid-cols-1 place-items-center dark:bg-gray-900 dark:border dark:border-white`
+                  : `flex flex-wrap justify-center items-center rounded-lg p-4 dark:bg-gray-900 dark:border dark:border-white`
               }>
               {productLoading ? (
                 [...Array(8)].map((_, index) => (
                   <ProductCard2Skeleton key={index} />
                 ))
               ) : productError ? (
-                <p className="text-center mt-10 text-red-500">
+                <p className="text-center mt-10 text-red-500 dark:text-red-400">
                   Error loading products.
                 </p>
               ) : (

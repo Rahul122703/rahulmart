@@ -6,34 +6,36 @@ function ProductHeader({ totalProducts }) {
 
   const Line = () => {
     return (
-      <div className="bg-base-300   flex-1 rounded-2xl mx-4  h-[1.5px] w-full"></div>
+      <div className="bg-gray-300 dark:bg-gray-600 flex-1 rounded-2xl mx-4 h-[1.5px] w-full"></div>
     );
   };
 
   return (
-    <div className="flex flex-row overflow-auto items-center justify-between border-b border-base-300 md:p-4 mb-4">
+    <div className="flex flex-row overflow-auto items-center justify-between border-b  dark:border-gray-600   rounded-xl w-[100%] border border-none">
       <div className="flex items-center space-x-2">
         <button
-          className="p-2 border border-base-300 rounded bg-base-100 hover:bg-base-200 transition"
+          className="p-2 border border-gray-300 dark:border-gray-600 rounded bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition"
           onClick={() => changeProductCardView(!productCardChange)}>
           {productCardChange ? (
-            <FaTh className="w-4 h-4 md:w-6 md:h-6 text-base-content" />
+            <FaTh className="w-4 h-4 md:w-6 md:h-6 text-gray-900 dark:text-white" />
           ) : (
-            <FaBars className="w-4 h-4 md:w-6 md:h-6 text-base-content" />
+            <FaBars className="w-4 h-4 md:w-6 md:h-6 text-gray-900 dark:text-white" />
           )}
         </button>
       </div>
 
       <Line />
 
-      <div className="md:text-lg text-base-content text-sm">
+      <div className="md:text-lg text-gray-900 dark:text-white text-sm">
         {totalProducts} Products Found
       </div>
 
       <Line />
-      <div className="flex items-center space-x-2 flex-row border border-none min-w-[5rem]">
-        <span className="text-sm md:text-lg text-base-content/70">Sort</span>
-        <select className="select select-bordered select-sm bg-base-100 text-base-content w-4 h-4 md:w-6 md:h-6">
+      <div className="flex items-center space-x-2 flex-row  border border-none ">
+        <span className="text-sm md:text-lg text-gray-700 dark:text-gray-400">
+          Sort
+        </span>
+        <select className="select select-bordered select-sm bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white w-4 h-4 md:w-6 md:h-6">
           <option value="lowest">Price (Lowest)</option>
           <option value="highest">Price (Highest)</option>
           <option value="a-z">Name (A-Z)</option>

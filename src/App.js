@@ -27,22 +27,20 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   setTimeout(() => {
     setLoading(false);
-  }, 250);
-  document.documentElement.setAttribute(
-    "data-theme",
+  }, 1500);
+  document.documentElement.classList.add(
     localStorage.getItem("theme") || "light"
   );
-
   if (loading) {
     return (
-      <div className="flex flex-col justify-center items-center bg-base-100 min-h-screen border border-base-300  text-base-content">
+      <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-900 min-h-screen border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white">
         <Loader />
       </div>
     );
   }
 
   return (
-    <>
+    <div className="dark:bg-gray-900">
       <Router>
         <Navbar />
         <CloseNavbar />
@@ -57,7 +55,7 @@ const App = () => {
         </Routes>
         <InstallPrompt />
       </Router>
-    </>
+    </div>
   );
 };
 

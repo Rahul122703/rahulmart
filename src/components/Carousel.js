@@ -16,21 +16,21 @@ const Carousel = ({
   }, [autoSlide, autoSlideInterval]);
 
   return (
-    <div className="overflow-hidden w-full h-full rounded-3xl mt-[1rem] md:mt-0 z-1">
+    <div className="overflow-hidden w-full h-full rounded-3xl mt-[1rem] md:mt-0 z-1 bg-white dark:bg-gray-900">
       <style>
         {`
-            @keyframes infiniteSlide {
-        0% {
-            transform: translateX(0%);
-        }
-        100% {
-            transform: translateX(-50%);
-        }
-        }
+          @keyframes infiniteSlide {
+            0% {
+              transform: translateX(0%);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
 
-        .animate-slide {
-        animation: infiniteSlide 20s linear infinite;
-        }
+          .animate-slide {
+            animation: infiniteSlide 20s linear infinite;
+          }
         `}
       </style>
 
@@ -40,7 +40,7 @@ const Carousel = ({
         {slides.map((slide, index) => (
           <div
             key={index}
-            className="w-full h-full flex-shrink-0 rounded-3xl md:border border-none">
+            className="w-full h-full flex-shrink-0 rounded-3xl md:border border-none dark:border-gray-700">
             {slide}
           </div>
         ))}

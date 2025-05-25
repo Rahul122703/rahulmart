@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: `class`,
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
@@ -18,9 +19,5 @@ module.exports = {
         expandWidth: "expandWidth 0.5s ease-out forwards",
       },
     },
-  },
-  plugins: [require("daisyui")],
-  daisyui: {
-    themes: ["light", "black"],
   },
 };
