@@ -17,6 +17,9 @@ import axios from "axios";
 
 import { ALL_PRODUCTS, SINGLE_PRODUCT } from "../utils/urls.js";
 
+// import dotenv from "dotenv";
+// dotenv.config();
+
 const product_initialState = {
   isNavbarOpen: false,
   productLoading: false,
@@ -44,6 +47,11 @@ export const ProductProvider = ({ children }) => {
 
   const fetchProductData = async () => {
     try {
+      console.log("all products requuested link", ALL_PRODUCTS);
+      console.log(
+        "acesssing from env variable ",
+        process.env.REACT_APP_WEBSITE_URL
+      );
       const { data } = await axios.get(ALL_PRODUCTS);
       setTimeout(() => {
         dispatch({ type: PRODUCT_SUCCESS, payload: data });
