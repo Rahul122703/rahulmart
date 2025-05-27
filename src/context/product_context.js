@@ -47,15 +47,12 @@ export const ProductProvider = ({ children }) => {
 
   const fetchProductData = async () => {
     try {
-      console.log("all products requuested link", ALL_PRODUCTS);
-      console.log(
-        "acesssing from env variable ",
-        process.env.REACT_APP_WEBSITE_URL
-      );
       const { data } = await axios.get(ALL_PRODUCTS);
       setTimeout(() => {
+        //Adding 2000ms time to show the skleton loader
         dispatch({ type: PRODUCT_SUCCESS, payload: data });
       }, 2000);
+      console.log(product_initialState);
     } catch (error) {
       dispatch({ type: PRODUCT_ERROR });
     }

@@ -130,7 +130,7 @@ const Navbar = () => {
         </Link>
         <Link
           to="/products"
-          className="block w-full hover:text-blue-600 dark:hover:text-blue-400 ">
+          className="block w-full hover:text-blue-600 dark:hover:text-blue-400 my-4 border border-white">
           Products
         </Link>
         <Link

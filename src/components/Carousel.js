@@ -26,7 +26,7 @@ const Carousel = ({
             100% {
               transform: translateX(-50%);
             }
-          }
+          }k
 
           .animate-slide {
             animation: infiniteSlide 20s linear infinite;

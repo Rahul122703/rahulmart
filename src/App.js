@@ -27,7 +27,7 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   setTimeout(() => {
     setLoading(false);
-  }, 1500);
+  }, 0);
   document.documentElement.classList.add(
     localStorage.getItem("theme") || "light"
   );
@@ -40,7 +40,7 @@ const App = () => {
   }
 
   return (
-    <div className="dark:bg-gray-900">
+    <div className="bg-white dark:bg-gray-900">
       <Router>
         <Navbar />
         <CloseNavbar />
