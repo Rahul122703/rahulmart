@@ -86,19 +86,21 @@ const Navbar = () => {
 
         {/* Cart + login */}
         <div className="flex items-center gap-4 text-xl w-[10rem] justify-between">
-          <div className="flex items-center relative">
-            Cart
-            <FiShoppingCart
-              className="ml-[10px] cursor-pointer
-                         hover:text-blue-600 dark:hover:text-blue-400"
-            />
-            <div
-              className="absolute top-[-5px] right-[-22px] rounded-full text-sm p-[2px]
-                         bg-blue-600 text-white border border-gray-200
-                         dark:bg-blue-500 dark:border-gray-700">
-              12
+          <Link to="/cart">
+            <div className="flex items-center relative">
+              Cart
+              <FiShoppingCart
+                className="ml-[10px] cursor-pointer
+                           hover:text-blue-600 dark:hover:text-blue-400"
+              />
+              <div
+                className="absolute top-[-5px] right-[-22px] rounded-full text-sm p-[2px]
+                           bg-blue-600 text-white border border-gray-200
+                           dark:bg-blue-500 dark:border-gray-700">
+                12
+              </div>
             </div>
-          </div>
+          </Link>
           <Link to="/login">Login</Link>
         </div>
       </nav>
@@ -114,8 +116,8 @@ const Navbar = () => {
       </button>
 
       <div
-        className={`absolute top-[64px] left-0 right-0 mt-4 z-40 w-full rounded-b-lg
-                    transform transition-all duration-500 ease-in-out px-6 py-4
+        className={`absolute top-[64px] left-0 right-0 mt-[0.3rem] z-40 w-full rounded-b-lg
+                    transform transition-all duration-500 ease-in-out
                     shadow-md ${
                       isNavbarOpen
                         ? "opacity-100 translate-y-0 pointer-events-auto"
@@ -125,33 +127,35 @@ const Navbar = () => {
                     dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700`}>
         <Link
           to="/"
-          className="block w-full hover:text-blue-600 dark:hover:text-blue-400">
+          className="block w-full hover:text-white hover:bg-gray-700 blue-600 px-4 py-[8px] duration-300">
           Home
         </Link>
         <Link
           to="/products"
-          className="block w-full hover:text-blue-600 dark:hover:text-blue-400 my-4 border border-white">
+          className="block w-full hover:text-white hover:bg-gray-700 blue-600 px-4 py-[8px] duration-300">
           Products
         </Link>
         <Link
           to="/about"
-          className="block w-full hover:text-blue-600 dark:hover:text-blue-400">
+          className="block w-full hover:text-white hover:bg-gray-700 blue-600 px-4 py-[8px] duration-300">
           About Us
         </Link>
 
-        <div className="mt-4 flex items-center justify-between text-xl">
-          <div className="flex items-center relative">
-            <FiShoppingCart
-              className="ml-4 cursor-pointer
-                         hover:text-blue-600 dark:hover:text-blue-400"
-            />
-            <div
-              className="absolute top-[-5px] right-[-22px] rounded-full text-sm p-[2px]
-                         bg-blue-600 text-white border border-gray-200
-                         dark:bg-blue-500 dark:border-gray-700">
-              12
+        <div className="flex items-center justify-between text-md p-4">
+          <Link to="/cart">
+            <div className="flex items-center relative">
+              <FiShoppingCart
+                className="ml-4 cursor-pointer
+                           hover:text-blue-600 dark:hover:text-blue-400"
+              />
+              <div
+                className="absolute top-[-5px] right-[-22px] rounded-full text-sm p-[2px]
+                           bg-blue-600 text-white border border-gray-200
+                           dark:bg-blue-500 dark:border-gray-700">
+                12
+              </div>
             </div>
-          </div>
+          </Link>
           <Link to="/login">Login</Link>
         </div>
       </div>

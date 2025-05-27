@@ -37,7 +37,7 @@ export default function ProductsContainer() {
           <div
             onClick={(e) => e.stopPropagation()}
             className={`z-50
-    w-64 fixed top-[5rem] transform duration-300 md:hidden max-h-[95vh]
+    w-64 fixed top-[5rem] transform duration-300 md:hidden max-h-[95vh] overflow-auto
     ${filter ? "translate-x-[-05%]" : "-translate-x-[110%]"}
   `}>
             <Filters />

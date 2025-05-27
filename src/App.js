@@ -20,6 +20,7 @@ import AboutPage from "./pages/AboutPage.js";
 import LoginPage from "./pages/LoginPage.js";
 import SignupPage from "./pages/SignupPage.js";
 import ErrorPage from "./pages/ErrorPage.js";
+import CartPage from "./pages/CartPage.js";
 
 import { useProductContext } from "./context/product_context.js";
 
@@ -51,6 +52,7 @@ const App = () => {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <InstallPrompt />

@@ -4,7 +4,7 @@ export default function ProductPageSkeleton() {
   return (
     <>
       <div className="bg-gray-200 dark:bg-gray-800 p-6 w-full border border-none animate-pulse">
-        <div className="max-w-[100rem] mx-auto bg-white dark:bg-gray-900 rounded-3xl shadow-2xl p-6 border border-gray-300 dark:border-gray-700">
+        <div className="lg:max-w-[100rem] lg:h-[45rem] mx-auto bg-white dark:bg-gray-900 rounded-3xl shadow-2xl p-6 border border-gray-300 dark:border-gray-700">
           <div className="mb-6 px-4 py-2 bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg shadow w-32 h-10"></div>
 
           <div className="flex flex-col-reverse lg:flex-row gap-10">
@@ -36,7 +36,7 @@ export default function ProductPageSkeleton() {
             </div>
 
             <div className="w-full lg:w-1/2">
-              <div className="w-full h-64 sm:h-80 md:h-96 lg:h-[800px] bg-gray-300 dark:bg-gray-700 rounded-2xl shadow-xl"></div>
+              <div className="h-80 lg:w-full lg:h-full bg-gray-300 dark:bg-gray-700 rounded-2xl shadow-xl"></div>
             </div>
           </div>
         </div>
