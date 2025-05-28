@@ -52,33 +52,33 @@ const InstallPrompt = () => {
           className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
           onClick={() => setShowModal(false)}>
           <div
-            className="bg-white rounded-2xl shadow-2xl w-[90%] max-w-sm p-6 relative animate-fadeIn"
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-[90%] max-w-sm p-6 relative animate-fadeIn"
             onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setShowModal(false)}
-              className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition">
+              className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 transition">
               <IoClose className="text-xl" />
             </button>
 
             <div className="flex flex-col items-center text-center">
-              <IoInformationCircleOutline className="text-black text-4xl mb-2" />
-              <h2 className="text-xl font-semibold text-gray-800 mb-1">
+              <IoInformationCircleOutline className="text-black dark:text-white text-4xl mb-2" />
+              <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-1">
                 Install RahulMart
               </h2>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
                 Quickly access this app from your home screen.
               </p>
 
               <div className="flex gap-3 w-full justify-center mt-2">
                 <button
                   onClick={handleInstallClick}
-                  className="flex items-center gap-2 bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-black transition">
+                  className="flex items-center gap-2 bg-gray-800 dark:bg-gray-900 text-white px-4 py-2 rounded-md hover:bg-black dark:hover:bg-gray-700 transition">
                   <IoDownload className="text-lg" />
                   Install
                 </button>
                 <button
                   onClick={() => setShowModal(false)}
-                  className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 transition">
+                  className="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition">
                   Cancel
                 </button>
               </div>
@@ -90,7 +90,7 @@ const InstallPrompt = () => {
       {showButton && (
         <button
           onClick={() => setShowModal(true)}
-          className="fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-3 rounded-full shadow-xl hover:bg-black transition z-[1000] flex items-center gap-2">
+          className="fixed bottom-4 right-4 bg-gray-800 dark:bg-gray-900 text-white px-4 py-3 rounded-full shadow-xl hover:bg-black dark:hover:bg-gray-700 transition z-[1000] flex items-center gap-2">
           <IoDownload className="text-lg" />
         </button>
       )}

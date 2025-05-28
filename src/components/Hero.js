@@ -1,6 +1,6 @@
 import Carousel from "./Carousel.js";
-import React from "react";
-// import bgimage from "../../assets/hero-left.jpg";
+import { Link } from "react-router-dom";
+
 const imageData = [
   "https://videos.pexels.com/video-files/5585939/5585939-sd_960_540_25fps.mp4",
   "https://videos.pexels.com/video-files/7821646/7821646-hd_1280_720_30fps.mp4",
@@ -9,35 +9,38 @@ const imageData = [
 
 const Hero = () => {
   return (
-    <div className="border border-none flex flex-col md:mt-unset lex-col md:flex md:flex-row mt-1 md:mt-unset p-4 md:p-unset z-1 relative max-w-[1290px] m-auto">
+    <div className="border border-gray-300 dark:border-white rounded-2xl flex flex-col md:flex-row mt-1 md:mt-0 p-4 md:p-0 z-10 relative max-w-[1290px] mx-auto mb-4">
       <style>
         {`@media (max-width: 768px) {
-        .phone-height-carousel {
+          .phone-height-carousel {
             height: 400px;
             margin-top: 1rem;
+          }
         }
-        }
-
         .bg-blur {
-        background-image: url("../../assets/hero-left.jpg");
-        filter: blur(2px);
-        /* z-index: -1; */
+          background-image: url("../../assets/hero-left.jpg");
+          filter: blur(2px);
+        }
         `}
       </style>
-      <div className="min-w-[60%] p-8 rounded-3xl shadow-2xl flex flex-col justify-center items-center bg-white overflow-hidden">
-        <div className="rounded-3xl filter  opacity-30 w-full h-full absolute"></div>
 
+      <div className="min-w-[60%] p-8 rounded-3xl shadow-2xl flex flex-col justify-center items-center bg-white dark:bg-gray-900 overflow-hidden relative">
         <div className="text-center">
-          <h1 className="text-5xl font-extrabold text-gray-900 tracking-tight mb-4 uppercase">
+          <h1 className="text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-4 uppercase">
             rahul mart
           </h1>
-          <p className="text-lg lg:text-xl font-medium text-gray-700 mb-6">
+          <p className="text-lg lg:text-xl font-medium text-gray-700 dark:text-gray-300 mb-6">
             Your one-stop shop for all your urban lifestyle needs. Explore our
             wide range of products tailored just for you.
           </p>
-          <button className="cursor-pointer bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 transition duration-300">
+
+          <Link
+            to="/products"
+            className="mt-4 max-w-[100px] max-h-[50px] px-6 py-3 text-base rounded-lg transition duration-200
+    bg-primary text-primary-content hover:bg-primary-focus focus:ring-2 focus:ring-primary border border-black hover:bg-gray-700 hover:text-white
+    dark:bg-blue-700 dark:text-white dark:hover:bg-blue-800 dark:focus:ring-blue-600">
             Shop Now
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -45,9 +48,9 @@ const Hero = () => {
         {imageData.map((source, index) => (
           <div
             key={index}
-            className="w-full h-full phone-height-carousel flex-shrink-0 flex items-center justify-center z-1">
+            className="w-full h-full phone-height-carousel flex-shrink-0 flex items-center justify-center z-10">
             <video
-              className="object-cover h-[38rem] w-full rounded-3xl z-1"
+              className="object-cover h-[38rem] w-full rounded-3xl z-10"
               autoPlay
               muted
               loop>

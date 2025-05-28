@@ -11,6 +11,7 @@ export async function handler(event, context) {
       const {
         id,
         fields: {
+          stock,
           price,
           review,
           colors,
@@ -25,22 +26,35 @@ export async function handler(event, context) {
           image: [{ url }],
         },
       } = currentItem;
+
       return {
-        id: id,
+        id,
         image: url,
-        price: price,
+        price,
         name: product,
-        review: review,
-        rating: rating,
-        colors: colors,
-        company: company,
-        records: records,
+        stock,
+        review,
+        rating,
+        colors,
+        company,
+        records,
         desc: description,
-        category: category,
-        featured: featured,
-        shipping: shipping,
+        category,
+        featured,
+        shipping,
       };
     });
+
+    return products;
+  } catch (error) {
+    throw new Error("Failed to fetch products: " + error.message);
+  }
+}
+
+export async function handler(event, context) {
+  try {
+    const products = await getAllProducts();
+
     return {
       statusCode: 200,
       body: JSON.stringify(products),

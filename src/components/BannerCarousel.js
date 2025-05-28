@@ -48,7 +48,7 @@ const BannerCarousel = () => {
       <style>
         {`
         .carousel-no-scrollbar::-webkit-scrollbar {
-          display: hidden;
+          display: none;
         }
         .carousel-no-scrollbar {
           -ms-overflow-style: none;
@@ -57,10 +57,10 @@ const BannerCarousel = () => {
        `}
       </style>
 
-      <div className="relative w-full overflow-hidden mb-6 rounded-xl">
+      <div className="relative w-full overflow-hidden mb-6 rounded-xl dark:bg-gray-900">
         <button
           onClick={leftScroll}
-          className="absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition duration-300">
+          className="absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 dark:bg-white/20 dark:hover:bg-white/40 text-white dark:text-black p-2 rounded-full transition duration-300">
           <FaAnglesLeft />
         </button>
 
@@ -79,7 +79,7 @@ const BannerCarousel = () => {
 
         <button
           onClick={rightScroll}
-          className="absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition duration-300">
+          className="absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 dark:bg-white/20 dark:hover:bg-white/40 text-white dark:text-black p-2 rounded-full transition duration-300">
           <FaAnglesRight />
         </button>
       </div>

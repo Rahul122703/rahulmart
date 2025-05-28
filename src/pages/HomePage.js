@@ -1,5 +1,5 @@
 import Hero from "../components/Hero.js";
-import FeaturedProuducts from "../components/FeaturedProuducts.js";
+import FeaturedProducts from "../components/FeaturedProducts.js";
 import Footer from "../components/Footer.js";
 
 import InstallPrompt from "../components/installPrompt.js";
@@ -10,10 +10,10 @@ import ContactUs from "../components/ContactUs.js";
 const HomePage = () => {
   return (
     <>
-      <div className="shadow flex flex-col">
+      <div className="shadow flex flex-col bg-white dark:bg-gray-900">
         <BannerCarousel />
         <Hero />
-        <FeaturedProuducts />
+        <FeaturedProducts />
         <MidSection />
         <ContactUs />
         <Footer />

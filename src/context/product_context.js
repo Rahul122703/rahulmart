@@ -6,12 +6,19 @@ import {
   PRODUCT_LOADING,
   PRODUCT_ERROR,
   PRODUCT_SUCCESS,
+  SINGLE_PRODUCT_LOADING,
+  SINGLE_PRODUCT_ERROR,
+  SINGLE_PRODUCT_SUCCESS,
+  PRODUCT_CARD_DESC,
 } from "../action.js";
 
 import { product_reducer } from "../reducer/product_reducer.js";
 import axios from "axios";
 
-import { ALL_PRODUCTS } from "../utils/urls.js";
+import { ALL_PRODUCTS, SINGLE_PRODUCT } from "../utils/urls.js";
+
+// import dotenv from "dotenv";
+// dotenv.config();
 
 const product_initialState = {
   isNavbarOpen: false,
@@ -19,6 +26,10 @@ const product_initialState = {
   productError: false,
   products: [],
   featuredProducts: [],
+  singleproductLoading: false,
+  singleproductError: false,
+  singleproduct: null,
+  productCardChange: false,
 };
 
 const ProductContext = createContext();
@@ -37,10 +48,30 @@ export const ProductProvider = ({ children }) => {
   const fetchProductData = async () => {
     try {
       const { data } = await axios.get(ALL_PRODUCTS);
-      dispatch({ type: PRODUCT_SUCCESS, payload: data });
+      setTimeout(() => {
+        //Adding 2000ms time to show the skleton loader
+        dispatch({ type: PRODUCT_SUCCESS, payload: data });
+      }, 2000);
+      console.log(product_initialState);
     } catch (error) {
       dispatch({ type: PRODUCT_ERROR });
     }
+  };
+
+  const fetchSingleProduct = async (id) => {
+    try {
+      dispatch({ type: SINGLE_PRODUCT_LOADING });
+      const { data } = await axios.get(`${SINGLE_PRODUCT}${id}`);
+      setTimeout(() => {
+        dispatch({ type: SINGLE_PRODUCT_SUCCESS, payload: data });
+      }, 2000);
+    } catch (error) {
+      dispatch({ type: SINGLE_PRODUCT_ERROR });
+    }
+  };
+
+  const changeProductCardView = (desc) => {
+    dispatch({ type: PRODUCT_CARD_DESC, payload: desc });
   };
 
   useEffect(() => {
@@ -49,7 +80,14 @@ export const ProductProvider = ({ children }) => {
   }, []);
 
   return (
-    <ProductContext.Provider value={{ closeNavbar, openNavbar, ...state }}>
+    <ProductContext.Provider
+      value={{
+        closeNavbar,
+        openNavbar,
+        fetchSingleProduct,
+        changeProductCardView,
+        ...state,
+      }}>
       {children}
     </ProductContext.Provider>
   );

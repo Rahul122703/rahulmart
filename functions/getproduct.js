@@ -1,9 +1,27 @@
-import LoadAirtable from "./airtable-credential.js";
+// airtable-single-product-api.js
 
-const loadAirtable = new LoadAirtable("products");
+import dotenv from "dotenv";
+import Airtable from "airtable-node";
+
+dotenv.config();
+
+const apiKey = process.env.AIRTABLE_API_TOKEN;
+const baseID = process.env.AIRTABLE_BASE_ID;
+const tableName = "products";
+
+const airtable = new Airtable({ apiKey }).base(baseID).table(tableName);
+
+async function getProductById(id) {
+  try {
+    const product = await airtable.retrieve(id);
+    return product;
+  } catch (error) {
+    throw new Error("Failed to fetch product: " + error.message);
+  }
+}
 
 export const handler = async (event, context) => {
-  const { id } = event.queryStringParameters;
+  const { id } = event.queryStringParameters || {};
 
   if (!id) {
     return {
@@ -17,7 +35,7 @@ export const handler = async (event, context) => {
   }
 
   try {
-    const product = await loadAirtable.getProduct(id);
+    const product = await getProductById(id);
 
     if (!product || !product.id) {
       return {
@@ -29,7 +47,9 @@ export const handler = async (event, context) => {
         },
       };
     }
-    console.log("product information", product);
+
+    console.log("Product Information:", product);
+
     return {
       statusCode: 200,
       body: JSON.stringify(product),

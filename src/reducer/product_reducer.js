@@ -4,6 +4,10 @@ import {
   PRODUCT_LOADING,
   PRODUCT_ERROR,
   PRODUCT_SUCCESS,
+  SINGLE_PRODUCT_LOADING,
+  SINGLE_PRODUCT_ERROR,
+  SINGLE_PRODUCT_SUCCESS,
+  PRODUCT_CARD_DESC,
 } from "../action.js";
 
 export const product_reducer = (state, action) => {
@@ -27,6 +31,26 @@ export const product_reducer = (state, action) => {
       featuredProducts: action.payload.filter((currentItem) => {
         return currentItem.featured === "true";
       }),
+    };
+  }
+  if (action.type === SINGLE_PRODUCT_LOADING) {
+    return { ...state, singleproductLoading: true };
+  }
+  if (action.type === SINGLE_PRODUCT_ERROR) {
+    return { ...state, singleproductError: true, singleproductLoading: false };
+  }
+  if (action.type === SINGLE_PRODUCT_SUCCESS) {
+    return {
+      ...state,
+      singleproductLoading: false,
+      singleproduct: action.payload,
+    };
+  }
+
+  if (action.type === PRODUCT_CARD_DESC) {
+    return {
+      ...state,
+      productCardChange: action.payload ? true : false,
     };
   }
   throw new Error(`No Matching "${action.type}" - action type`);
