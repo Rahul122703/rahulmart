@@ -83,7 +83,7 @@ const CartPage = () => {
               <div className="flex flex-col gap-4 items-center">
                 <button className={actionBtn}>CHECKOUT NOW</button>
                 <Link
-                  to="/shop"
+                  to="/products"
                   className={`${actionBtn} !bg-transparent !text-gray-700 dark:!text-white !border-2 !border-gray-700 dark:!border-gray-300`}>
                   Continue Shopping
                 </Link>
