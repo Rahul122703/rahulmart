@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { CiSquarePlus, CiSquareMinus } from "react-icons/ci";
+import { MdDeleteForever } from "react-icons/md";
 const initialItems = [
   {
     id: 1,
@@ -121,8 +123,8 @@ const CartPage = () => {
                   <button
                     aria-label="decrease quantity"
                     onClick={() => decrement(item.id)}
-                    className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 text-xl leading-none flex items-center justify-center">
-                    –
+                    className="w-10 h-10 rounded-full  bg-white dark:bg-gray-800 text-3xl leading-none flex items-center justify-center">
+                    <CiSquareMinus />
                   </button>
                   <span className="w-6 text-center font-semibold select-none">
                     {item.quantity}
@@ -130,8 +132,8 @@ const CartPage = () => {
                   <button
                     aria-label="increase quantity"
                     onClick={() => increment(item.id)}
-                    className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 text-xl leading-none flex items-center justify-center">
-                    +
+                    className="w-10 h-10 rounded-full  bg-white dark:bg-gray-800 text-3xl leading-none flex items-center justify-center">
+                    <CiSquarePlus />
                   </button>
                 </div>
 
@@ -139,8 +141,8 @@ const CartPage = () => {
                   <button
                     aria-label="remove item"
                     onClick={() => remove(item.id)}
-                    className="text-red-600 hover:text-red-700 text-2xl">
-                    &#x1F5D1;
+                    className="text-red-600 hover:text-red-700 text-3xl">
+                    <MdDeleteForever />
                   </button>
                 </div>
               </div>
