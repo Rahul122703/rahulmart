@@ -1,171 +1,172 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import Footer from "../components/Footer.js";
+import ProductPageSkeleton from "../components/loader/ProductPageSkeleton.js";
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { MdEventAvailable } from "react-icons/md";
+import { CgUnavailable } from "react-icons/cg";
+import { MdSmsFailed } from "react-icons/md";
+import ProductAmount from "../components/ProductAmount.js";
+import ProductStar from "../components/ProductStar.js";
+import { useProductContext } from "../context/product_context.js";
+import { useParams, useNavigate } from "react-router-dom";
+
 import { Link } from "react-router-dom";
 
-// Dummy data – plug your store state/Redux here if needed
-const initialItems = [
-  {
-    id: 1,
-    name: "Armchair",
-    price: 125.99,
-    quantity: 3,
-    color: "#000000",
-    img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=60",
-  },
-  {
-    id: 2,
-    name: "Modern Bookshelf",
-    price: 319.99,
-    quantity: 9,
-    color: "#facc15",
-    img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=60",
-  },
-];
+export default function ProductPage() {
+  const {
+    singleproductLoading,
+    singleproductError,
+    singleproduct,
+    fetchSingleProduct,
+  } = useProductContext();
 
-const CartPage = () => {
-  const [items, setItems] = useState(initialItems);
+  const { productid } = useParams();
+  const navigate = useNavigate();
 
-  /* -------------------------------------------------- */
-  /* ── helpers ─────────────────────────────────────── */
-  /* -------------------------------------------------- */
-  const increment = (id) =>
-    setItems((prev) =>
-      prev.map((it) => (it.id === id ? { ...it, quantity: it.quantity + 1 } : it))
+  useEffect(() => {
+    fetchSingleProduct(productid);
+  }, [productid]);
+
+  if (singleproductError) {
+    return (
+      <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900">
+        <div className="flex-grow flex items-center justify-center text-red-500 text-center p-6">
+          <div>
+            <MdSmsFailed className="text-[100px] mx-auto mb-4" />
+            <p className="text-xl font-semibold dark:text-red-400 text-red-500">
+              Unable to fetch products
+            </p>
+          </div>
+        </div>
+
+        <Footer />
+      </div>
     );
-
-  const decrement = (id) =>
-    setItems((prev) =>
-      prev.map((it) =>
-        it.id === id && it.quantity > 1 ? { ...it, quantity: it.quantity - 1 } : it
-      )
+  }
+  if (singleproductLoading || !singleproduct?.fields) {
+    // if (true) {
+    return (
+      <>
+        <ProductPageSkeleton />
+        <Footer />
+      </>
     );
+  }
 
-  const remove = (id) => setItems((prev) => prev.filter((it) => it.id !== id));
+  const {
+    product,
+    category,
+    description,
+    shipping,
+    rating,
+    stock,
+    company,
+    colors,
+    price,
+    image,
+  } = singleproduct.fields;
 
-  const subtotal = items.reduce((sum, it) => sum + it.price * it.quantity, 0);
-  const shipping = 5.34;
-  const total = subtotal + shipping;
-
-  /* -------------------------------------------------- */
-  /* ── styles ──────────────────────────────────────── */
-  /* -------------------------------------------------- */
-  const actionBtn =
-    "px-8 py-3 bg-gray-700 dark:bg-gray-600 hover:bg-black dark:hover:bg-gray-900 text-white text-lg font-semibold rounded-xl shadow-md transition";
+  const imageUrl = image?.[0]?.url || "";
 
   return (
     <>
-      {/* breadcrumb strip – leave untouched */}
       <div className="min-w-full bg-gray-800 dark:bg-gray-900 text-white py-6 px-4 mb-8 flex justify-center">
         <div className="text-3xl font-semibold text-center">
           <Link to="/" className="text-white">
             Home
           </Link>
           <span className="mx-4 text-white">/</span>
-          <span className="text-white">Cart</span>
+          <Link to="/products" className="text-white">
+            Products
+          </Link>
+          <span className="mx-4 text-white">/</span>
+          <span className="text-white">{product}</span>
         </div>
       </div>
 
-      {/* main area */}
-      <section className="bg-gray-100 dark:bg-gray-700 min-h-screen py-10 px-4 sm:px-8">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-10">
-          {/* ───────────────────────── order summary (left on lg, top on mobile) */}
-          <aside className="lg:col-span-1 order-1 lg:order-none sticky top-24 self-start">
-            <div className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-8 space-y-6">
-              <h2 className="text-xl font-semibold mb-2">Order Summary</h2>
+      <div className="lg:max-w-[100rem] lg:h-[45rem] mx-auto bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-6 border border-gray-200 dark:border-gray-700 mb-4 overflow-hidden">
+        <button
+          onClick={() => navigate(-1)}
+          className="mb-6 px-4 py-2 bg-gray-700 dark:bg-gray-600 hover:bg-black dark:hover:bg-gray-900 text-white rounded-lg shadow flex items-center gap-2 transition">
+          <IoMdArrowRoundBack />
+        </button>
 
-              <div className="flex justify-between text-sm">
-                <span>Subtotal</span>
-                <span className="font-medium">${subtotal.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span>Shipping</span>
-                <span className="font-medium">${shipping.toFixed(2)}</span>
-              </div>
-              <hr className="border-gray-300 dark:border-gray-600" />
-              <div className="flex justify-between text-lg font-semibold">
-                <span>Total</span>
-                <span>${total.toFixed(2)}</span>
-              </div>
+        <div className="flex flex-col-reverse lg:flex-row gap-10 h-full">
+          <div className="w-full lg:w-1/2 px-2 lg:px-6 space-y-5">
+            <h2 className="text-4xl font-bold text-gray-800 dark:text-white text-center lg:text-left">
+              {product}
+            </h2>
 
-              <div className="flex flex-col gap-4">
-                <button className={actionBtn}>CHECKOUT NOW</button>
-                <Link to="/shop" className={actionBtn + " !bg-transparent !text-gray-700 dark:!text-gray-300 !border-2 !border-gray-700 dark:!border-gray-500"}>
-                  Continue Shopping
-                </Link>
-              </div>
-            </div>
-          </aside>
+            <ProductStar rating={rating} />
 
-          {/* ───────────────────────── cart items */}
-          <div className="lg:col-span-2 space-y-6">
-            {items.map((item) => (
-              <div
-                key={item.id}
-                className="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 grid sm:grid-cols-12 gap-6 items-center">
-                {/* image + info */}
-                <div className="sm:col-span-6 flex items-center gap-4">
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    className="w-20 h-20 shrink-0 object-cover rounded-xl"
-                  />
-                  <div className="space-y-1">
-                    <p className="font-semibold text-lg">{item.name}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
-                      Color:
-                      <span
-                        className="inline-block w-4 h-4 rounded-full border"
-                        style={{ backgroundColor: item.color }}></span>
-                    </p>
-                  </div>
-                </div>
+            <p className="text-3xl font-bold text-gray-700 dark:text-gray-300">
+              {price}₹
+            </p>
 
-                {/* price */}
-                <p className="sm:col-span-2 font-medium text-right sm:text-center">
-                  ${item.price.toFixed(2)}
-                </p>
+            <p className="text-gray-600 dark:text-gray-400">{description}</p>
 
-                {/* quantity */}
-                <div className="sm:col-span-3 flex justify-center items-center gap-4">
-                  <button
-                    aria-label="decrease quantity"
-                    onClick={() => decrement(item.id)}
-                    className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 text-xl leading-none flex items-center justify-center">
-                    –
-                  </button>
-                  <span className="w-6 text-center font-semibold select-none">
-                    {item.quantity}
+            <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 text-sm sm:text-base text-gray-700 dark:text-gray-300">
+              <p>
+                <span className="font-semibold">Available:</span>{" "}
+                {stock ? (
+                  <span className="text-green-600 dark:text-green-400">
+                    In Stock
                   </span>
-                  <button
-                    aria-label="increase quantity"
-                    onClick={() => increment(item.id)}
-                    className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 text-xl leading-none flex items-center justify-center">
-                    +
-                  </button>
-                </div>
-
-                {/* actions */}
-                <div className="sm:col-span-1 flex justify-end">
-                  <button
-                    aria-label="remove item"
-                    onClick={() => remove(item.id)}
-                    className="text-red-600 hover:text-red-700 text-2xl">
-                    &#x1F5D1;
-                  </button>
-                </div>
-              </div>
-            ))}
-
-            {/* empty state */}
-            {items.length === 0 && (
-              <p className="text-center text-gray-500 dark:text-gray-400 py-20">
-                Your cart is empty.
+                ) : (
+                  <span className="text-red-600 dark:text-red-400">
+                    Not Available
+                  </span>
+                )}
               </p>
-            )}
+              <p className="flex items-center gap-2">
+                <span className="font-semibold">Shipping:</span>
+                {shipping === "true" ? (
+                  <MdEventAvailable className="text-green-500 dark:text-green-400" />
+                ) : (
+                  <CgUnavailable className="text-red-500 dark:text-red-400" />
+                )}
+              </p>
+              <p>
+                <span className="font-semibold">Company:</span>{" "}
+                <span className="text-gray-700 dark:text-gray-300">
+                  {company}
+                </span>
+              </p>
+            </div>
+
+            <div className="flex items-center flex-wrap">
+              <span className="font-semibold mr-2 text-gray-900 dark:text-white">
+                Colors:
+              </span>
+              {colors?.map((color, i) => (
+                <span
+                  key={i}
+                  className="w-5 h-5 rounded-md ring-white mr-2"
+                  style={{ backgroundColor: color }}
+                />
+              ))}
+            </div>
+
+            <ProductAmount stock={stock} />
+
+            <button
+              aria-label="Add to cart"
+              className="mt-4 px-8 py-3 bg-gray-700 dark:bg-gray-600 hover:bg-black dark:hover:bg-gray-900 text-white text-lg font-semibold rounded-xl shadow-md transition">
+              ADD TO CART
+            </button>
+          </div>
+
+          <div className="w-full lg:w-1/2 max-h-[80%] border border-none">
+            <img
+              src={imageUrl}
+              alt={product}
+              className="h-full w-full object-cover rounded-2xl shadow-xl  border border-red"
+            />
           </div>
         </div>
-      </section>
+      </div>
+
+      <Footer />
     </>
   );
-};
-
-export default CartPage;
+}
