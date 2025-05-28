@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiMenu, FiX, FiShoppingCart } from "react-icons/fi";
 import { CiDark, CiCloudSun } from "react-icons/ci";
+import { IoSearchCircle } from "react-icons/io5";
+
 import { useProductContext } from "../context/product_context.js";
 
 import SearchModal from "./SearchInput.js";
@@ -35,7 +37,7 @@ const Navbar = () => {
       className="border w-full px-6 py-3 flex justify-between items-center my-4
                  sticky top-0 z-[400] rounded-lg p-6 max-w-[78rem] mx-auto shadow-md
                  bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-      <div className="flex w-[20rem] justify-between items-center">
+      <div className="flex justify-between items-center">
         <button
           onClick={toggleTheme}
           className="mr-4 p-2 rounded-full transition
@@ -47,21 +49,22 @@ const Navbar = () => {
           )}
         </button>
 
-        <button
-          onClick={() => showModal(true)}
-          className="relative flex w-[95%]">
-          <input
+        <button onClick={() => showModal(true)} className="relative">
+          <IoSearchCircle className="h-7 w-7" />
+          {/* <input
             type="text"
             placeholder="  Search..."
             className="w-[95%] px-3 py-1 rounded-md text-sm border
                        bg-white text-gray-900
                        focus:outline-none focus:ring-1 focus:ring-gray-400
                        dark:bg-gray-800 dark:text-gray-100"
-          />
+          /> */}
         </button>
       </div>
-
       <SearchModal isOpen={modal} onClose={() => showModal(false)} />
+      <span className="text-xl font-semibold tracking-tight text-transparent bg-gradient-to-r from-gray-300 via-gray-100 to-white bg-clip-text drop-shadow-sm">
+        RAHULMART
+      </span>
 
       <nav className="hidden xl:flex items-center gap-6 text-sm">
         {["Home", "Products", "About"].map((item, index) => {
@@ -104,7 +107,6 @@ const Navbar = () => {
           <Link to="/login">Login</Link>
         </div>
       </nav>
-
       <button
         className="xl:hidden text-gray-900 dark:text-gray-100"
         onClick={() => (isNavbarOpen ? closeNavbar() : openNavbar())}>
@@ -114,7 +116,6 @@ const Navbar = () => {
           <FiMenu className="w-6 h-6" />
         )}
       </button>
-
       <div
         className={`absolute top-[64px] left-0 right-0 mt-[0.3rem] z-40 w-full rounded-b-lg
                     transform transition-all duration-500 ease-in-out

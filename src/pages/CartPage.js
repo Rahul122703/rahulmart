@@ -97,9 +97,9 @@ const CartPage = () => {
             {items.map((item) => (
               <div
                 key={item.id}
-                className="bg-white dark:bg-gray-800 rounded-2xl shadow p-2 flex flex-row justify-between text-gray-700 dark:text-white">
+                className="bg-white dark:bg-gray-800 rounded-2xl shadow p-2 flex flex-row justify-between text-gray-700 dark:text-white h-[8rem]">
                 <div className="sm:col-span-6 flex items-center gap-4 border border-none">
-                  <div className="border border-none h-full w-[45%]">
+                  <div className="border border-none h-full max-w-[45%]">
                     <img
                       src={item.img}
                       alt={item.name}
