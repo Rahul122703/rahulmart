@@ -65,7 +65,7 @@ const CartPage = () => {
       <section className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-white min-h-screen py-10 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-10">
           <aside className="lg:col-span-1 order-1 lg:order-none sticky top-24 self-start text-gray-700 dark:text-white">
-            <div className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-8 space-y-6">
+            <div className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-4 space-y-6">
               <h2 className="text-xl font-semibold mb-2">Order Summary</h2>
 
               <div className="flex justify-between text-sm">
@@ -97,13 +97,15 @@ const CartPage = () => {
             {items.map((item) => (
               <div
                 key={item.id}
-                className="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 grid sm:grid-cols-12 gap-6 items-center text-gray-700 dark:text-white">
-                <div className="sm:col-span-6 flex items-center gap-4">
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    className="w-20 h-20 shrink-0 object-cover rounded-xl"
-                  />
+                className="bg-white dark:bg-gray-800 rounded-2xl shadow p-2 flex flex-row justify-between text-gray-700 dark:text-white">
+                <div className="sm:col-span-6 flex items-center gap-4 border border-none">
+                  <div className="border border-none h-full w-[45%]">
+                    <img
+                      src={item.img}
+                      alt={item.name}
+                      className="h-full w-full shrink-0 object-cover rounded-xl"
+                    />
+                  </div>
                   <div className="space-y-1">
                     <p className="font-semibold text-lg">{item.name}</p>
                     <p className="text-xs text-gray-500 dark:text-gray-300 flex items-center gap-1">
@@ -112,38 +114,38 @@ const CartPage = () => {
                         className="inline-block w-4 h-4 rounded-full border"
                         style={{ backgroundColor: item.color }}></span>
                     </p>
+                    <p className="sm:col-span-2 font-medium ">
+                      ${item.price.toFixed(2)}
+                    </p>
                   </div>
                 </div>
 
-                <p className="sm:col-span-2 font-medium text-right sm:text-center">
-                  ${item.price.toFixed(2)}
-                </p>
-
-                <div className="sm:col-span-3 flex justify-center items-center gap-4">
-                  <button
-                    aria-label="decrease quantity"
-                    onClick={() => decrement(item.id)}
-                    className="w-10 h-10 rounded-full  bg-white dark:bg-gray-800 text-3xl leading-none flex items-center justify-center">
-                    <CiSquareMinus />
-                  </button>
-                  <span className="w-6 text-center font-semibold select-none">
-                    {item.quantity}
-                  </span>
-                  <button
-                    aria-label="increase quantity"
-                    onClick={() => increment(item.id)}
-                    className="w-10 h-10 rounded-full  bg-white dark:bg-gray-800 text-3xl leading-none flex items-center justify-center">
-                    <CiSquarePlus />
-                  </button>
-                </div>
-
-                <div className="sm:col-span-1 flex justify-end">
-                  <button
-                    aria-label="remove item"
-                    onClick={() => remove(item.id)}
-                    className="text-red-600 hover:text-red-700 text-3xl">
-                    <MdDeleteForever />
-                  </button>
+                <div className="border border-none flex flex-row justify-between">
+                  <div className="border border-none flex flex-col justify-center items-center lg:flex-row mr-4">
+                    <button
+                      aria-label="decrease quantity"
+                      onClick={() => decrement(item.id)}
+                      className="w-10 h-10 rounded-full  bg-white dark:bg-gray-800 text-3xl leading-none flex items-center justify-center">
+                      <CiSquareMinus />
+                    </button>
+                    <span className="w-6 text-center font-semibold select-none">
+                      {item.quantity}
+                    </span>
+                    <button
+                      aria-label="increase quantity"
+                      onClick={() => increment(item.id)}
+                      className="w-10 h-10 rounded-full  bg-white dark:bg-gray-800 text-3xl leading-none flex items-center justify-center">
+                      <CiSquarePlus />
+                    </button>
+                  </div>
+                  <div className="sm:col-span-1 flex justify-end">
+                    <button
+                      aria-label="remove item"
+                      onClick={() => remove(item.id)}
+                      className="text-red-600 hover:text-red-700 text-3xl">
+                      <MdDeleteForever />
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
