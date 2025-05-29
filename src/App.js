@@ -29,9 +29,7 @@ const App = () => {
   setTimeout(() => {
     setLoading(false);
   }, 0);
-  document.documentElement.classList.add(
-    localStorage.getItem("theme") || "light"
-  );
+  document.documentElement.className = "light"
   if (loading) {
     return (
       <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-900 min-h-screen border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white">
