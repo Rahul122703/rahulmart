@@ -12,24 +12,19 @@ const Navbar = () => {
   const { openNavbar, closeNavbar, isNavbarOpen } = useProductContext();
   const [modal, showModal] = useState(false);
 
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
     if (theme === "dark") {
-      document.documentElement.classList.add("dark");
+      document.documentElement.className = "light";
     } else {
-      document.documentElement.classList.remove("dark");
+      document.documentElement.className = "dark";
     }
   }, [theme]);
 
   const toggleTheme = () => {
-    document.documentElement.classList.add("theme-transition");
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    setTimeout(() => {
-      document.documentElement.classList.remove("theme-transition");
-    }, 1500);
   };
 
   return (
