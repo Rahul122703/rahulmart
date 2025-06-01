@@ -7,11 +7,25 @@ import ProductCard2Skeleton from "../components/loader/ProductCard2Skeleton.js";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
+import { RETRY, PRODUCT_LOADING } from "../action.js";
+
 export default function ProductsContainer() {
-  const { productLoading, productError, products, productCardChange } =
-    useProductContext();
+  const {
+    productLoading,
+    productError,
+    products,
+    productCardChange,
+    fetchProductData,
+    dispatch,
+  } = useProductContext();
 
   const [filter, showFilter] = useState(false);
+
+  const retry = () => {
+    dispatch({ type: RETRY });
+    dispatch({ type: PRODUCT_LOADING });
+    fetchProductData();
+  };
 
   return (
     <div className="flex flex-col m-0 p-0 bg-white dark:bg-gray-900">
@@ -73,9 +87,17 @@ export default function ProductsContainer() {
                   <ProductCard2Skeleton key={index} />
                 ))
               ) : productError ? (
-                <p className="text-center mt-10 text-red-500 dark:text-red-400">
-                  Error loading products.
-                </p>
+                <div className="flex flex-col items-center mt-10">
+                  <p className="text-center text-red-500 dark:text-red-400 mb-4">
+                    Error loading products.
+                  </p>
+                  <button
+                    onClick={retry}
+                    className="px-6 py-2 bg-gradient-to-r from-indigo-600 to-blue-500 hover:from-indigo-700 hover:to-blue-600 text-white font-semibold rounded-lg shadow-lg transition duration-300"
+                    aria-label="Retry loading products">
+                    Retry
+                  </button>
+                </div>
               ) : (
                 products.map((product) =>
                   productCardChange ? (

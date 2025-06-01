@@ -17,9 +17,6 @@ import axios from "axios";
 
 import { ALL_PRODUCTS, SINGLE_PRODUCT } from "../utils/urls.js";
 
-// import dotenv from "dotenv";
-// dotenv.config();
-
 const product_initialState = {
   isNavbarOpen: false,
   productLoading: false,
@@ -49,7 +46,6 @@ export const ProductProvider = ({ children }) => {
     try {
       const { data } = await axios.get(ALL_PRODUCTS);
       setTimeout(() => {
-        //Adding 2000ms time to show the skleton loader
         dispatch({ type: PRODUCT_SUCCESS, payload: data });
       }, 2000);
       console.log(product_initialState);
@@ -86,6 +82,8 @@ export const ProductProvider = ({ children }) => {
         openNavbar,
         fetchSingleProduct,
         changeProductCardView,
+        fetchProductData,
+        dispatch,
         ...state,
       }}>
       {children}

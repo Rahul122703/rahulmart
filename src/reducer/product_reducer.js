@@ -8,6 +8,7 @@ import {
   SINGLE_PRODUCT_ERROR,
   SINGLE_PRODUCT_SUCCESS,
   PRODUCT_CARD_DESC,
+  RETRY,
 } from "../action.js";
 
 export const product_reducer = (state, action) => {
@@ -46,11 +47,19 @@ export const product_reducer = (state, action) => {
       singleproduct: action.payload,
     };
   }
-
   if (action.type === PRODUCT_CARD_DESC) {
     return {
       ...state,
       productCardChange: action.payload ? true : false,
+    };
+  }
+  if (action.type === RETRY) {
+    return {
+      ...state,
+      productLoading: true,
+      productError: false,
+      products: [],
+      featuredProducts: [],
     };
   }
   throw new Error(`No Matching "${action.type}" - action type`);

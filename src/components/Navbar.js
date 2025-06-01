@@ -13,6 +13,7 @@ const Navbar = () => {
   const [modal, showModal] = useState(false);
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  // const [theme, setTheme] = useState("light");
 
   const navigate = useNavigate();
 
@@ -29,6 +30,16 @@ const Navbar = () => {
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
   };
+
+  // useEffect(() => {
+  //   const newTheme = theme === "light" ? "dark" : "light";
+  //   setTheme(newTheme);
+  //   document.documentElement.className = "dark";
+  // }, [theme]);
+
+  // const toggleTheme = () => {
+  //   setTheme("light" ? "dark" : "light");
+  // };
 
   return (
     <header

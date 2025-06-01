@@ -1,13 +1,24 @@
+import { useEffect } from "react";
 import { useProductContext } from "../context/product_context.js";
 import SkeletonLoader from "./loader/FeaturedProductSkeletonLoader.js";
 import SmallCard from "./ProductCard.js";
 
+import { RETRY, PRODUCT_LOADING } from "../action.js";
+
 const FeaturedProducts = () => {
-  const { productLoading, productError, featuredProducts } =
-    useProductContext();
-  console.log(`productloading ${productLoading} 
-    productError${productError} `);
-  console.log(featuredProducts);
+  const {
+    productLoading,
+    productError,
+    featuredProducts,
+    fetchProductData,
+    dispatch,
+  } = useProductContext();
+
+  const retry = () => {
+    dispatch({ type: RETRY });
+    dispatch({ type: PRODUCT_LOADING });
+    fetchProductData();
+  };
   return (
     <div className="border border-none bg-gray-200 dark:bg-gray-900">
       <div className="w-full max-w-[1400px] mx-auto p-6 flex flex-col items-center">
@@ -27,9 +38,13 @@ const FeaturedProducts = () => {
               Oops! Something went wrong.
             </h3>
             <p className="text-base-content/70 text-center dark:text-gray-400">
-              We couldn't load the products at the moment. Please try again
-              later.
+              We couldn't load the products at the moment.
             </p>
+            <button
+              onClick={retry}
+              className="border px-2 py-1 rounded-lg bg-gray-700 text-white text-lg shadow-sm hover:shadow-lg mt-4">
+              RETRY
+            </button>
           </div>
         ) : (
           <div className="flex flex-row flex-wrap justify-between border border-none">
