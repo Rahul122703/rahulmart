@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, replace, useNavigate } from "react-router-dom";
 import { FiMenu, FiX, FiShoppingCart } from "react-icons/fi";
 import { CiDark, CiCloudSun } from "react-icons/ci";
 import { IoSearchCircle } from "react-icons/io5";
@@ -14,6 +14,8 @@ const Navbar = () => {
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
@@ -23,13 +25,9 @@ const Navbar = () => {
   }, [theme]);
 
   const toggleTheme = () => {
-    document.documentElement.classList.add("theme-transition");
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
-    setTimeout(() => {
-      document.documentElement.classList.remove("theme-transition");
-    }, 1500);
   };
 
   return (
@@ -62,7 +60,11 @@ const Navbar = () => {
         </button>
       </div>
       <SearchModal isOpen={modal} onClose={() => showModal(false)} />
-      <span className="text-xl font-semibold tracking-tight text-transparent bg-gradient-to-r from-gray-300 via-gray-100 to-white bg-clip-text drop-shadow-sm">
+      <span
+        onClick={() => {
+          navigate("/", { replace: true });
+        }}
+        className="text-xl font-semibold tracking-tight text-transparent bg-gradient-to-r from-gray-300 via-gray-100 to-white bg-clip-text drop-shadow-sm cursor-pointer">
         RAHULMART
       </span>
 

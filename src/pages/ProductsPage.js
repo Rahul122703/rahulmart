@@ -47,7 +47,7 @@ export default function ProductsContainer() {
             <Filters />
           </div>
           <div className="flex-1 rounded-lg border border-none top-[10rem] md:static bg-white dark:bg-gray-900">
-            <div className="sticky border top-[62px] z-10 p-2 dark:bg-gray-900 bg-white  border-base-300 dark:border-gray-700 lg:static flex flex-row justify-center items-center  rounded-xl mb-4">
+            <div className="border sticky top-[62px] z-10 p-2 dark:bg-gray-900 bg-white  lg:static flex flex-row justify-center items-center  rounded-xl mb-4">
               <ProductHeader
                 totalProducts={products.length}
                 className="dark:text-white text-gray-900 min-w-full"

@@ -4,6 +4,8 @@ import banner2 from "../assets/carousel/banner2.jpg";
 import banner3 from "../assets/carousel/banner3.jpg";
 import { FaAnglesRight, FaAnglesLeft } from "react-icons/fa6";
 
+import { Link } from "react-router-dom";
+
 const imageData = [banner1, banner2, banner3];
 
 const BannerCarousel = () => {
@@ -64,18 +66,20 @@ const BannerCarousel = () => {
           <FaAnglesLeft />
         </button>
 
-        <div
-          className="flex w-full overflow-x-auto carousel-no-scrollbar"
-          ref={scrollDiv}>
-          {imageData.map((image, idx) => (
-            <img
-              key={idx}
-              src={image}
-              alt={`banner-${idx}`}
-              className="w-full flex-shrink-0 object-cover"
-            />
-          ))}
-        </div>
+        <Link to="/products">
+          <div
+            className="flex w-full overflow-x-auto carousel-no-scrollbar"
+            ref={scrollDiv}>
+            {imageData.map((image, idx) => (
+              <img
+                key={idx}
+                src={image}
+                alt={`banner-${idx}`}
+                className="w-full flex-shrink-0 object-cover"
+              />
+            ))}
+          </div>
+        </Link>
 
         <button
           onClick={rightScroll}
