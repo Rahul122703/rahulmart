@@ -11,12 +11,7 @@ import SearchModal from "./SearchInput.js";
 const Navbar = () => {
   const { openNavbar, closeNavbar, isNavbarOpen } = useProductContext();
   const [modal, showModal] = useState(false);
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") || "light";
-    }
-    return "light";
-  });
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   const navigate = useNavigate();
 
