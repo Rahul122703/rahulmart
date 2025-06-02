@@ -38,7 +38,7 @@ const Navbar = () => {
   return (
     <header
       className="border w-full px-6 py-3 flex justify-between items-center my-4
-                 sticky top-0 z-[400] rounded-lg p-6 max-w-[78rem] mx-auto shadow-md
+                 sticky top-0 z-40 rounded-lg p-6 max-w-[78rem] mx-auto shadow-md
                  bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <div className="flex justify-between items-center">
         <button
