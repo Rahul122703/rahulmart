@@ -12,7 +12,11 @@
   <link rel="apple-touch-icon" href="./logo192.png" />
   <link rel="icon" type="image/png" href="./favicon.png" />
   <title>RahulMart | Your One-Stop Online Store</title>
-
+  <script>
+    (function () {
+      document.documentElement.classList.add(localStorage.getItem('theme') || "light");
+    })()
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
