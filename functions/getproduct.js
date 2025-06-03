@@ -48,8 +48,6 @@ export const handler = async (event, context) => {
       };
     }
 
-    console.log("Product Information:", product);
-
     return {
       statusCode: 200,
       body: JSON.stringify(product),

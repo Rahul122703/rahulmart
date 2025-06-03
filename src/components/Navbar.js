@@ -23,10 +23,6 @@ const Navbar = () => {
       document.documentElement.classList.add("light");
       document.documentElement.classList.remove("dark");
     }
-    console.log(
-      "Theme from React useEffect:",
-      document.documentElement.className
-    ); // Add this line
     localStorage.setItem("theme", theme);
   }, [theme]);
 

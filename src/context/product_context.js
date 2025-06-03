@@ -48,7 +48,6 @@ export const ProductProvider = ({ children }) => {
       setTimeout(() => {
         dispatch({ type: PRODUCT_SUCCESS, payload: data });
       }, 2000);
-      console.log(product_initialState);
     } catch (error) {
       dispatch({ type: PRODUCT_ERROR });
     }
