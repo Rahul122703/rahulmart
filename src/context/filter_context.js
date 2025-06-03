@@ -1,4 +1,4 @@
-import react, { useContext, createContext } from "react";
+import react, { useContext, createContext, useEffect, useReducer } from "react";
 
 import {
   LOAD_PRODUCTS,
@@ -8,17 +8,46 @@ import {
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
 } from "../action.js";
+import { useProductContext } from "./product_context.js";
+
+import { filter_reducer } from "../reducer/filter_reducer.js";
+
+const sort_initialstate = {
+  all_products: [],
+  filteredProducts: [],
+  sort: "price-lowest",
+};
 
 const filterContext = createContext();
 
 export const FilterProvider = ({ children }) => {
-  return <filterContext.Provider value={{}}>{children}</filterContext.Provider>;
+  const { products } = useProductContext();
+  const [state, dispatch] = useReducer(filter_reducer, sort_initialstate);
+
+  useEffect(() => {
+    dispatch({ type: LOAD_PRODUCTS, payload: products });
+  }, [products]);
+
+  useEffect(() => {
+    dispatch({ type: UPDATE_FILTERS });
+    console.log("here this is running");
+  }, [products, state.sort]);
+
+  const sortProducts = (e) => {
+    const value = e.target.value;
+    dispatch({ type: UPADTE_SORT, payload: value });
+  };
+
+  return (
+    <filterContext.Provider value={{ ...state, dispatch, sortProducts }}>
+      {children}
+    </filterContext.Provider>
+  );
 };
 
 export const useFilterContext = () => {
   return useContext(filterContext);
 };
-
 
 // {
 //     "id": "rec0sKqV6bzMrtkcR",

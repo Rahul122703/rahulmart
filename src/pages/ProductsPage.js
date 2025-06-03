@@ -1,4 +1,6 @@
 import { useProductContext } from "../context/product_context.js";
+import { useFilterContext } from "../context/filter_context.js";
+
 import SmallCard from "../components/ProductCard2.js";
 import ProductCardDesc from "../components/ProductCardDesc.js";
 import ProductHeader from "../components/ProductHeader.js";
@@ -13,11 +15,12 @@ export default function ProductsContainer() {
   const {
     productLoading,
     productError,
-    products,
     productCardChange,
     fetchProductData,
     dispatch,
   } = useProductContext();
+
+  const { filteredProducts } = useFilterContext();
 
   const [filter, showFilter] = useState(false);
 
@@ -63,7 +66,7 @@ export default function ProductsContainer() {
           <div className="flex-1 rounded-lg border border-none top-[10rem] md:static bg-white dark:bg-gray-900">
             <div className="border sticky top-[62px] z-10 p-2 dark:bg-gray-900 bg-white  lg:static flex flex-row justify-center items-center  rounded-xl mb-4">
               <ProductHeader
-                totalProducts={products.length}
+                totalProducts={filteredProducts.length}
                 className="dark:text-white text-gray-900 min-w-full"
               />
             </div>
@@ -99,7 +102,7 @@ export default function ProductsContainer() {
                   </button>
                 </div>
               ) : (
-                products.map((product) =>
+                filteredProducts.map((product) =>
                   productCardChange ? (
                     <ProductCardDesc {...product} key={product.id} />
                   ) : (
