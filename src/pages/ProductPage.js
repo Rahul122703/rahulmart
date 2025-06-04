@@ -86,7 +86,7 @@ export default function ProductPage() {
 
       <div className="lg:max-w-[100rem] lg:h-[45rem] mx-auto bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-6 border border-gray-200 dark:border-gray-700 mb-4 overflow-hidden">
         <button
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/products", { replace: true })}
           className="mb-6 px-4 py-2 bg-gray-700 dark:bg-gray-600 hover:bg-black dark:hover:bg-gray-900 text-white rounded-lg shadow flex items-center gap-2 transition">
           <IoMdArrowRoundBack />
         </button>
@@ -127,7 +127,7 @@ export default function ProductPage() {
                 )}
               </p>
               <p>
-                <span className="font-semibold">Company:</span>{" "}
+                <span className="font-semibold">Company:</span>
                 <span className="text-gray-700 dark:text-gray-300">
                   {company}
                 </span>
@@ -141,7 +141,7 @@ export default function ProductPage() {
               {colors?.map((color, i) => (
                 <span
                   key={i}
-                  className="w-5 h-5 rounded-md ring-white mr-2"
+                  className="w-5 h-5 rounded-md ring-white mr-2 border border-black"
                   style={{ backgroundColor: color }}
                 />
               ))}

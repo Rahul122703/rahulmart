@@ -49,21 +49,21 @@ export default function ProductsContainer() {
         />
       )}
 
-      <div className="m-auto max-w-[1700px] px-4 relative flex flex-col border border-none">
+      <div className="m-auto max-w-[1400px] px-4 relative flex flex-col border border-none">
         <div className="gap-6 flex flex-col md:flex-row relative">
           <div
             onClick={(e) => e.stopPropagation()}
             className={`z-50
-    w-64 fixed top-[5rem] transform duration-300 md:hidden max-h-[95vh] overflow-auto
+    w-64 fixed top-[1rem] transform duration-300 md:hidden max-h-[95vh] overflow-auto
     ${filter ? "translate-x-[-05%]" : "-translate-x-[110%]"}
   `}>
             <Filters />
           </div>
           <div
-            className={`w-full max-w-[250px] md:sticky md:top-[5rem] h-fit fixed z-[50] overflow-auto md:transform-none hidden md:block  text-black dark:text-white`}>
+            className={`w-full max-w-[250px] md:sticky md:top-[5rem] h-fit fixed z-[40] overflow-auto md:transform-none hidden md:block  text-black dark:text-white`}>
             <Filters />
           </div>
-          <div className="flex-1 rounded-lg border border-none top-[10rem] md:static bg-white dark:bg-gray-900">
+          <div className="flex-1 rounded-lg  top-[10rem] md:static bg-white dark:bg-gray-900 border border-none ">
             <div className="border sticky top-[62px] z-10 p-2 dark:bg-gray-900 bg-white  lg:static flex flex-row justify-center items-center  rounded-xl mb-4">
               <ProductHeader
                 totalProducts={filteredProducts.length}
@@ -82,7 +82,7 @@ export default function ProductsContainer() {
             <div
               className={
                 productCardChange
-                  ? `grid grid-cols-1 place-items-center bg-white dark:bg-gray-900`
+                  ? `border border-none grid grid-cols-1 place-items-center bg-white dark:bg-gray-900`
                   : `flex flex-wrap justify-center items-center rounded-lg p-4 dark:border dark:border-white bg-white dark:bg-gray-900`
               }>
               {productLoading ? (
@@ -101,7 +101,7 @@ export default function ProductsContainer() {
                     Retry
                   </button>
                 </div>
-              ) : (
+              ) : filteredProducts.length ? (
                 filteredProducts.map((product) =>
                   productCardChange ? (
                     <ProductCardDesc {...product} key={product.id} />
@@ -109,6 +109,10 @@ export default function ProductsContainer() {
                     <SmallCard {...product} key={product.id} />
                   )
                 )
+              ) : (
+                <p className="text-center text-red-500 dark:text-red-400 mb-4">
+                  No products found
+                </p>
               )}
             </div>
           </div>

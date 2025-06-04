@@ -1,3 +1,4 @@
+import { FaAcquisitionsIncorporated } from "react-icons/fa";
 import {
   LOAD_PRODUCTS,
   UPADTE_SORT,
@@ -9,19 +10,52 @@ import {
 
 export const filter_reducer = (state, action) => {
   if (action.type === LOAD_PRODUCTS) {
+    const newFilterData = action.payload.reduce(
+      function (acc, curr) {
+        if (!acc.categories.includes(curr.category)) {
+          acc.categories.push(curr.category);
+        }
+
+        if (!acc.companies.includes(curr.company)) {
+          acc.companies.push(curr.company);
+        }
+
+        curr.colors.forEach((currentColor) => {
+          if (!acc.colors.includes(currentColor)) {
+            acc.colors.push(currentColor);
+          }
+        });
+
+        if (curr.price > acc.max_price) {
+          acc.max_price = curr.price;
+        }
+
+        return acc;
+      },
+      {
+        categories: ["all"],
+        companies: ["all"],
+        colors: ["all"],
+        max_price: 0,
+      }
+    );
+
     return {
       ...state,
       all_products: action.payload,
       filteredProducts: action.payload,
+      filter_data: newFilterData,
+      filters: { ...state.filters, price: newFilterData.max_price },
     };
   }
   if (action.type === UPADTE_SORT) {
     return { ...state, sort: action.payload };
   }
-  if (action.type === SORT_PRODUCTS) {
-    return { ...state };
-  }
   if (action.type === UPDATE_FILTERS) {
+    const { name, value } = action.payload;
+    return { ...state, filters: { ...state.filters, [name]: `${value}` } };
+  }
+  if (action.type === SORT_PRODUCTS) {
     const { sort, filteredProducts } = state;
     let tempProducts = [...filteredProducts];
     if (sort === "price-lowest") {
@@ -51,10 +85,53 @@ export const filter_reducer = (state, action) => {
     return { ...state, filteredProducts: tempProducts };
   }
   if (action.type === FILTER_PRODUCTS) {
-    return { ...state };
+    const { category, company, color, free_shipping, price } = state.filters;
+    const { all_products } = state;
+    let tempSideFilterProducts = [...all_products];
+
+    if (category !== "all") {
+      tempSideFilterProducts = tempSideFilterProducts.filter(
+        (product) => product.category === category
+      );
+    }
+    if (company !== "all") {
+      tempSideFilterProducts = tempSideFilterProducts.filter(
+        (product) => product.company === company
+      );
+    }
+    if (color !== "all") {
+      tempSideFilterProducts = tempSideFilterProducts.filter((product) => {
+        return product.colors.find((c) => c === color);
+      });
+    }
+    tempSideFilterProducts = tempSideFilterProducts.filter(
+      (product) => product.price <= price
+    );
+
+    if (free_shipping === "true") {
+      tempSideFilterProducts = tempSideFilterProducts.filter(
+        (product) => product.shipping === "true"
+      );
+    }
+
+    return { ...state, filteredProducts: tempSideFilterProducts };
   }
   if (action.type === CLEAR_FILTERS) {
-    return { ...state };
+    return {
+      ...state,
+      sort: "price-lowest",
+      filter_data: {
+        ...state.filter_data,
+        max_price: action.payload,
+      },
+      filters: {
+        category: "all",
+        company: "all",
+        color: "all",
+        free_shipping: "false",
+        price: action.payload,
+      },
+    };
   } else {
     throw new Error(`No matching ${action.type} in filter_reducer`);
   }

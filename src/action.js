@@ -19,3 +19,5 @@ export const FILTER_PRODUCTS = "FILTER_PRODUCTS";
 export const CLEAR_FILTERS = "CLEAR_FILTERS";
 
 export const RETRY = "RETRY";
+
+export const GET_FILTER_DATA = "GET_FILTER_DATA";
