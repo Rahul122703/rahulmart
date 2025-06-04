@@ -26,7 +26,7 @@ const FilterSidebar = () => {
               value={label}
               key={label}
               onClick={filterProduct}
-              className="self-start rounded-xl p-1 cursor-pointer hover:text-primary dark:hover:text-primary-light hover:bg-gray-700 hover:text-white transition-all duration-300">
+              className="self-start rounded-xl p-1 cursor-pointer hover:text-primary dark:hover:text-primary-light hover:bg-gray-700 hover:text-white transition-all duration-300 capitalize">
               {label}
             </button>
           ))}
