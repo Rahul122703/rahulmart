@@ -70,7 +70,7 @@ export default function ProductPage() {
 
   return (
     <>
-      <div className="min-w-full bg-gray-800 dark:bg-gray-900 text-white py-6 px-4 mb-8 flex justify-center">
+      <div className="min-w-[99vw] bg-gray-800 dark:bg-gray-900 text-white py-6 px-4 mb-8 flex justify-center">
         <div className="text-3xl font-semibold text-center">
           <Link to="/" className="text-white">
             Home
