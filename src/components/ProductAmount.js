@@ -12,7 +12,7 @@ const ProductAmount = ({ stock = 10 }) => {
   };
 
   return (
-    <div className="flex justify-center lg:justify-start items-center mt-4">
+    <div className="mt-4">
       <button
         onClick={decrease}
         className="px-4 py-2 text-xl font-bold bg-gray-700 text-white hover:bg-black dark:bg-gray-300 dark:text-gray-900 dark:hover:bg-gray-400 rounded-l shadow disabled:opacity-50"

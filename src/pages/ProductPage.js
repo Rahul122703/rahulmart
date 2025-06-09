@@ -38,7 +38,6 @@ export default function ProductPage() {
             </p>
           </div>
         </div>
-
         <Footer />
       </div>
     );
@@ -55,7 +54,6 @@ export default function ProductPage() {
 
   const {
     product,
-    category,
     description,
     shipping,
     rating,
@@ -70,21 +68,21 @@ export default function ProductPage() {
 
   return (
     <>
-      <div className="min-w-[99vw] bg-gray-800 dark:bg-gray-900 text-white py-6 px-4 mb-8 flex justify-center">
-        <div className="text-3xl font-semibold text-center">
+      <div className=" bg-gray-800 dark:bg-gray-900 text-white py-6 px-4 mb-8 flex justify-center">
+        <div className="text-3xl font-semibold text-center flex flex-row flex-wrap">
           <Link to="/" className="text-white">
             Home
           </Link>
-          <span className="mx-4 text-white">/</span>
+          <div className="mx-4 text-white">/</div>
           <Link to="/products" className="text-white">
             Products
           </Link>
-          <span className="mx-4 text-white">/</span>
-          <span className="text-white">{product}</span>
+          <div className="mx-4 text-white">/</div>
+          <div className="text-white">{product}</div>
         </div>
       </div>
 
-      <div className="lg:max-w-[100rem] lg:h-[45rem] mx-auto bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-6 border border-gray-200 dark:border-gray-700 mb-4 overflow-hidden">
+      <div className="lg:max-w-[100rem] mx-auto bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-6 border border-gray-200 dark:border-gray-700 mb-4 overflow-hidden">
         <button
           onClick={() => navigate("/products", { replace: true })}
           className="mb-6 px-4 py-2 bg-gray-700 dark:bg-gray-600 hover:bg-black dark:hover:bg-gray-900 text-white rounded-lg shadow flex items-center gap-2 transition">
@@ -156,11 +154,11 @@ export default function ProductPage() {
             </button>
           </div>
 
-          <div className="w-full lg:w-1/2 max-h-[80%] border border-none">
+          <div className="w-full lg:w-1/2 h-auto lg:h-[40rem] border border-none flex items-center justify-center">
             <img
               src={imageUrl}
               alt={product}
-              className="h-full w-full object-cover rounded-2xl shadow-xl  border border-red"
+              className="h-full w-full object-contain"
             />
           </div>
         </div>
