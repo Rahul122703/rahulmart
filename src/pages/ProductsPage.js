@@ -80,7 +80,7 @@ export default function ProductsContainer() {
             )}
 
             <div
-              className={`w-[90vw] md:w-[55vw] border border-none bg-white dark:bg-gray-900 min-h-[60vh] md:min-h-[70vh] lg:min-h-[75vh]
+              className={` w-[90vw] md:w-[55vw] border border-none bg-white dark:bg-gray-900 min-h-[80vh] xl:min-h-[100vh] md:min-h-[80vh] lg:min-h-[80vh]
     ${
       productCardChange
         ? "grid grid-cols-1 place-items-center"

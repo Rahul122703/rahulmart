@@ -48,7 +48,7 @@ const companyInfo = {
   description:
     "Your go-to destination for trendy, affordable, and quality shopping experiences.",
   contact: {
-    phone: "+91 8291147114",
+    phone: "+91 1231231231",
     email: "rsharma122703@gmail.com",
     address: "123 Market Street, Mumbai, India",
   },
