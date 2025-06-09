@@ -16,7 +16,7 @@ const FilterSidebar = () => {
   };
 
   return (
-    <div className="border border-gray-200 dark:border-gray-700 rounded-md md:h-auto overflow-auto p-4 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 max-w-[250px] max-h-[800px]">
+    <div className="border border-gray-200 dark:border-gray-700 rounded-md md:h-auto overflow-auto p-4 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 md:-w-[270px] max-h-[800px]">
       <section className="mb-6">
         <h2 className="font-bold mb-2">Category</h2>
         <ul className="flex flex-col space-y-1 items-start">

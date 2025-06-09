@@ -28,9 +28,9 @@ export default function ProductPageSkeleton() {
               </div>
 
               <div className="flex space-x-2">
-                <div className="w-5 h-5 rounded-full bg-yellow-400 shadow border border-black"></div>
-                <div className="w-5 h-5 rounded-full bg-pink-400 shadow border border-black"></div>
-                <div className="w-5 h-5 rounded-full bg-green-400 shadow border border-black"></div>
+                <div className="w-5 h-5 rounded-full bg-yellow-400 shadow border border-none"></div>
+                <div className="w-5 h-5 rounded-full bg-pink-400 shadow border border-none"></div>
+                <div className="w-5 h-5 rounded-full bg-green-400 shadow border border-none"></div>
               </div>
 
               <div className="flex items-center space-x-2">

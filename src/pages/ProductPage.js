@@ -141,7 +141,7 @@ export default function ProductPage() {
               {colors?.map((color, i) => (
                 <span
                   key={i}
-                  className="w-5 h-5 rounded-md ring-white mr-2 border border-black"
+                  className="w-5 h-5 rounded-md ring-white mr-2 border border-none"
                   style={{ backgroundColor: color }}
                 />
               ))}

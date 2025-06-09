@@ -37,7 +37,7 @@ const Hero = () => {
           <Link
             to="/products"
             className="mt-4 max-w-[100px] max-h-[50px] px-6 py-3 text-base rounded-lg transition duration-200
-    bg-primary text-primary-content hover:bg-primary-focus focus:ring-2 focus:ring-primary border border-black hover:bg-gray-700 hover:text-white
+    bg-primary text-primary-content hover:bg-primary-focus focus:ring-2 focus:ring-primary border border-none hover:bg-gray-700 hover:text-white
     dark:bg-blue-700 dark:text-white dark:hover:bg-blue-800 dark:focus:ring-blue-600">
             Shop Now
           </Link>

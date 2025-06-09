@@ -49,18 +49,18 @@ export default function ProductsContainer() {
         />
       )}
 
-      <div className="m-auto max-w-[1400px] px-4 relative flex flex-col border border-none">
+      <div className="m-auto max-w-[1500px] px-4 relative flex flex-col border border-none">
         <div className="gap-6 flex flex-col md:flex-row relative">
           <div
             onClick={(e) => e.stopPropagation()}
-            className={`z-50
+            className={`z-[50] rounded-md
     w-64 fixed top-[1rem] transform duration-300 md:hidden max-h-[95vh] overflow-auto
     ${filter ? "translate-x-[-05%]" : "-translate-x-[110%]"}
   `}>
             <Filters />
           </div>
           <div
-            className={`w-full max-w-[250px] md:sticky md:top-[5rem] h-fit fixed z-[40] overflow-auto md:transform-none hidden md:block  text-black dark:text-white`}>
+            className={`w-[270px] md:sticky md:top-[5rem] h-fit fixed z-[5] overflow-auto md:transform-none hidden md:block  text-black dark:text-white`}>
             <Filters />
           </div>
           <div className="flex-1 rounded-lg  top-[10rem] md:static bg-white dark:bg-gray-900 border border-none ">
@@ -80,11 +80,12 @@ export default function ProductsContainer() {
             )}
 
             <div
-              className={
-                productCardChange
-                  ? `border border-none grid grid-cols-1 place-items-center bg-white dark:bg-gray-900`
-                  : `flex flex-wrap justify-center items-center rounded-lg p-4 dark:border dark:border-white bg-white dark:bg-gray-900`
-              }>
+              className={`w-[90vw] md:w-[55vw] border border-none bg-white dark:bg-gray-900 min-h-[60vh] md:min-h-[70vh] lg:min-h-[75vh]
+    ${
+      productCardChange
+        ? "grid grid-cols-1 place-items-center"
+        : "flex flex-wrap justify-center items-center rounded-lg p-4 dark:border dark:border-white"
+    }`}>
               {productLoading ? (
                 [...Array(8)].map((_, index) => (
                   <ProductCard2Skeleton key={index} />
