@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 const ProductCardDesc = ({ id, image, price, name, desc }) => {
   const navigate = useNavigate();
-
+  const product = { productName: name };
   const handleClick = () => {
-    navigate(`/product/${id}`, { replace: true });
+    navigate(`/product/${id}`, { state: product }, { replace: true });
   };
 
   return (

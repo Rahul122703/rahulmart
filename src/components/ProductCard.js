@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 const SmallCard = ({ id, image, price, name }) => {
   const navigate = useNavigate();
-
+  const product = { productName: name };
   const handleClick = () => {
-    navigate(`/product/${id}`, { replace: true });
+    navigate(`/product/${id}`, { state: product }, { replace: true });
   };
 
   return (
