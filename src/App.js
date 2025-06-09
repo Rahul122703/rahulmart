@@ -66,6 +66,7 @@ const CloseNavbar = () => {
   const location = useLocation();
   useEffect(() => {
     closeNavbar();
+    window.scrollTo(0, 0);
   }, [location.pathname]);
   return null;
 };

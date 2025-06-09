@@ -7,13 +7,13 @@ import {
   FaUsers,
 } from "react-icons/fa";
 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Footer from "../components/Footer.js";
 
 const AboutPage = () => {
   const [scrollY, setScrollY] = useState(0);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
@@ -25,7 +25,12 @@ const AboutPage = () => {
       <div className="relative bg-[#121212] text-gray-200 flex flex-col items-center bottom-0">
         <div className="min-w-full bg-gray-800 text-white py-6 px-4 mb-8 justify-center">
           <div className="text-3xl font-semibold text-center">
-            <Link to="/">Home</Link>
+            <button
+              onClick={() => {
+                navigate("/", { replace: true });
+              }}>
+              Home
+            </button>
             <span className="mx-4">/</span>
             <span>About</span>
           </div>
@@ -93,12 +98,17 @@ const AboutPage = () => {
               </motion.di>
             ))}
           </div>
-          <motion.button
-            className="mt-12 px-6 py-3 text-lg font-medium text-gray-200 bg-[#1e1e1e] border border-gray-600 rounded-md hover:bg-gray-700 transition-all duration-300"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}>
-            Start Shopping →
-          </motion.button>
+          <button
+            onClick={() => {
+              navigate("/products", { replace: true });
+            }}>
+            <motion.button
+              className="mt-12 px-6 py-3 text-lg font-medium text-gray-200 bg-[#1e1e1e] border border-gray-600 rounded-md hover:bg-gray-700 transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}>
+              Start Shopping →
+            </motion.button>
+          </button>
         </div>
       </div>
       <Footer />
