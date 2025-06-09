@@ -1,8 +1,11 @@
 import React from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { useNavigate, Link } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 
 export default function ProductPageSkeleton() {
+  const {
+    state: { productName },
+  } = useLocation();
   const navigate = useNavigate();
   return (
     <div className="flex flex-col justify-center items-center">
@@ -16,7 +19,7 @@ export default function ProductPageSkeleton() {
             Products
           </Link>
           <div className="mx-4 text-white">/</div>
-          <div className="text-white">product name</div>
+          <div className="text-white">{productName}</div>
         </div>
       </div>
       <div className="lg:max-w-[100rem] lg:h-[45rem] w-[99vw] mx-auto bg-white dark:bg-gray-900 rounded-3xl shadow-2xl p-6 dark:border-gray-700 mb-4 border">
