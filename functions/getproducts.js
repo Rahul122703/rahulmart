@@ -15,7 +15,6 @@ async function getAllProducts() {
   try {
     const { records } = await airtable.list({ maxRecords: 100 });
     const products = records.map((currentItem, index) => {
-      console.log(currentItem);
       const {
         id,
         fields: {
@@ -63,7 +62,6 @@ async function getAllProducts() {
 export async function handler(event, context) {
   try {
     const products = await getAllProducts();
-    console.log("products : ", products);
     return {
       statusCode: 200,
       body: JSON.stringify(products),
