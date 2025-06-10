@@ -4,13 +4,12 @@ import { useFilterContext } from "../context/filter_context.js";
 const FilterSidebar = () => {
   const {
     filter_data: { categories, companies, colors, max_price },
-    filters: { company, color, price, free_shipping },
+    filters: { company, color, price },
     filterProduct,
     clearFilter,
   } = useFilterContext();
 
   const [priceRange, setPriceRange] = useState(price);
-  const [shipping, setFreeshipping] = useState(free_shipping || "true");
   const handlePriceChange = (e) => {
     setPriceRange(e.target.value);
   };

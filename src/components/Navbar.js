@@ -95,7 +95,6 @@ const Navbar = () => {
         <div className="flex items-center gap-4 text-xl w-[10rem] justify-between">
           <Link to="/cart" aria-label="Go to cart">
             <div className="flex items-center relative">
-              Cart
               <FiShoppingCart
                 className="ml-[10px] cursor-pointer
                            hover:text-blue-600 dark:hover:text-blue-400"

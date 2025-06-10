@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer.js";
 import ProductPageSkeleton from "../components/loader/ProductPageSkeleton.js";
 import { IoMdArrowRoundBack } from "react-icons/io";
@@ -7,10 +7,13 @@ import { CgUnavailable } from "react-icons/cg";
 import { MdSmsFailed } from "react-icons/md";
 import ProductAmount from "../components/ProductAmount.js";
 import ProductStar from "../components/ProductStar.js";
-import { useProductContext } from "../context/product_context.js";
-import { useParams, useNavigate } from "react-router-dom";
 
-import { Link } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+
+import { useParams, useNavigate, Link } from "react-router-dom";
+
+import { useProductContext } from "../context/product_context.js";
+import { useCartContext } from "../context/cart_context.js";
 
 export default function ProductPage() {
   const {
@@ -19,13 +22,28 @@ export default function ProductPage() {
     singleproduct,
     fetchSingleProduct,
   } = useProductContext();
-
+  const { addToCart, cart, removeFromCart } = useCartContext();
   const { productid } = useParams();
   const navigate = useNavigate();
+
+  const [alreadyThere, setAlreadyThere] = useState(false);
 
   useEffect(() => {
     fetchSingleProduct(productid);
   }, [productid]);
+
+  useEffect(() => {
+    setAlreadyThere(cart.some((item) => item.id === singleproduct.id));
+    console.log(
+      "after checking on product page  ",
+      cart.some((item) => item.id === singleproduct.id)
+    );
+  }, [singleproduct, cart.length]);
+
+  const manageAddToCart = (productInfo) => {
+    toast.success("Added to cart", { duration: 1000 });
+    addToCart(productInfo);
+  };
 
   if (singleproductError) {
     return (
@@ -53,16 +71,19 @@ export default function ProductPage() {
   }
 
   const {
-    product,
-    description,
-    shipping,
-    rating,
-    stock,
-    company,
-    colors,
-    price,
-    image,
-  } = singleproduct.fields;
+    id,
+    fields: {
+      product,
+      description,
+      shipping,
+      rating,
+      stock,
+      company,
+      colors,
+      price,
+      image,
+    },
+  } = singleproduct;
 
   const imageUrl = image?.[0]?.url || "";
 
@@ -105,7 +126,7 @@ export default function ProductPage() {
 
             <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 text-sm sm:text-base text-gray-700 dark:text-gray-300">
               <p>
-                <span className="font-semibold">Available:</span>{" "}
+                <span className="font-semibold">Available:</span>
                 {stock ? (
                   <span className="text-green-600 dark:text-green-400">
                     In Stock
@@ -147,11 +168,32 @@ export default function ProductPage() {
 
             <ProductAmount stock={stock} />
 
-            <button
-              aria-label="Add to cart"
-              className="mt-4 px-8 py-3 bg-gray-700 dark:bg-gray-600 hover:bg-black dark:hover:bg-gray-900 text-white text-lg font-semibold rounded-xl shadow-md transition">
-              ADD TO CART
-            </button>
+            {alreadyThere ? (
+              <button
+                onClick={() => {
+                  toast.error("Removed from Cart", { duration: 1000 });
+                  removeFromCart(id);
+                }}
+                aria-label="Add to cart"
+                className="mt-4 px-8 py-3 bg-gray-700 dark:bg-gray-600 hover:bg-black dark:hover:bg-gray-900 text-white text-lg font-semibold rounded-xl shadow-md transition">
+                REMOVE FROM CART
+              </button>
+            ) : (
+              <button
+                aria-label="Add to cart"
+                onClick={() =>
+                  manageAddToCart({
+                    id: id,
+                    product: product,
+                    productPrice: price,
+                    color: colors,
+                    cartAmount: 0,
+                  })
+                }
+                className="mt-4 px-8 py-3 bg-gray-700 dark:bg-gray-600 hover:bg-black dark:hover:bg-gray-900 text-white text-lg font-semibold rounded-xl shadow-md transition">
+                ADD TO CART
+              </button>
+            )}
           </div>
 
           <div className="w-full lg:w-1/2 h-auto lg:h-[40rem] border border-none flex items-center justify-center">
@@ -162,6 +204,7 @@ export default function ProductPage() {
             />
           </div>
         </div>
+        <Toaster position="top-center" />
       </div>
 
       <Footer />

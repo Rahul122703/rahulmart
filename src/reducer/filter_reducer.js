@@ -1,4 +1,3 @@
-import { FaAcquisitionsIncorporated } from "react-icons/fa";
 import {
   LOAD_PRODUCTS,
   UPADTE_SORT,

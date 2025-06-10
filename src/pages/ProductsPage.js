@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import { RETRY, PRODUCT_LOADING } from "../action.js";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function ProductsContainer() {
   const {
@@ -27,7 +28,12 @@ export default function ProductsContainer() {
   const retry = () => {
     dispatch({ type: RETRY });
     dispatch({ type: PRODUCT_LOADING });
-    fetchProductData();
+    const callFunction = fetchProductData();
+    toast.promise(callFunction, {
+      loading: "Fetching all the product",
+      error: "Check Your internet connection",
+      success: "Good to go!",
+    });
   };
 
   return (
@@ -119,6 +125,7 @@ export default function ProductsContainer() {
           </div>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 }

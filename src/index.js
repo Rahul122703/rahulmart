@@ -6,13 +6,16 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration.js";
 
 import { ProductProvider } from "./context/product_context.js";
 import { FilterProvider } from "./context/filter_context.js";
+import { CartProvider } from "./context/cart_context.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ProductProvider>
-    <FilterProvider>
-      <App />
-    </FilterProvider>
+    <CartProvider>
+      <FilterProvider>
+        <App />
+      </FilterProvider>
+    </CartProvider>
   </ProductProvider>
 );
 

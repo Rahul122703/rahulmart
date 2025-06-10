@@ -21,3 +21,6 @@ export const CLEAR_FILTERS = "CLEAR_FILTERS";
 export const RETRY = "RETRY";
 
 export const GET_FILTER_DATA = "GET_FILTER_DATA";
+
+export const ADD_PRODUCT = "ADD_PRODUCT";
+export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
