@@ -8,7 +8,7 @@ import { MdSmsFailed } from "react-icons/md";
 import ProductAmount from "../components/ProductAmount.js";
 import ProductStar from "../components/ProductStar.js";
 
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 import { useParams, useNavigate, Link } from "react-router-dom";
 
@@ -22,7 +22,7 @@ export default function ProductPage() {
     singleproduct,
     fetchSingleProduct,
   } = useProductContext();
-  const { addToCart, cart, removeFromCart } = useCartContext();
+  const { addToCart, cart, removeFromCart, manageAmount } = useCartContext();
   const { productid } = useParams();
   const navigate = useNavigate();
 
@@ -34,10 +34,6 @@ export default function ProductPage() {
 
   useEffect(() => {
     setAlreadyThere(cart.some((item) => item.id === singleproduct.id));
-    console.log(
-      "after checking on product page  ",
-      cart.some((item) => item.id === singleproduct.id)
-    );
   }, [singleproduct, cart.length]);
 
   const manageAddToCart = (productInfo) => {
@@ -86,7 +82,7 @@ export default function ProductPage() {
   } = singleproduct;
 
   const imageUrl = image?.[0]?.url || "";
-
+  const currentCartItem = cart.find((item) => item.id === productid);
   return (
     <>
       <div className=" bg-gray-800 dark:bg-gray-900 text-white py-6 px-4 mb-8 flex justify-center">
@@ -166,8 +162,11 @@ export default function ProductPage() {
               ))}
             </div>
 
-            <ProductAmount stock={stock} />
+            {currentCartItem && (
+              <ProductAmount {...currentCartItem} manageAmount={manageAmount} />
+            )}
 
+            {/*here */}
             {alreadyThere ? (
               <button
                 onClick={() => {
@@ -181,15 +180,7 @@ export default function ProductPage() {
             ) : (
               <button
                 aria-label="Add to cart"
-                onClick={() =>
-                  manageAddToCart({
-                    id: id,
-                    product: product,
-                    productPrice: price,
-                    color: colors,
-                    cartAmount: 0,
-                  })
-                }
+                onClick={() => manageAddToCart(singleproduct)}
                 className="mt-4 px-8 py-3 bg-gray-700 dark:bg-gray-600 hover:bg-black dark:hover:bg-gray-900 text-white text-lg font-semibold rounded-xl shadow-md transition">
                 ADD TO CART
               </button>
@@ -204,7 +195,6 @@ export default function ProductPage() {
             />
           </div>
         </div>
-        <Toaster position="top-center" />
       </div>
 
       <Footer />

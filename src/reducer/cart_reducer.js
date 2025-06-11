@@ -1,11 +1,31 @@
-import { ADD_PRODUCT, REMOVE_PRODUCT } from "../action.js";
+import { ADD_PRODUCT, REMOVE_PRODUCT, MANAGE_AMOUNT } from "../action.js";
 
 const card_reducer = (state, action) => {
   if (action.type === ADD_PRODUCT) {
-    const { id, product, productPrice, color, cartAmount } = action.payload;
+    const {
+      productInfo: {
+        id,
+        fields: {
+          product,
+          description,
+          shipping,
+          rating,
+          company,
+          stock,
+          colors,
+          price,
+          image: [{ url }],
+        },
+      },
+      subAmount,
+    } = action.payload;
+
     return {
       ...state,
-      cart: [...state.cart, { id, product, productPrice, color, cartAmount }],
+      cart: [
+        ...state.cart,
+        { id, product, price, colors, url, stock, subAmount: subAmount },
+      ],
     };
   }
   if (action.type === REMOVE_PRODUCT) {
@@ -13,6 +33,28 @@ const card_reducer = (state, action) => {
       ...state,
       cart: state.cart.filter((item) => item.id !== action.payload.id),
     };
+  }
+  if (action.type === MANAGE_AMOUNT) {
+    const { id, method } = action.payload;
+    const updatedCart = state.cart.map((item) => {
+      if (item.id === id) {
+        let newAmount = item.subAmount;
+        if (method === "increase" && newAmount <= item.stock - 1) {
+          newAmount += 1;
+        } else if (method === "decrease") {
+          newAmount = Math.max(0, newAmount - 1);
+        }
+        return { ...item, subAmount: newAmount };
+      }
+      return item;
+    });
+
+    return {
+      ...state,
+      cart: updatedCart,
+    };
+  } else {
+    throw new Error("NO MATCHING ACTION TYPE IN CART_REDUCER");
   }
 };
 

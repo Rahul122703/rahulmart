@@ -24,3 +24,4 @@ export const GET_FILTER_DATA = "GET_FILTER_DATA";
 
 export const ADD_PRODUCT = "ADD_PRODUCT";
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
+export const MANAGE_AMOUNT = "MANAGE_AMOUNT";

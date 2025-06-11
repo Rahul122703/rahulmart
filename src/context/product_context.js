@@ -12,7 +12,7 @@ import {
   PRODUCT_CARD_DESC,
 } from "../action.js";
 
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 import { product_reducer } from "../reducer/product_reducer.js";
 import axios from "axios";
@@ -73,18 +73,10 @@ export const ProductProvider = ({ children }) => {
 
   useEffect(() => {
     dispatch({ type: PRODUCT_LOADING });
-
-    const callFunction = async () => {
-      try {
-        const data = await fetchProductData();
-      } catch (error) {
-        dispatch({ type: PRODUCT_ERROR, payload: error.message });
-        throw error;
-      }
-    };
-    toast.promise(callFunction(), {
-      loading: "Fetching all the products",
-      error: (err) => err.message || "Check your internet connection",
+    const callFunction = fetchProductData();
+    toast.promise(callFunction, {
+      loading: "Fetching all the product",
+      error: "Check Your internet connection",
       success: "Good to go!",
     });
   }, []);
@@ -101,7 +93,6 @@ export const ProductProvider = ({ children }) => {
         ...state,
       }}>
       {children}
-      <Toaster />
     </ProductContext.Provider>
   );
 };
