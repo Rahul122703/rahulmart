@@ -1,5 +1,4 @@
 const ProductAmount = ({ stock = 0, id, subAmount, manageAmount }) => {
-  console.log(subAmount);
   return (
     <div className="mt-4">
       <button
