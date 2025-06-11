@@ -4,6 +4,7 @@ import {
   REMOVE_PRODUCT,
   MANAGE_AMOUNT,
   MANAGE_PRICE,
+  CLEAR_CART,
 } from "../action.js";
 import cart_reducer from "../reducer/cart_reducer.js";
 
@@ -31,6 +32,10 @@ export const CartProvider = ({ children }) => {
     });
   };
 
+  const clearCart = () => {
+    dispatch({ type: CLEAR_CART });
+  };
+
   const removeFromCart = (productId) => {
     dispatch({ type: REMOVE_PRODUCT, payload: { id: productId } });
   };
@@ -46,7 +51,7 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ ...state, addToCart, removeFromCart, manageAmount }}>
+      value={{ ...state, addToCart, removeFromCart, manageAmount, clearCart }}>
       {children}
     </CartContext.Provider>
   );

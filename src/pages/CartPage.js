@@ -7,7 +7,8 @@ import { useCartContext } from "../context/cart_context.js";
 import toast from "react-hot-toast";
 
 const CartPage = () => {
-  const { price, cart, manageAmount, removeFromCart } = useCartContext();
+  const { price, cart, manageAmount, removeFromCart, clearCart } =
+    useCartContext();
   const { subtotal, shipping } = price;
 
   const actionBtn =
@@ -62,6 +63,16 @@ const CartPage = () => {
           </aside>
 
           <div className="lg:col-span-2 space-y-6">
+            {cart.length ? (
+              <button
+                onClick={() => {
+                  toast.success("Cart cleared");
+                  clearCart();
+                }}
+                className="px-4 py-2 bg-red-700  hover:bg-black dark:hover:bg-gray-900 text-white text-lg font-semibold rounded-xl shadow-md transition text-center">
+                CLEAR CART
+              </button>
+            ) : null}
             {cart.map((currentItem) => {
               const {
                 id,

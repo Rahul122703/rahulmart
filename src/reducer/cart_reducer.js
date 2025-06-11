@@ -3,6 +3,7 @@ import {
   REMOVE_PRODUCT,
   MANAGE_AMOUNT,
   MANAGE_PRICE,
+  CLEAR_CART,
 } from "../action.js";
 
 const card_reducer = (state, action) => {
@@ -12,10 +13,7 @@ const card_reducer = (state, action) => {
         id,
         fields: {
           product,
-          description,
           shipping,
-          rating,
-          company,
           stock,
           colors,
           price,
@@ -82,6 +80,12 @@ const card_reducer = (state, action) => {
           return acc;
         }, 0),
       },
+    };
+  }
+  if (action.type === CLEAR_CART) {
+    return {
+      ...state,
+      cart: [],
     };
   } else {
     throw new Error("NO MATCHING ACTION TYPE IN CART_REDUCER");
