@@ -77,9 +77,7 @@ const Navbar = () => {
           </div>
         </Link>
       </div>
-
       <SearchModal isOpen={modal} onClose={() => showModal(false)} />
-
       <span
         onClick={() => {
           navigate("/", { replace: true });
@@ -92,7 +90,6 @@ const Navbar = () => {
         }}>
         RAHULMART
       </span>
-
       <nav className="hidden xl:flex items-center gap-6 text-sm">
         {["Home", "Products", "About"].map((item, index) => {
           const path =
@@ -120,7 +117,6 @@ const Navbar = () => {
           </Link>
         </div>
       </nav>
-
       <button
         className="xl:hidden text-gray-900 dark:text-gray-100"
         onClick={() => (isNavbarOpen ? closeNavbar() : openNavbar())}
@@ -131,7 +127,6 @@ const Navbar = () => {
           <FiMenu className="w-6 h-6" />
         )}
       </button>
-
       <div
         className={`absolute top-[64px] left-0 right-0 mt-[0.3rem] z-40 w-full rounded-b-lg
                     transform transition-all duration-500 ease-in-out

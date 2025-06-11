@@ -76,8 +76,13 @@ const SearchModal = ({ isOpen, onClose }) => {
               <div
                 key={id}
                 onClick={() => {
+                  const product = { productName: name };
                   onClose();
-                  navigate(`/product/${id}`, { replace: true });
+                  navigate(
+                    `/product/${id}`,
+                    { state: product },
+                    { replace: true }
+                  );
                 }}
                 className="flex w-[16rem] h-[5rem] cursor-pointer border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800 hover:shadow-md transition">
                 <img

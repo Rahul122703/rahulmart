@@ -103,6 +103,7 @@ export default function ProductPage() {
         <button
           onClick={() => navigate("/products", { replace: true })}
           className="mb-6 px-4 py-2 bg-gray-700 dark:bg-gray-600 hover:bg-black dark:hover:bg-gray-900 text-white rounded-lg shadow flex items-center gap-2 transition">
+          {/*123*/}
           <IoMdArrowRoundBack />
         </button>
 
@@ -166,7 +167,6 @@ export default function ProductPage() {
               <ProductAmount {...currentCartItem} manageAmount={manageAmount} />
             )}
 
-            {/*here */}
             {alreadyThere ? (
               <button
                 onClick={() => {
