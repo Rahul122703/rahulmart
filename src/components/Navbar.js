@@ -7,6 +7,7 @@ import { IoSearchCircle } from "react-icons/io5";
 import { useProductContext } from "../context/product_context.js";
 
 import SearchModal from "./SearchInput.js";
+import { useCartContext } from "../context/cart_context.js";
 
 const Navbar = () => {
   const { openNavbar, closeNavbar, isNavbarOpen } = useProductContext();
@@ -30,15 +31,20 @@ const Navbar = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
+  const { cart } = useCartContext();
+  const totalCartItems = cart.reduce((accumulator, item) => {
+    return accumulator + item.subAmount;
+  }, 0);
+
   return (
     <header
       className="border w-full px-6 py-3 flex justify-between items-center my-4
                  sticky top-0 z-40 rounded-lg p-6 max-w-[78rem] mx-auto shadow-md
                  bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center border border-none">
         <button
           onClick={toggleTheme}
-          className="mr-4 p-2 rounded-full transition
+          className="p-2 rounded-full transition
                      hover:bg-gray-200 dark:hover:bg-gray-700"
           aria-label="Toggle Dark Mode">
           {theme === "dark" ? (
@@ -54,6 +60,22 @@ const Navbar = () => {
           aria-label="Open Search Modal">
           <IoSearchCircle className="h-7 w-7" />
         </button>
+        <Link to="/cart" aria-label="Go to cart">
+          <div className="flex items-center relative">
+            <FiShoppingCart
+              className="ml-[10px] cursor-pointer
+                           hover:text-blue-600 dark:hover:text-blue-400"
+            />
+            {totalCartItems ? (
+              <div
+                className="absolute px-[2px] top-[-10px] right-[-13px] rounded-xl text-[13px] md:text-sm
+                           bg-blue-600 text-white border border-gray-200
+                           dark:bg-blue-500 dark:border-gray-700">
+                {totalCartItems}
+              </div>
+            ) : null}
+          </div>
+        </Link>
       </div>
 
       <SearchModal isOpen={modal} onClose={() => showModal(false)} />
@@ -93,20 +115,6 @@ const Navbar = () => {
         })}
 
         <div className="flex items-center gap-4 text-xl w-[10rem] justify-between">
-          <Link to="/cart" aria-label="Go to cart">
-            <div className="flex items-center relative">
-              <FiShoppingCart
-                className="ml-[10px] cursor-pointer
-                           hover:text-blue-600 dark:hover:text-blue-400"
-              />
-              <div
-                className="absolute top-[-5px] right-[-22px] rounded-full text-sm p-[2px]
-                           bg-blue-600 text-white border border-gray-200
-                           dark:bg-blue-500 dark:border-gray-700">
-                12
-              </div>
-            </div>
-          </Link>
           <Link to="/login" aria-label="Login">
             Login
           </Link>
@@ -154,20 +162,6 @@ const Navbar = () => {
         </Link>
 
         <div className="flex items-center justify-between text-md p-4">
-          <Link to="/cart" onClick={closeNavbar} aria-label="Go to cart">
-            <div className="flex items-center relative">
-              <FiShoppingCart
-                className="ml-4 cursor-pointer
-                           hover:text-blue-600 dark:hover:text-blue-400"
-              />
-              <div
-                className="absolute top-[-5px] right-[-22px] rounded-full text-sm p-[2px]
-                           bg-blue-600 text-white border border-gray-200
-                           dark:bg-blue-500 dark:border-gray-700">
-                12
-              </div>
-            </div>
-          </Link>
           <Link to="/login" onClick={closeNavbar} aria-label="Login">
             Login
           </Link>

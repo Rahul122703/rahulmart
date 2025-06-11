@@ -1,12 +1,21 @@
-import { useContext, createContext, useReducer } from "react";
-import { ADD_PRODUCT, REMOVE_PRODUCT, MANAGE_AMOUNT } from "../action.js";
+import { useContext, createContext, useReducer, useEffect } from "react";
+import {
+  ADD_PRODUCT,
+  REMOVE_PRODUCT,
+  MANAGE_AMOUNT,
+  MANAGE_PRICE,
+} from "../action.js";
 import cart_reducer from "../reducer/cart_reducer.js";
 
 const CartContext = createContext();
 
 const initialCartState = {
   cart: [],
-  total_price: 0,
+  shipping_value: 10,
+  price: {
+    subtotal: 0,
+    shipping: 0,
+  },
 };
 
 export const CartProvider = ({ children }) => {
@@ -30,6 +39,10 @@ export const CartProvider = ({ children }) => {
     const method = e.currentTarget.name;
     dispatch({ type: MANAGE_AMOUNT, payload: { id, method } });
   };
+
+  useEffect(() => {
+    dispatch({ type: MANAGE_PRICE });
+  }, [state.cart]);
 
   return (
     <CartContext.Provider

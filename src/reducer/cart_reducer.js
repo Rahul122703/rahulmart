@@ -1,4 +1,9 @@
-import { ADD_PRODUCT, REMOVE_PRODUCT, MANAGE_AMOUNT } from "../action.js";
+import {
+  ADD_PRODUCT,
+  REMOVE_PRODUCT,
+  MANAGE_AMOUNT,
+  MANAGE_PRICE,
+} from "../action.js";
 
 const card_reducer = (state, action) => {
   if (action.type === ADD_PRODUCT) {
@@ -24,7 +29,16 @@ const card_reducer = (state, action) => {
       ...state,
       cart: [
         ...state.cart,
-        { id, product, price, colors, url, stock, subAmount: subAmount },
+        {
+          id,
+          product,
+          price,
+          colors,
+          url,
+          stock,
+          subAmount: subAmount + 1,
+          shipping,
+        },
       ],
     };
   }
@@ -42,7 +56,7 @@ const card_reducer = (state, action) => {
         if (method === "increase" && newAmount <= item.stock - 1) {
           newAmount += 1;
         } else if (method === "decrease") {
-          newAmount = Math.max(0, newAmount - 1);
+          newAmount = Math.max(1, newAmount - 1);
         }
         return { ...item, subAmount: newAmount };
       }
@@ -52,6 +66,22 @@ const card_reducer = (state, action) => {
     return {
       ...state,
       cart: updatedCart,
+    };
+  }
+  if (action.type === MANAGE_PRICE) {
+    return {
+      ...state,
+      price: {
+        subtotal: state.cart.reduce((acc, current) => {
+          return acc + current.subAmount * current.price;
+        }, 0),
+        shipping: state.cart.reduce((acc, current) => {
+          if (current.shipping === "true") {
+            return acc + current.subAmount * state.shipping_value;
+          }
+          return acc;
+        }, 0),
+      },
     };
   } else {
     throw new Error("NO MATCHING ACTION TYPE IN CART_REDUCER");

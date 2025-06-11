@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import { CiSquarePlus, CiSquareMinus } from "react-icons/ci";
@@ -8,9 +7,8 @@ import { useCartContext } from "../context/cart_context.js";
 import toast from "react-hot-toast";
 
 const CartPage = () => {
-  const { cart, manageAmount, removeFromCart } = useCartContext();
-
-  const shipping = 0;
+  const { price, cart, manageAmount, removeFromCart } = useCartContext();
+  const { subtotal, shipping } = price;
 
   const actionBtn =
     "px-8 py-3 bg-gray-700 dark:bg-gray-600 hover:bg-black dark:hover:bg-gray-900 text-white text-lg font-semibold rounded-xl shadow-md transition text-center";
@@ -40,16 +38,16 @@ const CartPage = () => {
 
               <div className="flex justify-between text-sm">
                 <span>Subtotal</span>
-                <span className="font-medium">00</span>
+                <span className="font-medium">{subtotal} ₹</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span>Shipping</span>
-                <span className="font-medium">${shipping.toFixed(2)}</span>
+                <span className="font-medium">{shipping} ₹</span>
               </div>
               <hr className="border-gray-300 dark:border-gray-600" />
               <div className="flex justify-between text-lg font-semibold">
                 <span>Total</span>
-                <span>00</span>
+                <span>{subtotal + shipping} ₹</span>
               </div>
 
               <div className="flex flex-col gap-4 items-center">
@@ -129,13 +127,28 @@ const CartPage = () => {
                         }}
                         aria-label="remove item"
                         className="text-red-600 hover:text-red-700 text-3xl">
-                        <MdDeleteForever /> {/*//here */}
+                        <MdDeleteForever />
                       </button>
                     </div>
                   </div>
                 </div>
               );
             })}
+            {!cart.length ? (
+              <div className="flex flex-col items-center justify-center min-h-[50vh] bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white rounded-xl border border-gray-300 dark:border-gray-600 p-8 shadow-lg">
+                <h2 className="text-2xl font-semibold mb-4">
+                  No Items in Cart
+                </h2>
+                <p className="text-center mb-6">
+                  Looks like your cart is empty.
+                </p>
+                <button
+                  onClick={() => navigate("/products")}
+                  className="bg-gray-700 text-white dark:bg-gray-700 dark:text-white px-6 py-3 rounded-full shadow-md hover:bg-gray-800 transition">
+                  Browse Products
+                </button>
+              </div>
+            ) : null}
           </div>
         </div>
       </section>

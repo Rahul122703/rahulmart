@@ -109,7 +109,7 @@ export const filter_reducer = (state, action) => {
 
     if (free_shipping === "true") {
       tempSideFilterProducts = tempSideFilterProducts.filter(
-        (product) => product.shipping === "true"
+        (product) => product.shipping === "false"
       );
     }
 
