@@ -53,7 +53,6 @@ export const FilterProvider = ({ children }) => {
   };
 
   const filterProduct = (e) => {
-    console.clear();
     let value = e.target.value;
     const name = e.target.name;
     if (name === "free_shipping") {

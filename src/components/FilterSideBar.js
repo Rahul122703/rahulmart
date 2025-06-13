@@ -4,7 +4,7 @@ import { useFilterContext } from "../context/filter_context.js";
 const FilterSidebar = () => {
   const {
     filter_data: { categories, companies, colors, max_price },
-    filters: { company, color, price },
+    filters: { category, company, color, price },
     filterProduct,
     clearFilter,
   } = useFilterContext();
@@ -25,7 +25,9 @@ const FilterSidebar = () => {
               value={label}
               key={label}
               onClick={filterProduct}
-              className="w-full text-start rounded-xl p-1 cursor-pointer hover:text-primary dark:hover:text-primary-light hover:bg-gray-700 hover:text-white capitalize">
+              className={`w-full text-start rounded-xl p-1 cursor-pointer hover:text-primary dark:hover:text-primary-light hover:bg-gray-700 hover:text-white capitalize ${
+                label === category ? "bg-gray-700 text-white" : null
+              }`}>
               {label}
             </button>
           ))}

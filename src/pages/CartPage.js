@@ -1,14 +1,16 @@
 import { useNavigate, Link } from "react-router-dom";
 
 import { CiSquarePlus, CiSquareMinus } from "react-icons/ci";
-import { MdDeleteForever } from "react-icons/md";
+import { MdDeleteForever, MdNotificationsActive } from "react-icons/md";
 import { useCartContext } from "../context/cart_context.js";
 
 import toast from "react-hot-toast";
+import { useUserContext } from "../context/user_context.js";
 
 const CartPage = () => {
   const { price, cart, manageAmount, removeFromCart, clearCart } =
     useCartContext();
+  const { user, logIn } = useUserContext();
   const { subtotal, shipping } = price;
 
   const actionBtn =
@@ -52,7 +54,21 @@ const CartPage = () => {
               </div>
 
               <div className="flex flex-col gap-4 items-center">
-                <button className={actionBtn}>CHECKOUT NOW</button>
+                {user ? (
+                  cart.length ? (
+                    <button
+                      className={actionBtn}
+                      onClick={() => {
+                        navigate("/checkout", { replace: true });
+                      }}>
+                      CHECKOUT NOW
+                    </button>
+                  ) : null
+                ) : (
+                  <button className={actionBtn} onClick={logIn}>
+                    LOGIN
+                  </button>
+                )}
                 <Link
                   to="/products"
                   className={`${actionBtn} !bg-transparent !text-gray-700 dark:!text-white !border-2 !border-gray-700 dark:!border-gray-300`}>

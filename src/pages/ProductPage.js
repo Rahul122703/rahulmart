@@ -41,6 +41,8 @@ export default function ProductPage() {
     addToCart(productInfo);
   };
 
+  const [showFullDesc, setShowFullDesc] = useState(false);
+
   if (singleproductError) {
     return (
       <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900">
@@ -119,7 +121,16 @@ export default function ProductPage() {
               {price}₹
             </p>
 
-            <p className="text-gray-600 dark:text-gray-400">{description}</p>
+            <div className="text-gray-600 dark:text-gray-400">
+              {showFullDesc ? description : `${description.slice(0, 200)}...`}
+              {description.length > 200 && (
+                <button
+                  onClick={() => setShowFullDesc(!showFullDesc)}
+                  className="text-blue-600 dark:text-blue-400 font-semibold ml-2 hover:underline">
+                  {showFullDesc ? "Read Less" : "Read More"}
+                </button>
+              )}
+            </div>
 
             <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 text-sm sm:text-base text-gray-700 dark:text-gray-300">
               <p>

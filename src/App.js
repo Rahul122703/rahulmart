@@ -21,9 +21,14 @@ import LoginPage from "./pages/LoginPage.js";
 import SignupPage from "./pages/SignupPage.js";
 import ErrorPage from "./pages/ErrorPage.js";
 import CartPage from "./pages/CartPage.js";
+import CheckoutPage from "./pages/CheckoutPage.js";
 
 import { useProductContext } from "./context/product_context.js";
 
+import PrivateRoute from "./components/PrivateRoute.js";
+
+// clientID
+// Domain dev-1w6wlwy2wjyvspbk.us.auth0.com
 const App = () => {
   const [loading, setLoading] = useState(true);
   setTimeout(() => {
@@ -51,6 +56,14 @@ const App = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route
+            path="/checkout"
+            element={
+              <PrivateRoute>
+                <CheckoutPage />
+              </PrivateRoute>
+            }
+          />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <InstallPrompt />

@@ -4,6 +4,7 @@ import {
   MANAGE_AMOUNT,
   MANAGE_PRICE,
   CLEAR_CART,
+  RESTORE_CART,
 } from "../action.js";
 
 const card_reducer = (state, action) => {

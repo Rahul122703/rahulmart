@@ -10,6 +10,7 @@ import { useState } from "react";
 
 const HomePage = () => {
   const [retryCount, setRetryCount] = useState(0);
+
   return (
     <>
       <div className="shadow flex flex-col bg-white dark:bg-gray-900">

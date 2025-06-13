@@ -8,9 +8,13 @@ import { useProductContext } from "../context/product_context.js";
 
 import SearchModal from "./SearchInput.js";
 import { useCartContext } from "../context/cart_context.js";
+import { useUserContext } from "../context/user_context.js";
+
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const { openNavbar, closeNavbar, isNavbarOpen } = useProductContext();
+  const { logIn, logOut, user } = useUserContext();
   const [modal, showModal] = useState(false);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
@@ -111,10 +115,20 @@ const Navbar = () => {
           );
         })}
 
-        <div className="flex items-center gap-4 text-xl w-[10rem] justify-between">
-          <Link to="/login" aria-label="Login">
-            Login
-          </Link>
+        <div className="flex flex-row justify-between">
+          {!user ? (
+            <div
+              onClick={logIn}
+              className="flex items-center justify-between text-lg px-2 py-1 ml-[0.5rem] border-2 cursor-pointer border-gray-700  transition-all duration-300 rounded-xl hover:bg-gray-700 hover:text-white">
+              Login
+            </div>
+          ) : (
+            <div
+              onClick={logOut}
+              className="flex items-center justify-between text-lg px-2 py-1 ml-[0.5rem] border-2 cursor-pointer border-gray-700  transition-all duration-300 rounded-xl hover:bg-gray-700 hover:text-white">
+              Log out
+            </div>
+          )}
         </div>
       </nav>
       <button
@@ -156,10 +170,21 @@ const Navbar = () => {
           About Us
         </Link>
 
-        <div className="flex items-center justify-between text-md p-4">
-          <Link to="/login" onClick={closeNavbar} aria-label="Login">
-            Login
-          </Link>
+        <div className="flex flex-row justify-between">
+          {!user ? (
+            <div
+              onClick={logIn}
+              className="flex items-center justify-between text-md px-1 py-[0.2rem]  border-2 cursor-pointer border-gray-700  transition-all duration-300 rounded-xl hover:bg-gray-700 hover:text-white my-1 ml-[0.9rem]">
+              Login
+            </div>
+          ) : (
+            <div
+              name="logout"
+              onClick={logOut}
+              className="flex items-center justify-between text-md px-1 py-[0.2rem]  border-2 cursor-pointer border-gray-700  transition-all duration-300 rounded-xl hover:bg-gray-700 hover:text-white ml-[0.9rem] my-1">
+              Log out
+            </div>
+          )}
         </div>
       </div>
     </header>

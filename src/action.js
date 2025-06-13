@@ -24,6 +24,7 @@ export const GET_FILTER_DATA = "GET_FILTER_DATA";
 
 export const CLEAR_CART = "CLEAR_CART";
 export const ADD_PRODUCT = "ADD_PRODUCT";
+export const RESTORE_CART = "RESTORE_CART";
 export const MANAGE_PRICE = "MANAGE_PRICE";
 export const MANAGE_AMOUNT = "MANAGE_AMOUNT";
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";

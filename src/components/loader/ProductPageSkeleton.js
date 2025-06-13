@@ -1,15 +1,21 @@
 import React from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useLocation, useNavigate, Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function ProductPageSkeleton() {
   const {
     state: { productName },
   } = useLocation();
   const navigate = useNavigate();
+
+  if (!productName) {
+    navigate("/", { replace: true });
+    toast.error("Product not found");
+  }
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="w-[100vw] bg-gray-800 dark:bg-gray-900 text-white py-6 px-4 mb-8 flex justify-center">
+      <div className="w-[99.5vw] bg-gray-800 dark:bg-gray-900 text-white py-6 px-4 mb-8 flex justify-center">
         <div className="text-3xl font-semibold text-center flex flex-row flex-wrap">
           <Link to="/" className="text-white">
             Home

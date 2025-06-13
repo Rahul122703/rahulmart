@@ -49,6 +49,7 @@ export const ProductProvider = ({ children }) => {
       const { data } = await axios.get(ALL_PRODUCTS);
       setTimeout(() => {
         dispatch({ type: PRODUCT_SUCCESS, payload: data });
+        localStorage.setItem("products_data", JSON.stringify(data));
       }, 2000);
     } catch (error) {
       dispatch({ type: PRODUCT_ERROR });
@@ -72,13 +73,30 @@ export const ProductProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    dispatch({ type: PRODUCT_LOADING });
-    const callFunction = fetchProductData();
-    toast.promise(callFunction, {
-      loading: "Fetching all the product",
-      error: "Check Your internet connection",
-      success: "Good to go!",
-    });
+    const localStorageProductsData = JSON.parse(
+      localStorage.getItem("products_data")
+    );
+    if (
+      localStorageProductsData === null ||
+      localStorageProductsData.length === 0
+    ) {
+      dispatch({ type: PRODUCT_LOADING });
+      const callFunction = fetchProductData();
+      toast.promise(callFunction, {
+        loading: "Fetching all the product",
+        error: "Check Your internet connection",
+        success: "Good to go!",
+      });
+    } else {
+      state.productLoading = false;
+      state.products = localStorageProductsData;
+      state.featuredProducts = localStorageProductsData.filter(
+        (currentItem) => {
+          return currentItem.featured === "true";
+        }
+      );
+      state.productCardChange = localStorageProductsData.productCardChange;
+    }
   }, []);
 
   return (

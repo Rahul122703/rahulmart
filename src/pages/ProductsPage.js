@@ -6,6 +6,9 @@ import ProductCardDesc from "../components/ProductCardDesc.js";
 import ProductHeader from "../components/ProductHeader.js";
 import Filters from "../components/FilterSideBar.js";
 import ProductCard2Skeleton from "../components/loader/ProductCard2Skeleton.js";
+
+import SkeletonProductCardDesc from "../components/loader/SkeletonProductCardDesc .js";
+
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -20,6 +23,10 @@ export default function ProductsContainer() {
     fetchProductData,
     dispatch,
   } = useProductContext();
+
+  // const { productCardChange, fetchProductData, dispatch } = useProductContext();
+  // const productLoading = true;
+  // const productError = false;
 
   const { filteredProducts } = useFilterContext();
 
@@ -93,9 +100,13 @@ export default function ProductsContainer() {
         : "flex flex-wrap justify-center items-center rounded-lg p-4 dark:border dark:border-white"
     }`}>
               {productLoading ? (
-                [...Array(8)].map((_, index) => (
-                  <ProductCard2Skeleton key={index} />
-                ))
+                [...Array(8)].map((_, index) =>
+                  productCardChange ? (
+                    <SkeletonProductCardDesc key={index} />
+                  ) : (
+                    <ProductCard2Skeleton key={index} />
+                  )
+                )
               ) : productError ? (
                 <div className="flex flex-col items-center mt-10">
                   <p className="text-center text-red-500 dark:text-red-400 mb-4">

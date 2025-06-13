@@ -5,10 +5,12 @@ import {
   MANAGE_AMOUNT,
   MANAGE_PRICE,
   CLEAR_CART,
+  RESTORE_CART,
 } from "../action.js";
 import cart_reducer from "../reducer/cart_reducer.js";
 
 const CartContext = createContext();
+CartContext.displayName = "CartContext";
 
 const initialCartState = {
   cart: [],
@@ -19,8 +21,25 @@ const initialCartState = {
   },
 };
 
+const getInitialCartState = () => {
+  const local = localStorage.getItem("filter_data");
+  return local ? JSON.parse(local) : initialCartState;
+};
+
 export const CartProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(cart_reducer, initialCartState);
+  const [state, dispatch] = useReducer(
+    cart_reducer,
+    initialCartState,
+    getInitialCartState
+  );
+
+  useEffect(() => {
+    dispatch({ type: MANAGE_PRICE });
+  }, [state.cart]);
+
+  useEffect(() => {
+    localStorage.setItem("filter_data", JSON.stringify(state));
+  }, [state]);
 
   const addToCart = (productInfo) => {
     dispatch({
@@ -45,13 +64,15 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: MANAGE_AMOUNT, payload: { id, method } });
   };
 
-  useEffect(() => {
-    dispatch({ type: MANAGE_PRICE });
-  }, [state.cart]);
-
   return (
     <CartContext.Provider
-      value={{ ...state, addToCart, removeFromCart, manageAmount, clearCart }}>
+      value={{
+        ...state,
+        addToCart,
+        removeFromCart,
+        manageAmount,
+        clearCart,
+      }}>
       {children}
     </CartContext.Provider>
   );
