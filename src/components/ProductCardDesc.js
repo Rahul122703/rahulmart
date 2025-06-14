@@ -12,7 +12,7 @@ const ProductCardDesc = ({ id, image, price, name, desc }) => {
     // <div className="border border-none w-full max-w-[100rem] mx-auto md:mb-0 rounded-xl m-4 p-2 md:p-0 h-[10rem]">
     <div className="overflow-clip flex flex-row bg-gray-100 dark:bg-gray-900 rounded-2xl md:shadow-sm md:border border-gray-300 dark:border-white cursor-pointer transition-all duration-300 hover:shadow-md h-[13rem] mb-3">
       <div className="w-[70%] sm:w-[30%] border border-none">
-        <img src={image} alt={name} className="object-fit h-full w-full" />
+        <img src={image} alt={name} className="object-cover h-full w-full" />
       </div>
 
       <div className="md:p-4 flex flex-col justify-between w-full border border-none mx-2">

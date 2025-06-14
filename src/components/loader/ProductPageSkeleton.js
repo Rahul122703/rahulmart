@@ -35,39 +35,46 @@ export default function ProductPageSkeleton() {
           <IoMdArrowRoundBack />
         </button>
 
-        <div className="flex flex-col-reverse lg:flex-row gap-10 animate-pulse">
+        <div className="flex flex-col-reverse lg:flex-row gap-10 ">
           <div className="w-full lg:w-1/2 px-2 lg:px-6 space-y-5">
-            <div className="h-10 w-3/4 bg-gray-300 dark:bg-gray-700 rounded"></div>
-            <div className="h-6 w-1/3 bg-gray-300 dark:bg-gray-700 rounded"></div>
-            <div className="h-8 w-1/4 bg-gray-300 dark:bg-gray-700 rounded"></div>
-            <div className="h-20 bg-gray-300 dark:bg-gray-700 rounded"></div>
+            <div className="animate-pulse h-10 w-3/4 bg-gray-300 dark:bg-gray-700 rounded"></div>
+            <div className="animate-pulse h-6 w-1/3 bg-gray-300 dark:bg-gray-700 rounded"></div>
+            <div className="animate-pulse h-8 w-1/4 bg-gray-300 dark:bg-gray-700 rounded"></div>
+            <div className="animate-pulse h-20 bg-gray-300 dark:bg-gray-700 rounded"></div>
 
-            <div className="space-y-2">
+            <div className="space-y-2 animate-pulse ">
               <div className="h-4 w-2/3 bg-gray-300 dark:bg-gray-700 rounded"></div>
               <div className="h-4 w-1/2 bg-gray-300 dark:bg-gray-700 rounded"></div>
               <div className="h-4 w-1/3 bg-gray-300 dark:bg-gray-700 rounded"></div>
             </div>
 
-            <div className="flex space-x-2">
+            <div className="flex space-x-2 animate-pulse">
               <div className="h-4 w-1/6 bg-gray-300 dark:bg-gray-700 rounded"></div>
 
               <div className="flex flex-row space-x-2">
-                <div className="w-5 h-5 rounded-md bg-gray-300 dark:bg-gray-700 shadow border border-black"></div>
-                <div className="w-5 h-5 rounded-md bg-gray-300 dark:bg-gray-700 shadow border border-black"></div>
-                <div className="w-5 h-5 rounded-md bg-gray-300 dark:bg-gray-700 shadow border border-black"></div>
+                <div className="w-5 h-5 rounded-md bg-gray-300 dark:bg-gray-700 shadow border border-none"></div>
+                <div className="w-5 h-5 rounded-md bg-gray-300 dark:bg-gray-700 shadow border border-none"></div>
+                <div className="w-5 h-5 rounded-md bg-gray-300 dark:bg-gray-700 shadow border border-none"></div>
               </div>
             </div>
 
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gray-300 dark:bg-gray-700 rounded"></div>
-              <div className="w-16 h-10 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded"></div>
-              <div className="w-10 h-10 bg-gray-300 dark:bg-gray-700 rounded"></div>
+            <div className="border border-none w-fit flex flex-row justify between items-center">
+              <div className="flex items-center space-x-2 animate-pulse">
+                <div className="w-10 h-10 bg-gray-300 dark:bg-gray-700 rounded"></div>
+                <div className="w-16 h-10 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded"></div>
+                <div className="w-10 h-10 bg-gray-300 dark:bg-gray-700 rounded"></div>
+              </div>
+              <button
+                onClick={() => navigate("/products", { replace: true })}
+                className="ml-4 h-[2.5rem] px-4 py-2 bg-gray-700 dark:bg-gray-600 hover:bg-black dark:hover:bg-gray-900 text-white rounded-lg shadow flex items-center transition animate-none">
+                <IoMdArrowRoundBack />
+              </button>
             </div>
 
             <div className="w-40 h-[50px] bg-gray-300 dark:bg-gray-700 rounded-xl"></div>
           </div>
 
-          <div className="w-full lg:w-1/2">
+          <div className="w-full lg:w-1/2 animate-pulse">
             <div className="h-[25rem] lg:w-full lg:h-full bg-gray-300 dark:bg-gray-700 rounded-2xl shadow-xl"></div>
           </div>
         </div>

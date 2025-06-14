@@ -27,7 +27,7 @@ const product_initialState = {
   featuredProducts: [],
   singleproductLoading: false,
   singleproductError: false,
-  singleproduct: null,
+  singleproduct: [],
   productCardChange: false,
 };
 
@@ -60,9 +60,7 @@ export const ProductProvider = ({ children }) => {
     try {
       dispatch({ type: SINGLE_PRODUCT_LOADING });
       const { data } = await axios.get(`${SINGLE_PRODUCT}${id}`);
-      setTimeout(() => {
-        dispatch({ type: SINGLE_PRODUCT_SUCCESS, payload: data });
-      }, 2000);
+      dispatch({ type: SINGLE_PRODUCT_SUCCESS, payload: data });
     } catch (error) {
       dispatch({ type: SINGLE_PRODUCT_ERROR });
     }

@@ -2,7 +2,6 @@ import Hero from "../components/Hero.js";
 import FeaturedProducts from "../components/FeaturedProducts.js";
 import Footer from "../components/Footer.js";
 
-import InstallPrompt from "../components/installPrompt.js";
 import BannerCarousel from "../components/BannerCarousel.js";
 import MidSection from "../components/MidSection.js";
 import ContactUs from "../components/ContactUs.js";
@@ -26,7 +25,6 @@ const HomePage = () => {
         <ContactUs />
         <Footer />
       </div>
-      <InstallPrompt />
     </>
   );
 };

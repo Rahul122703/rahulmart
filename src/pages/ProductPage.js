@@ -34,7 +34,7 @@ export default function ProductPage() {
 
   useEffect(() => {
     setAlreadyThere(cart.some((item) => item.id === singleproduct.id));
-  }, [singleproduct, cart.length]);
+  }, [cart.length]);
 
   const manageAddToCart = (productInfo) => {
     toast.success("Added to cart", { duration: 1000 });
@@ -105,12 +105,11 @@ export default function ProductPage() {
         <button
           onClick={() => navigate("/products", { replace: true })}
           className="mb-6 px-4 py-2 bg-gray-700 dark:bg-gray-600 hover:bg-black dark:hover:bg-gray-900 text-white rounded-lg shadow flex items-center gap-2 transition">
-          {/*123*/}
           <IoMdArrowRoundBack />
         </button>
 
         <div className="flex flex-col-reverse lg:flex-row gap-10 h-full">
-          <div className="w-full lg:w-1/2 px-2 lg:px-6 space-y-5">
+          <div className="w-full lg:w-1/2 px-2 lg:px-6 space-y-5 border border-none">
             <h2 className="text-4xl font-bold text-gray-800 dark:text-white text-center lg:text-left">
               {product}
             </h2>
@@ -134,7 +133,7 @@ export default function ProductPage() {
 
             <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 text-sm sm:text-base text-gray-700 dark:text-gray-300">
               <p>
-                <span className="font-semibold">Available:</span>
+                <span className="font-semibold">Available: </span>
                 {stock ? (
                   <span className="text-green-600 dark:text-green-400">
                     In Stock
@@ -154,7 +153,7 @@ export default function ProductPage() {
                 )}
               </p>
               <p>
-                <span className="font-semibold">Company:</span>
+                <span className="font-semibold">Company: </span>
                 <span className="text-gray-700 dark:text-gray-300">
                   {company}
                 </span>
@@ -174,9 +173,19 @@ export default function ProductPage() {
               ))}
             </div>
 
-            {currentCartItem && (
-              <ProductAmount {...currentCartItem} manageAmount={manageAmount} />
-            )}
+            <div className="border border-none flex flex-row justify-between items-center w-fit">
+              {currentCartItem && (
+                <ProductAmount
+                  {...currentCartItem}
+                  manageAmount={manageAmount}
+                />
+              )}
+              <button
+                onClick={() => navigate("/products", { replace: true })}
+                className="ml-4 h-[3rem] px-4 py-2 bg-gray-700 dark:bg-gray-600 hover:bg-black dark:hover:bg-gray-900 text-white rounded-lg shadow flex items-center transition">
+                <IoMdArrowRoundBack />
+              </button>
+            </div>
 
             {alreadyThere ? (
               <button

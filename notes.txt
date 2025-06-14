@@ -1,0 +1,10 @@
+for deployment on netlify
+1. put all the env 
+    1. airtable secret key
+    2. airtable base id 
+    3. stripe publish key
+    4. stripe secret key
+    5. authO secret key
+    6. authO public key
+    7. website url 
+2. also change the typescript version as per the requirement (^5.0.0 or 4.9.5)

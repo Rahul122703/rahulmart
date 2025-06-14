@@ -52,7 +52,7 @@ const InstallPrompt = () => {
           className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
           onClick={() => setShowModal(false)}>
           <div
-            className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-[90%] max-w-sm p-6 relative animate-fadeIn"
+            className="bg-white  dark:bg-gray-800 rounded-2xl shadow-2xl w-[90%] max-w-sm p-6 relative animate-fadeIn"
             onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setShowModal(false)}
