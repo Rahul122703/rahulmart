@@ -41,8 +41,6 @@ export const product_reducer = (state, action) => {
     return { ...state, singleproductError: true, singleproductLoading: false };
   }
   if (action.type === SINGLE_PRODUCT_SUCCESS) {
-    console.log("action.payload");
-    console.log(action.payload);
     return {
       ...state,
       singleproductLoading: false,

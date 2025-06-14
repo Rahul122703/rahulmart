@@ -13,9 +13,6 @@ export const handler = async (event) => {
     return subtotal + shipping;
   };
 
-  console.log("calculateOrderAmount");
-  console.log(calculateOrderAmount());
-
   try {
     const paymentIntent = await stripe_initializer.paymentIntents.create({
       amount: calculateOrderAmount(),

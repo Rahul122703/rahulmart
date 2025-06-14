@@ -19,6 +19,7 @@
 - 🔗 **Airtable Integration** – fetch product data easily, so anyone can manage content (CRUD)
 - 📧 **FormSpree Email** – to send messages from contact forms
 - ☁️ **Serverless Functions** – handle backend tasks without a full server
+- ⏳ **Skeleton Loaders** – show loading skeletons for most data components to improve user experience
 
 ---
 
@@ -30,37 +31,45 @@
 - **Authentication:** Auth0
 - **Payments:** Stripe
 - **State Management:** Context API
-- **PWA Support:** Service Workers, \`manifest.json\`
+- **PWA Support:** Service Workers, `manifest.json`
 
 ---
 
 ## 📦 Getting Started
 
 1. **Clone the project**:
-   \`\`\`bash
+
+   ```bash
    git clone https://github.com/YOUR-USERNAME/rahulmart.git
-   \`\`\`
+   ```
 
 2. **Go to the folder**:
-   \`\`\`bash
+
+   ```bash
    cd rahulmart
-   \`\`\`
+   ```
 
 3. **Install dependencies**:
-   \`\`\`bash
+
+   ```bash
    npm install
-   \`\`\`
+   ```
 
 4. **Start the development server**:
-   \`\`\`bash
-   npm start # Only frontend
-   \`\`\`
-   or
-   \`\`\`bash
-   npm run netlify # Frontend + Serverless functions
-   \`\`\`
 
-5. Visit [http://localhost:3000](http://localhost:3000) to see the app.
+   ```bash
+   npm start        # Only frontend
+   ```
+
+   or
+
+   ```bash
+   npm run netlify  # Frontend + Serverless functions
+   ```
+
+5. Visit [http://localhost:3000](http://localhost:3000) to see the app (for npm start)
+6. Visit [http://localhost:8888](http://localhost:88880 to see the app (for npm run netlify)
+7. If facing typescript version issue toggle between TS@^5.0.0 and TS@4.9.5
 
 ---
 
@@ -68,10 +77,24 @@
 
 To create a build for deployment:
 
-\`\`\`bash
+```bash
 npm run build
-\`\`\`
+```
 
-This will create an optimized \`build\` folder you can host on **Netlify**, **Vercel**, or any static hosting platform.
+This will create an optimized `build` folder you can host on **Netlify**, **Vercel**, or any static hosting platform.
 
 ---
+
+## 🖼️ Project Screenshots
+
+### 📱 Phone View
+
+|                                                                   |                                                    |                                                            |                                                           |
+| ----------------------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------ |
+| ![productpage](./screenshots/phone/productpagephone-portrait.png) | ![Search](./screenshots/phone/search-portrait.png) | ![CheckoutPage](./screenshots/phone/cartpage-portrait.png) | ![Profile](./screenshots/phone/checkoutpage-portrait.png) | [Profile](./screenshots/phone/stripepage-portrait.png) |
+
+### 💻 PC View
+
+|                                                  |                                                  |                                                            |                                                    |
+| ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------------------- | -------------------------------------------------- | --------------------------------------------------- |
+| ![AirTable](./screenshots/pc/Airtable-front.png) | ![Homepage](./screenshots/pc/homepage-front.png) | ![Skelton](./screenshots/pc/productpageskeleton-front.png) | ![Search](./screenshots/pc/productspage-front.png) | ![Search](./screenshots/pc/productspage2-front.png) |

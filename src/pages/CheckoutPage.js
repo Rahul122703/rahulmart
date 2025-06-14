@@ -51,8 +51,7 @@ const CheckoutForm = () => {
           price,
         })
       );
-      console.log("clientSecret");
-      console.log(clientSecret);
+
       setClientid(clientSecret);
     } catch (error) {
       console.log(error.response);
