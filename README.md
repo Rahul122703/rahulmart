@@ -96,4 +96,21 @@ This will create an optimized `build` folder you can host on **Netlify**, **Verc
 
 | ![Airtable](./screenshots/pc/Airtable-front.png) | ![Homepage](./screenshots/pc/homepage-front.png) | ![Skeleton](./screenshots/pc/productpageskeleton-front.png) | ![Product Page](./screenshots/pc/productspage-front.png) | ![More Products](./screenshots/pc/productspage2-front.png) |
 | --- | --- | --- | --- | --- |
+## 🧪 Required Environment Variables
 
+Make sure to create a \`.env\` file in the root directory and add the following variables with your own values:
+
+
+AIRTABLE_API_TOKEN=your_airtable_api_token
+AIRTABLE_BASE_ID=your_airtable_base_id
+
+REACT_APP_WEBSITE_URL=your_website_url
+
+REACT_APP_AUTH_CLIENTID=your_auth0_client_id
+REACT_APP_AUTH_SECRETKEY=your_auth0_domain
+
+REACT_APP_STRIPE_PUBLISH_KEY=your_stripe_publishable_key
+REACT_APP_STRIPE_SECRETKEY=your_stripe_secret_key
+
+
+> ⚠️ Do **not** commit this \`.env\` file to version control. Keep your credentials secure.
