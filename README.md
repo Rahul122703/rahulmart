@@ -89,12 +89,11 @@ This will create an optimized `build` folder you can host on **Netlify**, **Verc
 
 ### 📱 Phone View
 
-|                                                                   |                                                    |                                                            |                                                           |
-| ----------------------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------ |
-| ![productpage](./screenshots/phone/productpagephone-portrait.png) | ![Search](./screenshots/phone/search-portrait.png) | ![CheckoutPage](./screenshots/phone/cartpage-portrait.png) | ![Profile](./screenshots/phone/checkoutpage-portrait.png) | [Profile](./screenshots/phone/stripepage-portrait.png) |
+| ![Product Page](./screenshots/phone/productpagephone-portrait.png) | ![Search](./screenshots/phone/search-portrait.png) | ![Cart Page](./screenshots/phone/cartpage-portrait.png) | ![Checkout](./screenshots/phone/checkoutpage-portrait.png) | ![Stripe](./screenshots/phone/stripepage-portrait.png) |
+| --- | --- | --- | --- | --- |
 
 ### 💻 PC View
 
-|                                                  |                                                  |                                                            |                                                    |
-| ------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------------------- | -------------------------------------------------- | --------------------------------------------------- |
-| ![AirTable](./screenshots/pc/Airtable-front.png) | ![Homepage](./screenshots/pc/homepage-front.png) | ![Skelton](./screenshots/pc/productpageskeleton-front.png) | ![Search](./screenshots/pc/productspage-front.png) | ![Search](./screenshots/pc/productspage2-front.png) |
+| ![Airtable](./screenshots/pc/Airtable-front.png) | ![Homepage](./screenshots/pc/homepage-front.png) | ![Skeleton](./screenshots/pc/productpageskeleton-front.png) | ![Product Page](./screenshots/pc/productspage-front.png) | ![More Products](./screenshots/pc/productspage2-front.png) |
+| --- | --- | --- | --- | --- |
+
