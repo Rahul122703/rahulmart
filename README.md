@@ -1,58 +1,77 @@
-# RahulMart 🛒 - A Progressive Web App (PWA)
+# 🛒 RahulMart – A Progressive Web App (PWA)
 
-**RahulMart** is a modern **eCommerce Progressive Web App (PWA)** built using **React**. It provides a seamless shopping experience with fast loading times, offline support, and a responsive design.
+**RahulMart** is a simple and modern **eCommerce Progressive Web App (PWA)** made using **ReactJS**. It gives a smooth shopping experience with fast loading, offline support, and mobile-friendly design.
+
+---
 
 ## 🚀 Features
-- 📱 **PWA Enabled** - Installable & works offline  
-- ⚡ **Fast & Responsive** - Optimized for mobile & desktop  
-- 🛍️ **Product Listings** - Browse & search products  
-- 🛒 **Cart Management** - Add/remove items from the cart  
-- 🔥 **Dynamic UI** - Smooth user experience with React  
+
+- ✅ **Sort Products** – by price (high/low) or name (A-Z, Z-A)
+- 🔍 **Filter Products** – by category, company, color, shipping, and price range
+- 🛒 **Add to Cart** – smart and dynamic cart with item quantity control
+- 🔐 **Google & Twitter Login** – using **Auth0**
+- 💳 **Secure Payment** – with **Stripe SDK**
+- 🌙 **Dark Mode** – easy on the eyes
+- 🔎 **Search Modal** – find products quickly
+- 📱 **Responsive Design** – works on phones, tablets, and desktops
+- 📦 **PWA Enabled** – works offline and installable on your device
+- 💾 **LocalStorage** – stores cart, auth, and product data even after refresh
+- 🔗 **Airtable Integration** – fetch product data easily, so anyone can manage content (CRUD)
+- 📧 **FormSpree Email** – to send messages from contact forms
+- ☁️ **Serverless Functions** – handle backend tasks without a full server
+
+---
 
 ## 🛠️ Tech Stack
-- **Frontend:** React, React Router, Tailwind CSS  
-- **State Management:** Context API / Redux (if used)  
-- **PWA Support:** Service Workers, Manifest.json  
 
-## Getting Started
+- **Frontend:** ReactJS, React Router, Tailwind CSS
+- **Backend:** Serverless functions
+- **Database:** Airtable
+- **Authentication:** Auth0
+- **Payments:** Stripe
+- **State Management:** Context API
+- **PWA Support:** Service Workers, \`manifest.json\`
 
-To use this template, follow these steps:
+---
 
-1. Clone this repository to your local machine:
+## 📦 Getting Started
 
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/PWA-React-JS-Template-Project-With-Tailwind-CSS.git
-   ```
+1. **Clone the project**:
+   \`\`\`bash
+   git clone https://github.com/YOUR-USERNAME/rahulmart.git
+   \`\`\`
 
-2. Change into the project directory:
+2. **Go to the folder**:
+   \`\`\`bash
+   cd rahulmart
+   \`\`\`
 
-   ```bash
-   cd PWA-React-JS-Template-Project-With-Tailwind-CSS
-   ```
-
-3. Install the project dependencies:
-
-   ```bash
+3. **Install dependencies**:
+   \`\`\`bash
    npm install
-   ```
+   \`\`\`
 
-4. Start the development server:
+4. **Start the development server**:
+   \`\`\`bash
+   npm start # Only frontend
+   \`\`\`
+   or
+   \`\`\`bash
+   npm run netlify # Frontend + Serverless functions
+   \`\`\`
 
-   ```bash
-   npm start (for frontend)
-   ```
-or 
-   ```bash
-   npm run netlify  (for frontend and with backend api)
-   ```
-Your PWA will be running at `http://localhost:3000`. Open your browser and navigate to this URL to view the project in action.
+5. Visit [http://localhost:3000](http://localhost:3000) to see the app.
 
-## Building and Deployment
+---
 
-To create a production-ready build of your project, run:
+## ⚙️ Build for Production
 
-```bash
+To create a build for deployment:
+
+\`\`\`bash
 npm run build
-```
+\`\`\`
 
-This will generate a `build` directory containing optimized files that you can deploy to your hosting provider of choice.
+This will create an optimized \`build\` folder you can host on **Netlify**, **Vercel**, or any static hosting platform.
+
+---

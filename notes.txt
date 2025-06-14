@@ -10,3 +10,31 @@ for deployment on netlify
 2. also change the typescript version as per the requirement (^5.0.0 or 4.9.5)
 
 https://rahulmart.netlify.app, http://localhost:8888, http://localhost:3000
+
+
+
+About project:
+this project is an ecommerce website 
+features:
+1. sort products (highest or lowest price,a-z,z-a)
+2. filter products (category,company,color,shipping,price)
+3. add to cart features (very dynamic)
+4. AuthO google and twitter signup and login
+5. Stripe SDK payment gateway
+6. dark mode
+7. search filter modal
+8. very responsive
+9. made this a PWA
+10. LocalStorage for cart,authentication,products data
+11 connect this with airtable to fetch data from as any laymen can understand this to do CRUD on data from airtable directly
+12. FormSpree email intergration
+12. serverless function
+
+Tech Stack -->
+Frontend : reactjs
+backend : serverles-function
+database : AirTable
+authentication : AuthO
+payment : Stripe
+State Management Tool : Context API
+
