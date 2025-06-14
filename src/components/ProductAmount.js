@@ -1,6 +1,6 @@
 const ProductAmount = ({ stock = 0, id, subAmount, manageAmount }) => {
   return (
-    <div>
+    <div className="mr-4">
       <button
         name="decrease"
         onClick={(e) => manageAmount(e, id)}

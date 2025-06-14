@@ -8,3 +8,5 @@ for deployment on netlify
     6. authO public key
     7. website url 
 2. also change the typescript version as per the requirement (^5.0.0 or 4.9.5)
+
+https://rahulmart.netlify.app, http://localhost:8888, http://localhost:3000

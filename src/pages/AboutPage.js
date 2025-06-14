@@ -84,7 +84,7 @@ const AboutPage = () => {
                 desc: "Trusted by thousands of happy customers.",
               },
             ].map((item, index) => (
-              <motion.di
+              <motion.div
                 key={index}
                 className="p-6 bg-[#1a1a1a] rounded-lg shadow-lg text-center transition-all duration-300 hover:scale-105 hover:bg-opacity-90"
                 initial={{ opacity: 0, y: 30 }}
@@ -95,7 +95,7 @@ const AboutPage = () => {
                   {item.title}
                 </h3>
                 <p className="text-gray-400 mt-2">{item.desc}</p>
-              </motion.di>
+              </motion.div>
             ))}
           </div>
           <button

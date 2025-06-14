@@ -17,10 +17,10 @@ import { useCartContext } from "../context/cart_context.js";
 
 export default function ProductPage() {
   const {
-    singleproductLoading,
-    singleproductError,
     singleproduct,
     fetchSingleProduct,
+    singleproductError,
+    singleproductLoading,
   } = useProductContext();
   const { addToCart, cart, removeFromCart, manageAmount } = useCartContext();
   const { productid } = useParams();
@@ -33,8 +33,9 @@ export default function ProductPage() {
   }, [productid]);
 
   useEffect(() => {
-    setAlreadyThere(cart.some((item) => item.id === singleproduct.id));
-  }, [cart.length]);
+    if (!productid) return;
+    setAlreadyThere(cart.some((item) => item.id === productid));
+  }, [cart, productid]);
 
   const manageAddToCart = (productInfo) => {
     toast.success("Added to cart", { duration: 1000 });
@@ -182,7 +183,7 @@ export default function ProductPage() {
               )}
               <button
                 onClick={() => navigate("/products", { replace: true })}
-                className="ml-4 h-[3rem] px-4 py-2 bg-gray-700 dark:bg-gray-600 hover:bg-black dark:hover:bg-gray-900 text-white rounded-lg shadow flex items-center transition">
+                className="h-[3rem] px-4 py-2 bg-gray-700 dark:bg-gray-600 hover:bg-black dark:hover:bg-gray-900 text-white rounded-lg shadow flex items-center transition">
                 <IoMdArrowRoundBack />
               </button>
             </div>
