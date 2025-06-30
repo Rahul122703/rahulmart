@@ -73,7 +73,7 @@ export default function ProductsContainer() {
             <Filters />
           </div>
           <div
-            className={`w-[270px] md:sticky md:top-[5rem] h-fit fixed z-[5] overflow-auto md:transform-none hidden md:block  text-black dark:text-white`}>
+            className={`w-[270px] md:sticky md:top-[5rem] max-h-[650px] fixed z-[5] overflow-auto md:transform-none hidden md:block  text-black dark:text-white`}>
             <Filters />
           </div>
           <div className="flex-1 rounded-lg  top-[10rem] md:static bg-white dark:bg-gray-900 border border-none ">
